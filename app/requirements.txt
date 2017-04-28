@@ -1,0 +1,6 @@
+flask
+Flask-WTF
+flask-uploads
+pymysql
+SQLAlchemy
+gunicorn

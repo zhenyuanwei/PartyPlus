@@ -1,0 +1,51 @@
+#loacl启动gunicorn
+gunicorn -w 4 -b :5000 app:application
+
+#确认docker-machine版本
+docker-machine --version
+
+#确认docker-compose版本
+docker-compose --version
+
+#创建docker-machine
+docker-machine create -d virtualbox dev
+
+#删除docker-machine
+docker-machine rm dev
+
+#启动 Machine(dev)
+docker-machine start dev
+
+#停止 Machine(dev)
+docker-machine stop dev
+
+#获取 Machine(dev) 的 IP
+docker-machine ip dev
+
+#通过 SSH 进入 Machine(dev)
+docker-machine ssh dev
+
+#制定开发环境的docker-machine
+eval "$(docker-machine env dev)"
+
+#查看虚拟机的状态
+docker-machine ls
+
+#运行容器，构建镜像，然后开始服务：
+docker-compose build
+docker-compose up -d
+
+#查看哪些环境变量可用于 Web 服务
+docker-compose run web env
+
+#查看日志
+docker-compose logs
+
+#启动docker-compose服务：
+docker-compose up
+
+#停止docker-compose服务：
+docker-compose stop
+
+#MAC查看端口占用情况：
+lsof -i tcp:port  （port替换成端口号，比如6379）可以查看该端口被什么程序占用，并显示PID，方便KILL

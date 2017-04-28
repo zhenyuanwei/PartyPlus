@@ -1,0 +1,35 @@
+web:
+  restart: always
+  build: ./app
+  expose:
+    - "5000"
+  links:
+    - mysql:mysql
+  volumes:
+    - .:/app
+  env_file: .env
+  environment:
+    DEBUG: 'true'
+  command: /usr/local/bin/gunicorn app:application -w 2 -b :5000
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  expose:
+    - "80"
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+mysql:
+  image: mysql:latest
+  environment:
+    - MYSQL_DATABASE=flask
+    - MYSQL_ROOT_PASSWORD=zaq12wsx
+  ports:
+    - "3306:3306"
+
+
