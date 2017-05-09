@@ -4,9 +4,9 @@ web:
   expose:
     - "5000"
   links:
-    - mysql:mysql
+    - mongodb:mongodb
   volumes:
-    - /usr/src/app/static
+    - /home/partyplus/static
   env_file: .env
   command: /usr/local/bin/gunicorn app:application -w 2 -b :5000
 
@@ -14,18 +14,16 @@ nginx:
   restart: always
   build: ./nginx/
   ports:
-    - "80:80"
-  volumes:
-    - /www/static
+    - "443:443"
   volumes_from:
     - web
   links:
     - web:web
 
-mysql:
-  image: mysql:latest
-  environment:
-    - MYSQL_DATABASE=flask
-    - MYSQL_ROOT_PASSWORD=zaq12wsx
+mongodb:
+  restart: always
+  image: mongo:latest
   ports:
-    - "3306:3306"
+    - "27017:27017"
+  volumes:
+    - mongodb_data:/home/partyplus/data/db

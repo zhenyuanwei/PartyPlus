@@ -4,7 +4,7 @@ web:
   expose:
     - "5000"
   links:
-    - mysql:mysql
+    - mongodb:mongodb
   volumes:
     - .:/app
   env_file: .env
@@ -16,20 +16,20 @@ nginx:
   restart: always
   build: ./nginx/
   ports:
-    - "80:80"
+    - "443:443"
   expose:
-    - "80"
+    - "443"
   volumes_from:
     - web
   links:
     - web:web
 
-mysql:
-  image: mysql:latest
-  environment:
-    - MYSQL_DATABASE=flask
-    - MYSQL_ROOT_PASSWORD=zaq12wsx
+mongodb:
+  restart: always
+  image: mongo:latest
   ports:
-    - "3306:3306"
+    - "27017:27017"
+  volumes:
+    - mongodb_data:/Users/weizhenyuan/data/db
 
 

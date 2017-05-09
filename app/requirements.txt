@@ -1,6 +1,4 @@
 flask
 Flask-WTF
-flask-uploads
-pymysql
-SQLAlchemy
+pymongo
 gunicorn
