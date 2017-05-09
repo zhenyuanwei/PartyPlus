@@ -1,0 +1,53 @@
+<!-- newevent.wxml -->
+<view>
+  <view class="left">
+    <label>活动名称:</label>
+    <input placeholder="请输入活动名称"/>
+  </view>
+  <view class="left">
+    <label>活动开始时间:</label>
+    <picker mode="date" 
+    value="{{datestart}}" start="2016-09-01" 
+    bindchange="bindDateStartChange">
+      <view>
+      当前选择: {{datestart}}
+      </view>
+    </picker>
+    <picker mode="time" 
+    value="{{timestart}}" start="09:00" end="20:00" 
+    bindchange="bindTimeStartChange">
+      <view>
+      当前选择: {{timestart}}
+      </view>
+    </picker>
+  </view>
+  <view class="left">
+    <label>活动结束时间:</label>
+    <picker mode="date" 
+    value="{{dateend}}" start="2016-09-01" 
+    bindchange="bindDateEndChange">
+      <view>
+      当前选择: {{dateend}}
+      </view>
+    </picker>
+    <picker mode="time" 
+    value="{{timeend}}" start="09:00" end="20:00" 
+    bindchange="bindTimeEndChange">
+      <view>
+      当前选择: {{timeend}}
+      </view>
+    </picker>
+  </view>
+  <view class="left">
+    <label>活动地点:</label>
+    <input placeholder="请输入活动地点"/>
+    <!--<map id="map" />-->
+  </view>
+  <view class="left">
+    <label>参与人数:</label>
+    <input placeholder="参与人数"/>
+  </view>
+  <view class="left">
+    <button>提交</button>
+  </view>
+</view>

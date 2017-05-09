@@ -1,0 +1,19 @@
+<view>
+  <view class="left">
+    <text>我参加的活动</text>
+  </view>
+  <view class="left">
+    <view class="table" wx:if="{{hasData}}">
+      <view class="tr">
+        <text class="th">活动名称</text>
+        <text class="th">活动时间</text>
+        <text class="th">活动地点</text>
+      </view> 
+      <view class="tr" wx:for="{{array}}">
+        <text class="td">{{item.name}}</text>
+        <text class="td">{{item.time}}</text>
+        <text class="td">{{item.localtion}}</text>
+      </view> 
+    </view>
+  </view>
+</view>

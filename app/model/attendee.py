@@ -65,6 +65,6 @@ attend = AttendeeModel()
        'attendee_openid' : 'tsfljfljfajfajfiesepmq'
        }'''
 #print(attend.insert(attendee=wzy))
-attendees = attend.findByParty(party_id='1494296353')
+'''attendees = attend.findByParty(party_id='1494296353')
 for attendee in attendees:
-    print(attendee)
+    print(attendee)'''

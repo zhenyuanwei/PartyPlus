@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+<view>
+  <view class="left">
+    <text>我发起的活动</text>
+  </view>
+  <view class="left">
+    <view class="table" wx:if="{{hasData}}">
+      <view class="tr">
+        <text class="th">活动名称</text>
+        <text class="th">活动时间</text>
+        <text class="th">活动地点</text>
+        <text class="th">分享</text>
+      </view> 
+      <view class="tr" wx:for="{{array}}">
+        <view class="td">
+        <navigator url="../regstatus/regstatus?id={{item.id}}">{{item.name}}</navigator>
+        </view>
+        <text class="td">{{item.time}}</text>
+        <text class="td">{{item.localtion}}</text>
+        <view class="td">
+        <navigator url="../register/register?id={{item.id}}">分享</navigator>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>

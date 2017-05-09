@@ -1,0 +1,39 @@
+<view>
+  <view class="left">
+    <label>活动编号:</label>
+    <text>{{eventId}}</text>
+  </view>
+  <view class="left">
+    <label>活动名称:</label>
+    <text>{{eventSet.name}}</text>
+  </view>
+  <view class="left">
+    <label>活动时间:</label>
+    <text>{{eventSet.time}}</text>
+  </view>
+  <view class="left">
+    <label>活动地点:</label>
+    <text>{{eventSet.localtion}}</text>
+  </view>
+  <view class="left">
+    <label>参与人数:</label>
+    <text>{{eventSet.attendNum}}／{{eventSet.totalNum}}</text>
+  </view>
+  <view wx:if="{{showAttendList}}">
+    <text class="left">参与者名单:</text>
+    <view class="left">
+      <view class="table">
+          <view class="tr">
+            <text class="th">姓名</text>
+            <text class="th">联系方式</text>
+            <text class="th">报名时间</text>
+          </view> 
+          <view class="tr" wx:for="{{userarray}}">
+            <view class="td">{{item.name}}</view>
+            <text class="td">{{item.tel}}</text>
+            <view class="td">{{item.time}}</view>
+          </view> 
+      </view>
+    </view>
+  </view>
+</view>
