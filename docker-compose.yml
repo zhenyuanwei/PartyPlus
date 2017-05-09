@@ -9,7 +9,7 @@ web:
     - .:/app
   env_file: .env
   environment:
-    DEBUG: 'true'
+    DEBUG: 'false'
   command: /usr/local/bin/gunicorn app:app -w 2 -b :5000
 
 nginx:

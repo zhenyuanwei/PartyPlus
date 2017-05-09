@@ -1,0 +1,11 @@
+<view>
+  <view class="container">
+    <text>关于</text>
+  </view>
+  <view class="left">
+    <text>在聚会Plus中发起活动并分享到微信群，发起人可以很方便的在聚会Plus中统计参与者报名的状况。</text>
+  </view>
+  <view class="left">
+    <text>联系方式：zhenyuanwei@foxmail.com</text>
+  </view>
+</view>

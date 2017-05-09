@@ -6,11 +6,11 @@ from app.utils.util import getTime
 Attendee Layout
 _id  自动编号
 party_id   关联到party的party_id
-attend_id  TimeStamp
 attendee_name
 wechat_name
 tel_no
 attendee_openid
+attend_id  TimeStamp
 attend_status      #0 取消， 1 参加
 payment_flag      #0 未支付，1 已支付    
 create_time       #自动设定
@@ -57,14 +57,16 @@ class AttendeeModel:
         attend = self.find(attend_id=attend_id)
         attendee_collection.delete_one(attend)
 
-attend = AttendeeModel()
-'''wzy = {'party_id' : '1494296353',
+'''attend = AttendeeModel()
+wzy = {'party_id' : '1494296353',
        'attendee_name' : 'wzy',
        'wechat_name' : 'Kevin',
        'tel_no' : '18604110001',
-       'attendee_openid' : 'tsfljfljfajfajfiesepmq'
-       }'''
+       'attend_id': '1494298352',
+       'attendee_openid' : 'oBSns0F4uo1EZi9oFFvRUXMyLbpo'
+       }
 #print(attend.insert(attendee=wzy))
-'''attendees = attend.findByParty(party_id='1494296353')
+attend.update(attendee=wzy)
+attendees = attend.findByParty(party_id='1494296353')
 for attendee in attendees:
     print(attendee)'''

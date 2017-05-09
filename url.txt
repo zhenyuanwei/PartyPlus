@@ -1,0 +1,5 @@
+https://www.yxtechs.cn/getownedpartylist?openId=oBSns0F4uo1EZi9oFFvRUXMyLbpo
+https://www.yxtechs.cn/getpartyinfo?party_id=1494296353
+https://www.yxtechs.cn/getattendpartylist?openId=oBSns0F4uo1EZi9oFFvRUXMyLbpo
+https://www.yxtechs.cn/createparty?party_name=BlockChain&party_time=18:00&party_location=M302&party_total_num=15&openId=oBSns0F4uo1EZi9oFFvRUXMyLbpo
+https://www.yxtechs.cn/attendparty?party_id=1494335513&wechat_name=Kevin&attendee_name=wzy&tel_no=18604110001&openId=oBSns0F4uo1EZi9oFFvRUXMyLbpo

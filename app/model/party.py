@@ -60,11 +60,11 @@ class PartyModel:
         party = self.find(party_id=party_id)
         party_collection.delete_one(party)
 
-watsonParty = {'party_id' : '1494296353',
+'''watsonParty = {'party_id' : '1494296353',
                'party_name' : 'Watson Session',
                'party_attend_num' : 3,
-               'create_openid' : 'Txdedgdaeapfdadsdsff'
-               }
+               'create_openid' : 'oBSns0F4uo1EZi9oFFvRUXMyLbpo'
+               }'''
 #party_id = '1494296353'
 
 #party = PartyModel()

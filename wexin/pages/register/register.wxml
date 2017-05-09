@@ -6,21 +6,31 @@
   </view>
   <view class="left">
     <label>活动名称:</label>
-    <text>{{eventSet.name}}</text>
+    <text>{{eventSet.party_name}}</text>
   </view>
   <view class="left">
     <label>活动时间:</label>
-    <text>{{eventSet.time}}</text>
+    <text>{{eventSet.party_time}}</text>
   </view>
   <view class="left">
     <label>活动地点:</label>
-    <text>{{eventSet.localtion}}</text>
+    <text>{{eventSet.party_location}}</text>
   </view>
   <view class="left">
     <label>参与人数:</label>
-    <text>{{eventSet.attendNum}}／{{eventSet.totalNum}}</text>
+    <text>{{eventSet.party_attend_num}}/{{eventSet.party_total_num}}</text>
   </view>
-  <view wx:if="{{showButton}}" class="left">
-    <button>参加</button>
+  <view wx:if="{{showButton}}">
+      <view class="left">
+        <label>姓名:</label>
+        <input bindblur="bindAttendeeNameBlur" placeholder="请输入姓名"/>
+      </view>
+      <view class="left">
+        <label>联系方式:</label>
+        <input bindblur="bindAttendeeTelBlur" placeholder="请输入手机号码"/>
+      </view>
+      <view class="left">
+        <button bindtap="bindButtonTap">参加</button>
+      </view>
   </view>
 </view>

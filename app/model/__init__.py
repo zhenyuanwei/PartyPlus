@@ -1,6 +1,10 @@
 from pymongo import MongoClient
 
-mongoURL = 'mongodb://localhost:27017//'
+#for docker-compose
+mongoURL = 'mongodb://mongodb:27017//'
+#for localhost
+#mongoURL = 'mongodb://localhost:27017//'
+
 client = MongoClient(mongoURL)
 mangodb = client['partyplus']
 
