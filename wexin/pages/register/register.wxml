@@ -17,8 +17,11 @@
     <text>{{eventSet.party_location}}</text>
   </view>
   <view class="left">
-    <label>参与人数:</label>
+    <label>参与人数上限(>0):</label>
     <text>{{eventSet.party_attend_num}}/{{eventSet.party_total_num}}</text>
+  </view>
+  <view class="left">
+    <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
   </view>
   <view wx:if="{{showButton}}">
       <view class="left">

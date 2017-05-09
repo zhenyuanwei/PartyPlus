@@ -63,6 +63,7 @@ Page({
 
     onLoad: function (options) {
         //console.log('onLoad')
+        var that = this
         var eventId = options.id
         this.setData({eventId: eventId})
 
@@ -78,14 +79,14 @@ Page({
                 that.setData({eventSet: eventSet});
                 //this.setData({ array: array });
                 if (eventSet.party_total_num == eventSet.party_attend_num) {
-                    this.setData({showButton: false})
+                    that.setData({showButton: false})
                 }
                 ;
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });
 
-        var that = this
+
         //调用应用实例的方法获取全局数据
         app.getUserInfo(function (userInfo) {
             //更新数据
