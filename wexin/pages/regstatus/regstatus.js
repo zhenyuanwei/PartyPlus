@@ -8,7 +8,8 @@ Page({
         eventSet: {},
         eventId: '',
         showAttendList: true,
-        userarray: []
+        userarray: [],
+        showTel: true
     },
 
     onLoad: function (options) {
@@ -32,9 +33,16 @@ Page({
                 that.setData({userarray: userarray});
                 //this.setData({ array: array });
                 if (userarray.length == 0) {
-                    that.setData({hasData: false})
+                    that.setData({showAttendList: false})
+                };
+                var create_openid = eventSet.create_openid
+                //console.log(create_openid);
+                var openId = wx.getStorageSync('openId')
+                //console.log(openId);
+                if (create_openid != openId){
+                    that.setData({showTel: false})
                 }
-                ;
+
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });

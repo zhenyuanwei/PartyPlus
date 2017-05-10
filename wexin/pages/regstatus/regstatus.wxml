@@ -25,12 +25,12 @@
       <view class="table">
           <view class="tr">
             <text class="th">姓名</text>
-            <text class="th">联系方式</text>
+            <text wx:if="{{showTel}}" class="th">联系方式</text>
             <text class="th">报名时间</text>
           </view> 
           <view class="tr" wx:for="{{userarray}}">
             <view class="td">{{item.attendee_name}}</view>
-            <text class="td">{{item.tel_no}}</text>
+            <text wx:if="{{showTel}}" class="td">{{item.tel_no}}</text>
             <view class="td">{{item.create_time}}</view>
           </view> 
       </view>
