@@ -16,38 +16,26 @@ Page({
         var path = 'pages/register/register?id='
         path = path + this.data.eventId
         return {
-            title: '邀请朋友参加活动',
+            title: '请您参加活动',
             path: path
         }
     },
 
-    bindAttendeeNameBlur: function (e) {
-        //console.log('bindAttendeeNameBlur')
-        this.setData({
-            attendee_name: e.detail.value
-        })
-    },
-
-    bindAttendeeTelBlur: function (e) {
-        //console.log('bindAttendeeTelBlur')
-        this.setData({
-            tel_no: e.detail.value
-        })
-    },
 
     bindButtonTap: function (e) {
         var that = this
         var wechat_name = wx.getStorageSync('userInfo').nickName
         var openId = wx.getStorageSync('openId');
 
-        var url = 'https://www.yxtechs.cn/attendparty?party_id=' + that.data.eventId
-        url = url + '&wechat_name=' + wechat_name + '&attendee_name=' + that.data.attendee_name
-        url = url + '&tel_no=' + that.data.tel_no + '&openId=' + openId
-        //console.log(url)
-
+        var url = 'https://www.yxtechs.cn/attendparty';
+        var params = e.detail.value
+        params['openId'] = openId;
+        params['wechat_name'] = wechat_name;
+        params['party_id'] = that.data.eventId;
+        //console.log(params);
         wx.request({
             url: url,
-            data: {},
+            data: params,
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
@@ -56,7 +44,6 @@ Page({
                 wx.navigateTo({
                   url: '../regstatus/regstatus?id=' + party_id,
                 })
-                //wx.setStorageSync('openId', openId);//存储openid
             }
         });
     },
@@ -67,10 +54,11 @@ Page({
         var eventId = options.id
         this.setData({eventId: eventId})
 
-        var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
+        //var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
+        var url = 'https://www.yxtechs.cn/getpartyinfo';
         wx.request({
             url: url,
-            data: {},
+            data: {'party_id': eventId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {

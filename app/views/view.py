@@ -87,5 +87,6 @@ def createParty():
         party['party_location'] = request.args.get('party_location')
         party['party_total_num'] = int(request.args.get('party_total_num'))
         party['create_openid'] = request.args.get('openId')
+    print(party)
     res = createPartyEntry(party=party)
     return make_response(res)

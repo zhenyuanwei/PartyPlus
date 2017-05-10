@@ -27,11 +27,12 @@ Page({
         this.setData({openId: openId});
 
         //获取当前user的活动列表 tobe update使用数据库
-        var url = 'https://www.yxtechs.cn/getownedpartylist?open_id=' + openId;
+        //var url = 'https://www.yxtechs.cn/getownedpartylist?open_id=' + openId;
+        var url = 'https://www.yxtechs.cn/getownedpartylist';
         //console.log(url);
         wx.request({
             url: url,
-            data: {},
+            data: {'open_id' : openId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {

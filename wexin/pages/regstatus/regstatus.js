@@ -15,22 +15,24 @@ Page({
         //console.log('onLoad')
         var that = this
         var eventId = options.id;
+        //console.log(eventId);
         that.setData({eventId: eventId});
-        var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
+        //var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
+        var url = 'https://www.yxtechs.cn/getpartyinfo'
         wx.request({
             url: url,
-            data: {},
+            data: {'party_id' : eventId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var eventSet = res.data;
                 var userarray = res.data.attendeeList;
-                //console.log(eventSet);
+
                 that.setData({eventSet: eventSet});
                 that.setData({userarray: userarray});
                 //this.setData({ array: array });
                 if (userarray.length == 0) {
-                    this.setData({hasData: false})
+                    that.setData({hasData: false})
                 }
                 ;
                 //wx.setStorageSync('openId', openId);//存储openid

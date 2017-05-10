@@ -24,7 +24,7 @@
         "pagePath": "pages/index/index",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "首页"
+        "text": "发起的活动"
       },
       {
         "pagePath": "pages/newevent/newevent",
@@ -36,7 +36,7 @@
         "pagePath": "pages/attended/attended",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "我的活动"
+        "text": "参加的活动"
       },
       {
         "pagePath": "pages/about/about",

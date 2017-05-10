@@ -17,23 +17,26 @@
     <text>{{eventSet.party_location}}</text>
   </view>
   <view class="left">
-    <label>参与人数上限(>0):</label>
+    <label>参与人数:</label>
     <text>{{eventSet.party_attend_num}}/{{eventSet.party_total_num}}</text>
   </view>
-  <view class="left">
-    <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
-  </view>
+
   <view wx:if="{{showButton}}">
       <view class="left">
-        <label>姓名:</label>
-        <input bindblur="bindAttendeeNameBlur" placeholder="请输入姓名"/>
+        <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
+      </view>
+      <form bindsubmit="bindButtonTap">
+      <view class="left">
+        <label><text style="color : red">*</text>姓名:</label>
+        <input name="attendee_name" placeholder="请输入姓名"/>
       </view>
       <view class="left">
-        <label>联系方式:</label>
-        <input bindblur="bindAttendeeTelBlur" placeholder="请输入手机号码"/>
+        <label><text style="color : red">*</text>联系方式:</label>
+        <input name="tel_no" placeholder="请输入手机号码"/>
       </view>
       <view class="left">
-        <button bindtap="bindButtonTap">参加</button>
+        <button formType="submit">参加</button>
       </view>
+      </form>
   </view>
 </view>

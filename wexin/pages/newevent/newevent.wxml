@@ -1,22 +1,25 @@
 <!-- newevent.wxml -->
 <view>
+  <form bindsubmit="bindButtonTap">
   <view class="left">
-    <label>活动名称:</label>
-    <input bindblur="bindPartyNameBlur" placeholder="请输入活动名称"/>
+    <label><text style="color : red">*</text>活动名称:</label>
+    <input name="party_name" placeholder="请输入活动名称"/>
   </view>
   <view class="left">
-    <label>活动时间:</label>
-    <input bindblur="bindPartyTimeBlur" placeholder="5/10 下午3：00-5：00"/>
+    <label><text style="color : red">*</text>活动时间:</label>
+    <input name="party_time" placeholder="5/10 下午3：00-5：00"/>
   </view>
   <view class="left">
-    <label>活动地点:</label>
-    <input bindblur="bindPartyLocationBlur" placeholder="请输入活动地点"/>
+    <label><text style="color : red">*</text>活动地点:</label>
+    <input name="party_location" placeholder="请输入活动地点"/>
   </view>
   <view class="left">
-    <label>参与人数:</label>
-    <input bindblur="bindPartyTotalNumBlur" placeholder="15"/>
+    <label><text style="color : red">*</text>参与人数上限(>0):</label>
+    <input name="party_total_num" placeholder="15"/>
   </view>
   <view class="left">
-    <button bindtap="bindButtonTap">提交</button>
+    <!-- <button bindtap="bindButtonTap" >提交</button> -->
+    <button formType="submit">提交</button>
   </view>
+  </form>
 </view>
