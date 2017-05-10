@@ -42,7 +42,7 @@ Page({
                 var party_id = res.data;
                 //console.log(party_id);
                 wx.navigateTo({
-                  url: '../regstatus/regstatus?id=' + party_id,
+                    url: '../regstatus/regstatus?id=' + party_id,
                 })
             }
         });
@@ -73,7 +73,6 @@ Page({
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });
-
 
         //调用应用实例的方法获取全局数据
         app.getUserInfo(function (userInfo) {
