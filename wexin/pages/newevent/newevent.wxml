@@ -1,6 +1,6 @@
 <!-- newevent.wxml -->
 <view>
-  <form bindsubmit="bindButtonTap">
+  <form bindsubmit="bindButtonTap" id="creatparty" report-submit="true" >
   <view class="left">
     <label><text style="color : red">*</text>活动名称:</label>
     <input name="party_name" placeholder="请输入活动名称"/>

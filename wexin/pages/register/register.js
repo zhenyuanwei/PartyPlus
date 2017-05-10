@@ -8,8 +8,10 @@ Page({
         eventSet: {},
         eventId: '',
         showButton: true,
+        showList: false,
         attendee_name: '',
-        tel_no: ''
+        tel_no: '',
+        userarray: []
     },
     //增加到分享按钮
     onShareAppMessage: function () {
@@ -52,24 +54,30 @@ Page({
         //console.log('onLoad')
         var that = this
         var eventId = options.id
-        this.setData({eventId: eventId})
+        that.setData({eventId: eventId})
+        var openId = wx.getStorageSync('openId');
 
         //var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
         var url = 'https://www.yxtechs.cn/getpartyinfo';
         wx.request({
             url: url,
-            data: {'party_id': eventId},
+            data: {'party_id': eventId, 'openId': openId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var eventSet = res.data;
+                var userarray = res.data.attendeeList;
                 //console.log(eventSet);
                 that.setData({eventSet: eventSet});
-                //this.setData({ array: array });
+                that.setData({ userarray: userarray });
                 if (eventSet.party_total_num == eventSet.party_attend_num) {
                     that.setData({showButton: false})
                 }
-                ;
+                if (userarray.length !=0 ) {
+                    that.setData({showList: true})
+                    that.setData({showButton: false})
+                }
+
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });

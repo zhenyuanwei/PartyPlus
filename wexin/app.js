@@ -39,6 +39,21 @@ App({
                             //console.log(openId);
                             wx.setStorageSync('openId', openId);//存储openid
                         }
+                    })
+
+                    var url = 'https://api.weixin.qq.com/cgi-bin/token';
+                    var params = {'grant_type': 'client_credential', 'appid': appID, 'secret': secret}
+                    wx.request({
+                        url: url,
+                        data: params,
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            var access_token = res.data.access_token
+                            wx.setStorageSync('access_token', access_token);
+                            //console.log(access_token);
+
+                        }
                     });
 
                 }

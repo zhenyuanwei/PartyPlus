@@ -31,14 +31,30 @@ def getOwnedPartyList():
 
 '''
 获取活动信息和参与者名单
-参数：party_id
+参数：
+party_id
+openId  可选，提供了openId，返回的聚会信息的参加者仅openId的参加者
 '''
 @app.route('/getpartyinfo', methods=['GET'])
 def getPartyInfo():
     party_id = None
+    openId = None
     if request.method == 'GET':
         party_id = request.args.get('party_id')
+        try:
+            openId = request.args.get('openId')
+        except:
+            openId = None
     party = getPartyInfos(party_id=party_id)
+    if None != openId:
+        attendeeList = []
+        attendees = party['attendeeList']
+        for attendee in attendees:
+            if attendee['attendee_openid'] == openId:
+                attendeeList.append(attendee)
+                break
+        party['attendeeList'] = attendeeList
+
     return make_response(json.dumps(party))
 
 '''
