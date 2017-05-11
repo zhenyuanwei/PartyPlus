@@ -73,5 +73,14 @@ Page({
         var today = utils.getToday()
         var that = this
         that.setData({today : today})
+    },
+
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading();   //在标题栏中显示加载
+        var that = this;
+        //console.log('onPullDownRefresh');
+        that.onLoad();
+        wx.hideNavigationBarLoading()    //完成停止加载
+        wx.stopPullDownRefresh()         //停止下拉刷新
     }
 })

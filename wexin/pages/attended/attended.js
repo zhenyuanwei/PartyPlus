@@ -30,7 +30,7 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var array = res.data;
-                console.log(array);
+                //console.log(array);
                 that.setData({array: array});
                 //this.setData({ array: array });
                 if (array.length == 0) {
@@ -50,5 +50,13 @@ Page({
                 userInfo: userInfo
             })
         })
+    },
+
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading();   //在标题栏中显示加载
+        var that = this;
+        that.onLoad();
+        wx.hideNavigationBarLoading()    //完成停止加载
+        wx.stopPullDownRefresh()         //停止下拉刷新
     }
 })
