@@ -26,7 +26,7 @@
         <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
       </view>
       <view class="left"><text style="color : red">{{tip}}</text></view>
-      <form bindsubmit="bindButtonTap">
+      <form bindsubmit="bindButtonTap" id="registerform" report-submit="true">
       <view class="left">
         <label><text style="color : red">*</text>姓名:</label>
         <input name="attendee_name" placeholder="请输入姓名"/>

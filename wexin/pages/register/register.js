@@ -32,6 +32,7 @@ Page({
             var that = this
             var wechat_name = wx.getStorageSync('userInfo').nickName
             var openId = wx.getStorageSync('openId');
+            var formId = e.detail.formId
 
             var url = 'https://www.yxtechs.cn/attendparty';
             var params = e.detail.value
@@ -51,7 +52,40 @@ Page({
                         url: '../regstatus/regstatus?id=' + party_id,
                     })
                 }
-            });
+            })
+            //发送信息
+            var eventSet = wx.getStorageSync('eventSet')
+            //console.log(eventSet)
+            var template_id = 'fz4zMi04H2S9TRKktb0kC2T1lfovWbTv85yMdtw9k-s';
+            var messageContent = {
+                "keyword1": {
+                    "value": eventSet.party_name,
+                },
+                "keyword2": {
+                    "value": params.attendee_name,
+                },
+                "keyword3": {
+                    "value": eventSet.party_location,
+                },
+                "keyword4": {
+                    "value": eventSet.party_time,
+                },
+                "keyword5": {
+                    "value": params.tel_no,
+                },
+                "keyword6": {
+                    "value": utils.getToday(),
+                }
+
+            }
+            var message = {
+                "touser": eventSet.create_openid,
+                "template_id": template_id,
+                "form_id": formId,
+                "data": messageContent
+            }
+            //console.log(message)
+            utils.sendMessage(message);
         }
 
 
@@ -77,6 +111,7 @@ Page({
                 //console.log(eventSet);
                 that.setData({eventSet: eventSet});
                 that.setData({userarray: userarray});
+                wx.setStorageSync('eventSet', eventSet);//eventSet
                 if (eventSet.party_total_num == eventSet.party_attend_num) {
                     that.setData({showButton: false})
                 }
