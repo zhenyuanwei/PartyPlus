@@ -11,13 +11,14 @@ wechat_name
 tel_no
 attendee_openid
 attend_id  TimeStamp
-attend_status      #0 取消， 1 参加
+attend_status      #0 取消， 1 参加, 9 完成
 payment_flag      #0 未支付，1 已支付    
 create_time       #自动设定
 update_time       #自动设定
 '''
 class AttendeeModel:
     __collectionName = 'attendee_collection'
+    default_key = {'attend_status': {'$in': ['1']}}
 
     def insert(self, attendee):
         attendee['attend_id'] = getTimeStamp()
@@ -32,17 +33,20 @@ class AttendeeModel:
     def findByParty(self, party_id=None):
         attendee_collection = getCollection(collectionName=self.__collectionName)
         if None == party_id:
-            attendees = attendee_collection.find()
+            attendees = attendee_collection.find(self.default_key)
             return attendees
         else:
             query_key = {'party_id': party_id}
-            attendee = attendee_collection.find(query_key)
+            query_condition = {'$and': [self.default_key, query_key]}
+            attendee = attendee_collection.find(query_condition)
             return attendee
 
     def findByOpenId(self, open_id):
         attendee_collection = getCollection(collectionName=self.__collectionName)
+
         query_key = {'attendee_openid': open_id}
-        attendees = attendee_collection.find(query_key)
+        query_condition = {'$and': [self.default_key, query_key]}
+        attendees = attendee_collection.find(query_condition)
         return attendees
 
     def update(self, attendee):
@@ -57,16 +61,17 @@ class AttendeeModel:
         attend = self.find(attend_id=attend_id)
         attendee_collection.delete_one(attend)
 
-'''attend = AttendeeModel()
-wzy = {'party_id' : '1494296353',
+attend = AttendeeModel()
+'''wzy = {'party_id' : '1494296353',
        'attendee_name' : 'wzy',
        'wechat_name' : 'Kevin',
        'tel_no' : '18604110001',
        'attend_id': '1494298352',
        'attendee_openid' : 'oBSns0F4uo1EZi9oFFvRUXMyLbpo'
-       }
+       }'''
 #print(attend.insert(attendee=wzy))
-attend.update(attendee=wzy)
-attendees = attend.findByParty(party_id='1494296353')
+#attend.update(attendee=wzy)
+#attendees = attend.findByParty(party_id='1494296353')
+attendees = attend.findByOpenId(open_id='oBSns0F4uo1EZi9oFFvRUXMyLbpo')
 for attendee in attendees:
-    print(attendee)'''
+    print(attendee)

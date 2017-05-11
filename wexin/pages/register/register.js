@@ -137,7 +137,7 @@ Page({
         wx.showNavigationBarLoading();   //在标题栏中显示加载
         var that = this;
         that.onLoad();
-        wx.hideNavigationBarLoading()    //完成停止加载
-        wx.stopPullDownRefresh()         //停止下拉刷新
+        wx.hideNavigationBarLoading();    //完成停止加载
+        wx.stopPullDownRefresh();         //停止下拉刷新
     }
 })

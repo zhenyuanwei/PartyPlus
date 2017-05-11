@@ -43,7 +43,7 @@ def getAttendedPartyList(open_id):
     partyModel = PartyModel()
     for myAttend in myAttendList:
         party_id = myAttend['party_id']
-        party = partyModel.find(party_id=party_id)
+        party = partyModel.finds(party_id=party_id)
         party.pop('_id')
         res.append(party)
     return res

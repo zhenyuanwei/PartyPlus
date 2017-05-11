@@ -20,6 +20,7 @@ update_time       #自动设定
 '''
 class PartyModel:
     __collectionName = 'party_collection'
+    default_key = {'party_status': {'$in': ['1']}}
 
     def insert(self, party):
         party['party_id'] = getTimeStamp()
@@ -34,18 +35,37 @@ class PartyModel:
 
     def find(self, party_id=None):
         party_collection = getCollection(collectionName=self.__collectionName)
+
+        if None == party_id:
+            partys = party_collection.find(self.default_key)
+            return partys
+        else:
+            query_key = {'party_id' : party_id}
+            query_condition = {'$and' : [self.default_key, query_key]}
+
+            #print(query_condition)
+            party = party_collection.find_one(query_condition)
+            return party
+
+    # 检索全部数据，包括取消和完成的数据
+    def finds(self, party_id=None):
+        party_collection = getCollection(collectionName=self.__collectionName)
+
         if None == party_id:
             partys = party_collection.find()
             return partys
         else:
             query_key = {'party_id': party_id}
-            party = party_collection.find_one(query_key)
+            query_condition = {'$and': [query_key]}
+
+            party = party_collection.find_one(query_condition)
             return party
 
     def findByOpenId(self, open_id):
         party_collection = getCollection(collectionName=self.__collectionName)
         query_key = {'create_openid': open_id}
-        partys = party_collection.find(query_key)
+        query_condition = {'$and': [self.default_key, query_key]}
+        partys = party_collection.find(query_condition)
         return partys
 
     def update(self, party):
@@ -64,12 +84,17 @@ class PartyModel:
                'party_name' : 'Watson Session',
                'party_attend_num' : 3,
                'create_openid' : 'oBSns0F4uo1EZi9o'
-               }
-#party_id = '1494296353'
+               }'''
 
-party = PartyModel()
-party.update(party=watsonParty)
-#partys = party.find()
-partys = party.findByOpenId(open_id='Txdedgdaeapfdadsdsff')
+'''party_id = '1494455151'
+
+partyModel = PartyModel()
+party = partyModel.find(party_id=party_id)
+print(party)
+#party['party_status'] = '9'
+#partyModel.update(party=party)
+
+partys = partyModel.find()
+#partys = partyModel.findByOpenId(open_id='Txdedgdaeapfdadsdsff')
 for item in partys:
     print(item)'''

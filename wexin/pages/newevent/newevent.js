@@ -80,7 +80,7 @@ Page({
         var that = this;
         //console.log('onPullDownRefresh');
         that.onLoad();
-        wx.hideNavigationBarLoading()    //完成停止加载
-        wx.stopPullDownRefresh()         //停止下拉刷新
+        wx.hideNavigationBarLoading();    //完成停止加载
+        wx.stopPullDownRefresh();         //停止下拉刷新
     }
 })
