@@ -25,6 +25,7 @@
       <view class="left">
         <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
       </view>
+      <view class="left"><text style="color : red">{{tip}}</text></view>
       <form bindsubmit="bindButtonTap">
       <view class="left">
         <label><text style="color : red">*</text>姓名:</label>

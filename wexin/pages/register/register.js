@@ -23,31 +23,38 @@ Page({
         }
     },
 
-
     bindButtonTap: function (e) {
-        var that = this
-        var wechat_name = wx.getStorageSync('userInfo').nickName
-        var openId = wx.getStorageSync('openId');
+        if (e.detail.value.attendee_name.length == 0 || e.detail.value.tel_no.length == 0) {
+            this.setData({
+                tip: '提示：全部输入项目不能为空！',
+            })
+        } else {
+            var that = this
+            var wechat_name = wx.getStorageSync('userInfo').nickName
+            var openId = wx.getStorageSync('openId');
 
-        var url = 'https://www.yxtechs.cn/attendparty';
-        var params = e.detail.value
-        params['openId'] = openId;
-        params['wechat_name'] = wechat_name;
-        params['party_id'] = that.data.eventId;
-        //console.log(params);
-        wx.request({
-            url: url,
-            data: params,
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            // header: {}, // 设置请求的 header
-            success: function (res) {
-                var party_id = res.data;
-                //console.log(party_id);
-                wx.navigateTo({
-                    url: '../regstatus/regstatus?id=' + party_id,
-                })
-            }
-        });
+            var url = 'https://www.yxtechs.cn/attendparty';
+            var params = e.detail.value
+            params['openId'] = openId;
+            params['wechat_name'] = wechat_name;
+            params['party_id'] = that.data.eventId;
+            //console.log(params);
+            wx.request({
+                url: url,
+                data: params,
+                method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                // header: {}, // 设置请求的 header
+                success: function (res) {
+                    var party_id = res.data;
+                    //console.log(party_id);
+                    wx.navigateTo({
+                        url: '../regstatus/regstatus?id=' + party_id,
+                    })
+                }
+            });
+        }
+
+
     },
 
     onLoad: function (options) {
@@ -69,11 +76,11 @@ Page({
                 var userarray = res.data.attendeeList;
                 //console.log(eventSet);
                 that.setData({eventSet: eventSet});
-                that.setData({ userarray: userarray });
+                that.setData({userarray: userarray});
                 if (eventSet.party_total_num == eventSet.party_attend_num) {
                     that.setData({showButton: false})
                 }
-                if (userarray.length !=0 ) {
+                if (userarray.length != 0) {
                     that.setData({showList: true})
                     that.setData({showButton: false})
                 }
