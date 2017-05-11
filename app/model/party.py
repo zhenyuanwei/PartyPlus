@@ -63,13 +63,13 @@ class PartyModel:
 '''watsonParty = {'party_id' : '1494296353',
                'party_name' : 'Watson Session',
                'party_attend_num' : 3,
-               'create_openid' : 'oBSns0F4uo1EZi9oFFvRUXMyLbpo'
-               }'''
+               'create_openid' : 'oBSns0F4uo1EZi9o'
+               }
 #party_id = '1494296353'
 
-#party = PartyModel()
-#party.update(party=watsonParty)
+party = PartyModel()
+party.update(party=watsonParty)
 #partys = party.find()
-#partys = party.findByOpenId(open_id='Txdedgdaeapfdadsdsff')
-#for item in partys:
-#    print(item)
+partys = party.findByOpenId(open_id='Txdedgdaeapfdadsdsff')
+for item in partys:
+    print(item)'''

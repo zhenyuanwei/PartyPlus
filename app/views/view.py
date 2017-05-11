@@ -45,15 +45,8 @@ def getPartyInfo():
             openId = request.args.get('openId')
         except:
             openId = None
-    party = getPartyInfos(party_id=party_id)
-    if None != openId:
-        attendeeList = []
-        attendees = party['attendeeList']
-        for attendee in attendees:
-            if attendee['attendee_openid'] == openId:
-                attendeeList.append(attendee)
-                break
-        party['attendeeList'] = attendeeList
+    party = getPartyInfos(party_id=party_id, attendee_openid=openId)
+
 
     return make_response(json.dumps(party))
 

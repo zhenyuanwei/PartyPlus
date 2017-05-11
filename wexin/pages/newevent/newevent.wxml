@@ -9,7 +9,7 @@
   </view>
   <view class="left">
     <label><text style="color : red">*</text>活动时间:</label>
-    <input name="party_time" placeholder="5/10 下午3：00-5：00"/>
+    <input name="party_time" placeholder="{{today}} 下午3：00-5：00"/>
   </view>
   <view class="left">
     <label><text style="color : red">*</text>活动地点:</label>

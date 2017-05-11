@@ -11,6 +11,15 @@ Page({
         hasData: true,
         openId: ''
     },
+
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading();   //在标题栏中显示加载
+        var that = this
+        that.onload
+        wx.hideNavigationBarLoading()    //完成停止加载
+        wx.stopPullDownRefresh()         //停止下拉刷新
+    },
+
     //事件处理函数
     onLoad: function (options) {
         //console.log('onLoad')
@@ -32,7 +41,7 @@ Page({
         //console.log(url);
         wx.request({
             url: url,
-            data: {'open_id' : openId},
+            data: {'openId': openId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
@@ -42,14 +51,11 @@ Page({
                 //this.setData({ array: array });
                 if (array.length == 0) {
                     this.setData({hasData: false})
-                };
+                }
+                ;
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });
-        //var array = utils.getMockData();
-        //获取当前user的活动列表 tobe update使用数据库
-
-
     }
 })
 

@@ -68,3 +68,10 @@
   outline: 0;
   -webkit-appearance: none;
 }
+
+.link {
+  width: 100%;
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}

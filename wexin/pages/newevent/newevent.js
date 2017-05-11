@@ -6,7 +6,8 @@ Page({
         party_time: '',
         party_location: '',
         party_total_num: 0,
-        openId: ''
+        openId: '',
+        today: ''
     },
 
     bindButtonTap: function (e) {
@@ -69,5 +70,8 @@ Page({
 
     onLoad: function (options) {
         //console.log('onLoad');
+        var today = utils.getToday()
+        var that = this
+        that.setData({today : today})
     }
 })
