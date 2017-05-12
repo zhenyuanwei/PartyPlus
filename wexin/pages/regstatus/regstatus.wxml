@@ -1,4 +1,22 @@
-<view>
+<view class="left">
+  <view class="buttontable">
+    <view class="buttontr">
+      <view class="buttontd">
+        <form bindsubmit="" id="completParty" report-submit="true">
+          <input hidden="true" name="party_id" value="{{eventId}}" />
+          <button formType="submit" size="mini">完成</button>
+        </form>
+      </view>
+
+      <view class="buttontd">
+        <form bindsubmit="" id="cancelParty" report-submit="true">
+          <input hidden="true" name="party_id" value="{{eventId}}" />
+          <button formType="submit" size="mini">取消</button>
+        </form>
+      </view>
+    </view>
+  </view>
+
   <view class="left">
     <label>活动编号:</label>
     <text>{{eventId}}</text>
