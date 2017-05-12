@@ -57,6 +57,7 @@ Page({
             var eventSet = wx.getStorageSync('eventSet')
             //console.log(eventSet)
             var template_id = 'fz4zMi04H2S9TRKktb0kC2T1lfovWbTv85yMdtw9k-s';
+            var now = utils.getToday() + " " + utils.getNowTime();
             var messageContent = {
                 "keyword1": {
                     "value": eventSet.party_name,
@@ -74,7 +75,7 @@ Page({
                     "value": params.tel_no,
                 },
                 "keyword6": {
-                    "value": utils.getToday(),
+                    "value": now,
                 }
 
             }
@@ -153,7 +154,7 @@ Page({
                     var party = wx.getStorageSync('eventSet');
                     var attend_id = party.attendeeList[0].attend_id;
                     var openId = wx.getStorageSync('openId');
-                    console.log(attend_id);
+                    //console.log(attend_id);
                     var url = 'https://www.yxtechs.cn/cancelattend';
                     wx.request({
                         url: url,
@@ -162,12 +163,14 @@ Page({
                         // header: {}, // 设置请求的 header
                         success: function (res) {
                             var result = res.data;
+                            var cancelMessage = "取消人姓名：" + party.attendeeList[0].attendee_name +"\n";
+                            cancelMessage = cancelMessage + "取消人联系方式：" + party.attendeeList[0].tel_no;
                             //console.log(result);
                             if (result == "success") {
-                                //发送信息
-                                var template_id = 'a9ZJACpqVB3FDktUhAbqo5I6hnsfykZJrSj6MsJ8Qsw';
-                                console.log(formId);
-                                var today = utils.getToday()
+                                //报名取消通知
+                                var template_id = 'RZJvJJFSjtnFWxv6bCTrByMmn5063YA-sFV3zfpvqDY';
+                                //console.log(formId);
+                                var now = utils.getToday() + " " + utils.getNowTime();
                                 var message = {
                                     "touser": party.create_openid,
                                     "template_id": template_id,
@@ -177,10 +180,10 @@ Page({
                                             "value": party.party_name,
                                         },
                                         "keyword2": {
-                                            "value": "无",
+                                            "value": now,
                                         },
                                         "keyword3": {
-                                            "value": today,
+                                            "value": cancelMessage,
 
                                         }
                                     }
