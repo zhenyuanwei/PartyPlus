@@ -11,7 +11,7 @@ wechat_name
 tel_no
 attendee_openid
 attend_id  TimeStamp
-attend_status      #0 取消， 1 参加, 9 完成
+attend_status      #0 取消， 1 参加, 8 隐藏， 9 完成
 payment_flag      #0 未支付，1 已支付    
 create_time       #自动设定
 update_time       #自动设定
@@ -32,12 +32,15 @@ class AttendeeModel:
 
     def findByParty(self, party_id=None):
         attendee_collection = getCollection(collectionName=self.__collectionName)
+        #隐藏之后的参与活动也能在活动状态画面查询到
+        #default_key = self.default_key.copy()
+        default_key = {'attend_status': {'$in': ['1', '8']}}
         if None == party_id:
-            attendees = attendee_collection.find(self.default_key)
+            attendees = attendee_collection.find(default_key)
             return attendees
         else:
             query_key = {'party_id': party_id}
-            query_condition = {'$and': [self.default_key, query_key]}
+            query_condition = {'$and': [default_key, query_key]}
             attendee = attendee_collection.find(query_condition)
             return attendee
 

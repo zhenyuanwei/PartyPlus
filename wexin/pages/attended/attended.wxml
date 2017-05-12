@@ -1,8 +1,10 @@
 <view>
-  <view class="left">
-    <text style="color:#003D79">点击活动名称进入可以取消参加的活动；</text>
-    <text style="color:#003D79">点击隐藏按钮，活动将不再显示，隐藏后不能恢复。</text>
+  <view>
+    <view class="tips">
+        <label><text style="color : red">*</text>点击活动名称进入可以取消参加的活动；</label>
+    </view>
   </view>
+
   <view class="left">
     <view class="table" wx:if="{{hasData}}">
       <view class="tr">
@@ -18,7 +20,13 @@
         </view>
         <text class="td">{{item.party_time}}</text>
         <text class="td">{{item.party_location}}</text>
-        <text class="td">隐藏</text>
+        <view class="td">
+            <form bindsubmit="bindHiddenButtonTap" id="hiddenregisterform" report-submit="true">
+              <input hidden="true" name="attend_id" value="{{item.attend_id}}" />
+              <button formType="submit" size="mini">隐藏</button>
+            </form>
+        </view>
+
       </view> 
     </view>
   </view>

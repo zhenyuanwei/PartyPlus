@@ -9,8 +9,7 @@ Page({
         hasData: true
     },
     //事件处理函数
-    onLoad: function () {
-        //console.log('onLoad')
+    onLoad: function (options) {
         var that = this
         //获取当前user的参加活动列表 tobe update使用数据库
         var openId = wx.getStorageSync('openId');
@@ -21,7 +20,7 @@ Page({
         //var url = 'https://www.yxtechs.cn/getattendpartylist?openId=' + openId;
         var url = 'https://www.yxtechs.cn/getattendpartylist';
         //console.log(url);
-        var parms = {'openId' : openId}
+        var parms = {'openId': openId}
         wx.request({
             url: url,
             //data: {},
@@ -60,5 +59,37 @@ Page({
         wx.hideNavigationBarLoading();    //完成停止加载
         //console.log('hideNavigationBarLoading')
         wx.stopPullDownRefresh();         //停止下拉刷新
+    },
+
+    //报名后取消功能
+    bindHiddenButtonTap: function (e) {
+        var attend_id = e.detail.value.attend_id;
+
+        wx.showModal({
+            title: '提示',
+            content: '隐藏后不可恢复，确认隐藏报名信息？',
+            success: function (res) {
+                if (res.confirm) {
+                    //console.log(attend_id);
+                    var url = 'https://www.yxtechs.cn/hiddenattend';
+                    wx.request({
+                        url: url,
+                        data: {'attend_id': attend_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            var result = res.data;
+                            wx.switchTab({
+                                url: "../attended/attended"
+                            })
+
+                            //wx.setStorageSync('openId', openId);//存储openid
+                        }
+                    })
+                } else if (res.cancel) {
+                    //console.log('用户点击取消')
+                }
+            }
+        })
     }
 })

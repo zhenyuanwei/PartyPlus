@@ -17,7 +17,7 @@ def getOwnPartyList(openId):
 
 def getPartyInfos(party_id, attendee_openid):
     partyModel = PartyModel()
-    party = partyModel.find(party_id=party_id)
+    party = partyModel.finds(party_id=party_id)
     party.pop('_id')
     res = party
     attendeeList = []
@@ -45,6 +45,7 @@ def getAttendedPartyList(open_id):
         party_id = myAttend['party_id']
         party = partyModel.finds(party_id=party_id)
         party.pop('_id')
+        party['attend_id'] = myAttend['attend_id']
         res.append(party)
     return res
 

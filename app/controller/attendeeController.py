@@ -28,3 +28,10 @@ def cancelAttendPary(attend_id):
     party_attend_num = party['party_attend_num'] - 1
     party['party_attend_num'] = party_attend_num
     partyModel.update(party=party)
+
+#隐藏活动
+def hiddenAttendPary(attend_id):
+    attendeeModel = AttendeeModel()
+    attendee = attendeeModel.findByAttendeeId(attend_id=attend_id)
+    attendee['attend_status'] = '8'
+    attendeeModel.update(attendee=attendee)

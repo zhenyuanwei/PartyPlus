@@ -8,6 +8,7 @@ from app.controller.partyController import getAttendedPartyList
 from app.controller.partyController import createPartyEntry
 from app.controller.attendeeController import doAttendParty
 from app.controller.attendeeController import cancelAttendPary
+from app.controller.attendeeController import hiddenAttendPary
 from flask import render_template
 
 @app.route('/')
@@ -120,6 +121,25 @@ def doCancelAttendParty():
 
     try:
         cancelAttendPary(attend_id=attend_id)
+    except :
+        result = "fail"
+
+    return make_response(json.dumps(result))
+
+'''
+隐藏参加的活动中报名
+参数：
+attend_id  报名编号
+'''
+@app.route('/hiddenattend', methods=['GET'])
+def doHiddenAttendParty():
+    attend_id = None
+    result = "success"
+    if request.method == 'GET':
+        attend_id = request.args.get('attend_id')
+
+    try:
+        hiddenAttendPary(attend_id=attend_id)
     except :
         result = "fail"
 

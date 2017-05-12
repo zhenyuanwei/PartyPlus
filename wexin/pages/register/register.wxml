@@ -1,8 +1,11 @@
 <!-- newevent.wxml -->
 <view>
-  <view class="left">
-    <text style="color:#003D79">点击右上角图标，将活动分享给朋友。</text>
+  <view>
+    <view class="tips">
+        <label><text style="color : red">*</text>Tips:点击右上角图标，将活动分享给朋友。</label>
+    </view>
   </view>
+
   <view class="left">
     <label>活动编号:</label>
     <text>{{eventId}}</text>
