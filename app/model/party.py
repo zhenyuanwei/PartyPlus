@@ -71,6 +71,7 @@ class PartyModel:
     def update(self, party):
         party_collection = getCollection(collectionName=self.__collectionName)
         party_id = party['party_id']
+        party['update_time'] = getTime()
         for key in party:
             if key != 'party_id' and key != '_id' :
                 party_collection.update({'party_id': party_id}, {'$set': {key: party[key]}})

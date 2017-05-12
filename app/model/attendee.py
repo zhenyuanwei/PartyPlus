@@ -63,6 +63,7 @@ class AttendeeModel:
     def update(self, attendee):
         attendee_collection = getCollection(collectionName=self.__collectionName)
         attend_id = attendee['attend_id']
+        attendee['update_time'] = getTime()
         for key in attendee:
             if key != 'attend_id' and key != '_id' :
                 attendee_collection.update({'attend_id': attend_id}, {'$set': {key: attendee[key]}})
