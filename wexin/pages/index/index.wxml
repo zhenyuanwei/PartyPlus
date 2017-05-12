@@ -10,7 +10,8 @@
 </view> -->
 <view>
   <view class="left">
-    <text>我发起的活动</text>
+    <text style="color:#003D79">点击活动名称进入查看活动报名情况，完成或取消活动；</text>
+    <text style="color:#003D79">点击分享按钮，将活动分享给朋友。</text>
   </view>
   <view class="left">
     <view class="table" wx:if="{{hasData}}">

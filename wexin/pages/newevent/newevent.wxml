@@ -17,7 +17,7 @@
   </view>
   <view class="left">
     <label><text style="color : red">*</text>参与人数上限(>0):</label>
-    <input name="party_total_num" placeholder="15"/>
+    <input name="party_total_num" type="number" placeholder="15"/>
   </view>
   <view class="left">
     <!-- <button bindtap="bindButtonTap" >提交</button> -->

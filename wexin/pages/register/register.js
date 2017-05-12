@@ -139,5 +139,68 @@ Page({
         that.onLoad();
         wx.hideNavigationBarLoading();    //完成停止加载
         wx.stopPullDownRefresh();         //停止下拉刷新
+    },
+
+    //报名后取消功能
+    bindCancelButtonTap: function (e) {
+        var formId = e.detail.formId;
+
+        wx.showModal({
+            title: '提示',
+            content: '确认取消报名？',
+            success: function (res) {
+                if (res.confirm) {
+                    var party = wx.getStorageSync('eventSet');
+                    var attend_id = party.attendeeList[0].attend_id;
+                    var openId = wx.getStorageSync('openId');
+                    console.log(attend_id);
+                    var url = 'https://www.yxtechs.cn/cancelattend';
+                    wx.request({
+                        url: url,
+                        data: {'attend_id': attend_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            var result = res.data;
+                            //console.log(result);
+                            if (result == "success") {
+                                //发送信息
+                                var template_id = 'a9ZJACpqVB3FDktUhAbqo5I6hnsfykZJrSj6MsJ8Qsw';
+                                console.log(formId);
+                                var today = utils.getToday()
+                                var message = {
+                                    "touser": party.create_openid,
+                                    "template_id": template_id,
+                                    "form_id": formId,
+                                    "data": {
+                                        "keyword1": {
+                                            "value": party.party_name,
+                                        },
+                                        "keyword2": {
+                                            "value": "无",
+                                        },
+                                        "keyword3": {
+                                            "value": today,
+
+                                        }
+                                    }
+                                }
+                                //console.log(message)
+                                utils.sendMessage(message)
+                                wx.switchTab({
+                                    url: "../attended/attended"
+                                })
+                            }
+
+                            //wx.setStorageSync('openId', openId);//存储openid
+                        }
+                    })
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        })
+
+
     }
 })

@@ -49,6 +49,14 @@ class AttendeeModel:
         attendees = attendee_collection.find(query_condition)
         return attendees
 
+    def findByAttendeeId(self, attend_id):
+        attendee_collection = getCollection(collectionName=self.__collectionName)
+
+        query_key = {'attend_id': attend_id}
+        query_condition = {'$and': [self.default_key, query_key]}
+        attendee = attendee_collection.find_one(query_condition)
+        return attendee
+
     def update(self, attendee):
         attendee_collection = getCollection(collectionName=self.__collectionName)
         attend_id = attendee['attend_id']
@@ -61,7 +69,7 @@ class AttendeeModel:
         attend = self.find(attend_id=attend_id)
         attendee_collection.delete_one(attend)
 
-attend = AttendeeModel()
+#attend = AttendeeModel()
 '''wzy = {'party_id' : '1494296353',
        'attendee_name' : 'wzy',
        'wechat_name' : 'Kevin',
@@ -72,6 +80,6 @@ attend = AttendeeModel()
 #print(attend.insert(attendee=wzy))
 #attend.update(attendee=wzy)
 #attendees = attend.findByParty(party_id='1494296353')
-attendees = attend.findByOpenId(open_id='oBSns0F4uo1EZi9oFFvRUXMyLbpo')
+'''attendees = attend.findByOpenId(open_id='oBSns0F4uo1EZi9oFFvRUXMyLbpo')
 for attendee in attendees:
-    print(attendee)
+    print(attendee)'''

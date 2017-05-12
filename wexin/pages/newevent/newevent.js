@@ -14,9 +14,8 @@ Page({
         var that = this
         var openId = wx.getStorageSync('openId');
         that.setData({openId: openId});
-        var formId = e.detail.formId
-
-        var params = e.detail.value
+        var formId = e.detail.formId;
+        var params = e.detail.value;
         params['openId'] = openId;
         //console.log(e.detail.value);
         if (e.detail.value.party_name.length == 0 || e.detail.value.party_time.length == 0 ||
