@@ -9,6 +9,7 @@ party_id  TimeStamp
 party_name
 party_time
 party_location
+comment           #活动的备注内容
 party_status      #0 取消， 1 进行中， 9 完成
 party_total_num   #最大参与人数
 party_attend_num  #报名人数

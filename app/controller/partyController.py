@@ -66,6 +66,8 @@ def completePary(party_id):
     attendees = attendeeModel.findByParty(party_id=party_id)
     for attendee in attendees:
         attendee.pop('_id')
+        attendee['party_name'] = party['party_name']
+        attendee['party_time'] = party['party_time']
         res.append(attendee)
     return res
 
@@ -84,5 +86,6 @@ def cancelParty(party_id):
         attendee['attend_status'] = '7'
         attendeeModel.update(attendee=attendee)
         attendee.pop('_id')
+        attendee['party_name'] = party['party_name']
         res.append(attendee)
     return res

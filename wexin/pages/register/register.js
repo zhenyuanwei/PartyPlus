@@ -49,8 +49,8 @@ Page({
                 success: function (res) {
                     var party_id = res.data;
                     //console.log(party_id);
-                    wx.navigateTo({
-                        url: '../regstatus/regstatus?id=' + party_id,
+                    wx.switchTab({
+                        url: "../attended/attended"
                     })
                 }
             })
@@ -123,7 +123,7 @@ Page({
                         // header: {}, // 设置请求的 header
                         success: function (res) {
                             var result = res.data;
-                            var cancelMessage = "取消人姓名：" + party.attendeeList[0].attendee_name +"\n";
+                            var cancelMessage = "取消人姓名：" + party.attendeeList[0].attendee_name + "\n";
                             cancelMessage = cancelMessage + "取消人联系方式：" + party.attendeeList[0].tel_no;
                             //console.log(result);
                             if (result == "success") {

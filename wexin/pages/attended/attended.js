@@ -34,8 +34,9 @@ Page({
                 //this.setData({ array: array });
                 if (array.length == 0) {
                     that.setData({hasData: false})
+                } else {
+                    that.setData({hasData: true})
                 }
-                ;
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         });
@@ -52,13 +53,15 @@ Page({
     },
 
     onPullDownRefresh: function () {
-        wx.showNavigationBarLoading();   //在标题栏中显示加载
+        wx.stopPullDownRefresh();         //停止下拉刷新
+        //wx.showNavigationBarLoading();   //在标题栏中显示加载
         //console.log('showNavigationBarLoading')
+        //console.log('onPullDownRefresh')
         var that = this;
         that.onLoad();
-        wx.hideNavigationBarLoading();    //完成停止加载
-        //console.log('hideNavigationBarLoading')
-        wx.stopPullDownRefresh();         //停止下拉刷新
+        //wx.hideNavigationBarLoading();    //完成停止加载
+
+
     },
 
     //报名后取消功能

@@ -11,6 +11,7 @@ wechat_name
 tel_no
 attendee_openid
 attend_id  TimeStamp
+comment           #参与者的备注内容
 formId            #参加活动是的formId，用于发送完成或取消消息到用户
 attend_status     #0 取消， 1 参加, 8 隐藏， 9 完成, 7 活动取消
 payment_flag      #0 未支付，1 已支付    

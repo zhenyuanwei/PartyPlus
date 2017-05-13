@@ -20,6 +20,10 @@
     <input name="party_total_num" type="number" placeholder="15"/>
   </view>
   <view class="left">
+    <label>备注:</label>
+    <textarea name="comment" auto-height placeholder="备注内容" maxlength="-1" />
+  </view>
+  <view class="left">
     <!-- <button bindtap="bindButtonTap" >提交</button> -->
     <button formType="submit">提交</button>
   </view>

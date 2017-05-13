@@ -79,6 +79,14 @@
   background-color: #dadada;
 }
 
+.tdcomment {
+  padding: 2px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: left;
+  width:100%
+}
+
 .button, .input {
   width: 100%;
   border-width: 0;

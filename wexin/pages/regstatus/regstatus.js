@@ -72,8 +72,37 @@ Page({
                         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                         // header: {}, // 设置请求的 header
                         success: function (res) {
-                            var result = res.data;
-                            console.log(result);
+                            //console.log(result);
+                            var attendees = res.data;
+                            console.log(attendees);
+                            var template_id = 'IpkXVvEVlh7sNfOSnQPXUSEN4UnZNzO3CWS_trQp3-M';
+                            var completeMessage = "活动成功结束，感谢您的参与。";
+                            attendees.forEach(function(attendee, index, array){
+                                var formId = attendee.formId
+                                var message = {
+                                    "touser": attendee.attendee_openid,
+                                    "template_id": template_id,
+                                    "form_id": formId,
+                                    "data": {
+                                        "keyword1": {
+                                            "value": attendee.party_name,
+                                        },
+                                        "keyword2": {
+                                            "value": attendee.party_time,
+                                        },
+                                        "keyword3": {
+                                            "value": completeMessage,
+
+                                        }
+                                    }
+                                }
+                                //console.log(message);
+                                if (formId != '') {
+                                    utils.sendMessage(message)
+                                }
+
+                            })
+
                             wx.switchTab({
                                 url: "../index/index"
                             })
@@ -105,8 +134,37 @@ Page({
                         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                         // header: {}, // 设置请求的 header
                         success: function (res) {
-                            var result = res.data;
-                            console.log(result);
+                            var attendees = res.data;
+                            //console.log(attendees);
+                            var template_id = 'a9ZJACpqVB3FDktUhAbqo7S4gtpX6R81SM0rPUOTWk4';
+                            var cancelMessage = "活动发起人取消了活动，如有疑问请与发起人联系。";
+                            var now = utils.getToday() + " " + utils.getNowTime();
+                            attendees.forEach(function(attendee, index, array){
+                                var formId = attendee.formId
+                                var message = {
+                                    "touser": attendee.attendee_openid,
+                                    "template_id": template_id,
+                                    "form_id": formId,
+                                    "data": {
+                                        "keyword1": {
+                                            "value": attendee.party_name,
+                                        },
+                                        "keyword2": {
+                                            "value": cancelMessage,
+                                        },
+                                        "keyword3": {
+                                            "value": now,
+
+                                        }
+                                    }
+                                }
+                                //console.log(message);
+                                if (formId != '') {
+                                    utils.sendMessage(message)
+                                }
+
+                            })
+
                             wx.switchTab({
                                 url: "../index/index"
                             })

@@ -39,6 +39,11 @@
     <label>参与人数:</label>
     <text>{{eventSet.party_attend_num}}/{{eventSet.party_total_num}}</text>
   </view>
+  <view class="left">
+    <label>备注:</label>
+    <text wx:if="{{eventSet.comment != null && eventSet.comment != ''}}">{{eventSet.comment}}</text>
+    <text wx:else>无</text>
+  </view>
   <view wx:if="{{showAttendList}}">
     <text class="left">参与者名单:</text>
     <view class="left">
@@ -52,7 +57,11 @@
             <view class="td">{{item.attendee_name}}</view>
             <text wx:if="{{showTel}}" class="td">{{item.tel_no}}</text>
             <view class="td">{{item.create_time}}</view>
-          </view> 
+          </view>
+          <view class="tr" wx:for="{{userarray}}">
+            <text class="tdcomment" wx:if="{{item.comment != null && item.comment != ''}}">备注:{{item.comment}}</text>
+            <text class="tdcomment" wx:else>备注:无</text>
+          </view>
       </view>
     </view>
   </view>

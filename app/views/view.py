@@ -75,6 +75,7 @@ wechat_name
 attendee_name
 tel_no
 formId
+comment
 '''
 @app.route('/attendparty', methods=['GET'])
 def attendParty():
@@ -86,17 +87,19 @@ def attendParty():
         attendee['attendee_name'] = request.args.get('attendee_name')
         attendee['tel_no'] = request.args.get('tel_no')
         attendee['formId'] = request.args.get('formId')
+        attendee['comment'] = request.args.get('comment')
     party_id = doAttendParty(attendee=attendee)
     return make_response(party_id)
 
 '''
-获取活动信息和参与者名单
+创建活动
 参数：
 party_name
 party_time
 party_location
 party_total_num
 openId
+comment
 '''
 @app.route('/createparty', methods=['GET'])
 def createParty():
@@ -107,6 +110,7 @@ def createParty():
         party['party_location'] = request.args.get('party_location')
         party['party_total_num'] = int(request.args.get('party_total_num'))
         party['create_openid'] = request.args.get('openId')
+        party['comment'] = request.args.get('comment')
     print(party)
     res = createPartyEntry(party=party)
     return make_response(res)
