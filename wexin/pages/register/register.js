@@ -39,6 +39,7 @@ Page({
             params['openId'] = openId;
             params['wechat_name'] = wechat_name;
             params['party_id'] = that.data.eventId;
+            params['formId'] = formId;
             //console.log(params);
             wx.request({
                 url: url,
@@ -53,40 +54,7 @@ Page({
                     })
                 }
             })
-            //发送信息
-            var eventSet = wx.getStorageSync('eventSet')
-            //console.log(eventSet)
-            var template_id = 'fz4zMi04H2S9TRKktb0kC2T1lfovWbTv85yMdtw9k-s';
-            var now = utils.getToday() + " " + utils.getNowTime();
-            var messageContent = {
-                "keyword1": {
-                    "value": eventSet.party_name,
-                },
-                "keyword2": {
-                    "value": params.attendee_name,
-                },
-                "keyword3": {
-                    "value": eventSet.party_location,
-                },
-                "keyword4": {
-                    "value": eventSet.party_time,
-                },
-                "keyword5": {
-                    "value": params.tel_no,
-                },
-                "keyword6": {
-                    "value": now,
-                }
 
-            }
-            var message = {
-                "touser": eventSet.create_openid,
-                "template_id": template_id,
-                "form_id": formId,
-                "data": messageContent
-            }
-            //console.log(message)
-            utils.sendMessage(message);
         }
 
 
@@ -132,14 +100,6 @@ Page({
                 userInfo: userInfo
             })
         })
-    },
-
-    onPullDownRefresh: function () {
-        wx.showNavigationBarLoading();   //在标题栏中显示加载
-        var that = this;
-        that.onLoad();
-        wx.hideNavigationBarLoading();    //完成停止加载
-        wx.stopPullDownRefresh();         //停止下拉刷新
     },
 
     //报名后取消功能

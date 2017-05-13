@@ -6,6 +6,8 @@ from app.controller.partyController import getOwnPartyList
 from app.controller.partyController import getPartyInfos
 from app.controller.partyController import getAttendedPartyList
 from app.controller.partyController import createPartyEntry
+from app.controller.partyController import completePary
+from app.controller.partyController import cancelParty
 from app.controller.attendeeController import doAttendParty
 from app.controller.attendeeController import cancelAttendPary
 from app.controller.attendeeController import hiddenAttendPary
@@ -72,6 +74,7 @@ openId
 wechat_name
 attendee_name
 tel_no
+formId
 '''
 @app.route('/attendparty', methods=['GET'])
 def attendParty():
@@ -82,6 +85,7 @@ def attendParty():
         attendee['wechat_name'] = request.args.get('wechat_name')
         attendee['attendee_name'] = request.args.get('attendee_name')
         attendee['tel_no'] = request.args.get('tel_no')
+        attendee['formId'] = request.args.get('formId')
     party_id = doAttendParty(attendee=attendee)
     return make_response(party_id)
 
@@ -142,5 +146,43 @@ def doHiddenAttendParty():
         hiddenAttendPary(attend_id=attend_id)
     except :
         result = "fail"
+
+    return make_response(json.dumps(result))
+
+'''
+完成活动
+参数：
+party_id  报名编号
+'''
+@app.route('/completeparty', methods=['GET'])
+def doCompleteParty():
+    party_id = None
+    result = None
+    if request.method == 'GET':
+        party_id = request.args.get('party_id')
+
+    try:
+        result = completePary(party_id=party_id)
+    except :
+        result = []
+
+    return make_response(json.dumps(result))
+
+'''
+取消活动
+参数：
+party_id  报名编号
+'''
+@app.route('/cancelparty', methods=['GET'])
+def doCancelParty():
+    party_id = None
+    result = None
+    if request.method == 'GET':
+        party_id = request.args.get('party_id')
+
+    try:
+        result = cancelParty(party_id=party_id)
+    except :
+        result = []
 
     return make_response(json.dumps(result))

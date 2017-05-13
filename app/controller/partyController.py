@@ -53,3 +53,36 @@ def createPartyEntry(party):
     partyModel = PartyModel()
     party_id = partyModel.insert(party=party)
     return party_id
+
+def completePary(party_id):
+    res = []
+    partyModel = PartyModel()
+    party = partyModel.finds(party_id=party_id)
+    party['party_status'] = '9'
+    partyModel.update(party=party)
+    attendeeModel = AttendeeModel()
+
+    #获取参与者列表
+    attendees = attendeeModel.findByParty(party_id=party_id)
+    for attendee in attendees:
+        attendee.pop('_id')
+        res.append(attendee)
+    return res
+
+def cancelParty(party_id):
+    #跟新活动的状态为取消
+    res = []
+    partyModel = PartyModel()
+    party = partyModel.finds(party_id=party_id)
+    party['party_status'] = '0'
+    partyModel.update(party=party)
+
+    #将已经报名者状态更新成取消并获取参与者列表
+    attendeeModel = AttendeeModel()
+    attendees = attendeeModel.findByParty(party_id=party_id)
+    for attendee in attendees:
+        attendee['attend_status'] = '7'
+        attendeeModel.update(attendee=attendee)
+        attendee.pop('_id')
+        res.append(attendee)
+    return res

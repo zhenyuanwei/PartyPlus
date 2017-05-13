@@ -54,5 +54,72 @@ Page({
                 userInfo: userInfo
             })
         })
+    },
+
+    bidComplateSubmit: function (e) {
+        var party_id = e.detail.value.party_id;
+
+        wx.showModal({
+            title: '提示',
+            content: '活动顺利举行完了，确认完成活动？',
+            success: function (res) {
+                if (res.confirm) {
+                    //console.log(party_id);
+                    var url = 'https://www.yxtechs.cn/completeparty';
+                    wx.request({
+                        url: url,
+                        data: {'party_id': party_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            var result = res.data;
+                            console.log(result);
+                            wx.switchTab({
+                                url: "../index/index"
+                            })
+
+                            //wx.setStorageSync('openId', openId);//存储openid
+                        }
+                    })
+                } else if (res.cancel) {
+                    //console.log('用户点击取消')
+                }
+            }
+        })
+
+    },
+
+    bidCancelSubmit: function (e) {
+        var party_id = e.detail.value.party_id;
+
+        wx.showModal({
+            title: '提示',
+            content: '是否与参与者沟通过，确认取消活动？',
+            success: function (res) {
+                if (res.confirm) {
+                    //console.log(party_id);
+                    var url = 'https://www.yxtechs.cn/cancelparty';
+                    wx.request({
+                        url: url,
+                        data: {'party_id': party_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            var result = res.data;
+                            console.log(result);
+                            wx.switchTab({
+                                url: "../index/index"
+                            })
+
+                            //wx.setStorageSync('openId', openId);//存储openid
+                        }
+                    })
+                } else if (res.cancel) {
+                    //console.log('用户点击取消')
+                }
+            }
+        })
+
     }
+
 })

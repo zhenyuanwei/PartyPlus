@@ -12,22 +12,24 @@
         <text class="th">活动时间</text>
         <text class="th">活动地点</text>
         <text class="th">隐藏</text>
-      </view> 
+      </view>
+
       <view class="tr" wx:for="{{array}}">
+            <text wx:if="{{item.party_status == '0'}}" class="td">{{item.party_name}}已取消</text>
+            <view class="td" wx:else>
+                <navigator url="../register/register?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
+            </view>
 
-        <view class="td">
-        <navigator url="../register/register?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
-        </view>
-        <text class="td">{{item.party_time}}</text>
-        <text class="td">{{item.party_location}}</text>
-        <view class="td">
-            <form bindsubmit="bindHiddenButtonTap" id="hiddenregisterform" report-submit="true">
-              <input hidden="true" name="attend_id" value="{{item.attend_id}}" />
-              <button formType="submit" size="mini">隐藏</button>
-            </form>
-        </view>
+            <text class="td">{{item.party_time}}</text>
+            <text class="td">{{item.party_location}}</text>
+            <view class="td">
+                <form bindsubmit="bindHiddenButtonTap" id="hiddenregisterform" report-submit="true">
+                  <input hidden="true" name="attend_id" value="{{item.attend_id}}" />
+                  <button formType="submit" size="mini">隐藏</button>
+                </form>
+            </view>
+      </view>
 
-      </view> 
     </view>
   </view>
 </view>

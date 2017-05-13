@@ -11,14 +11,15 @@ wechat_name
 tel_no
 attendee_openid
 attend_id  TimeStamp
-attend_status      #0 取消， 1 参加, 8 隐藏， 9 完成
+formId            #参加活动是的formId，用于发送完成或取消消息到用户
+attend_status     #0 取消， 1 参加, 8 隐藏， 9 完成, 7 活动取消
 payment_flag      #0 未支付，1 已支付    
 create_time       #自动设定
 update_time       #自动设定
 '''
 class AttendeeModel:
     __collectionName = 'attendee_collection'
-    default_key = {'attend_status': {'$in': ['1']}}
+    default_key = {'attend_status': {'$in': ['1', '7']}}
 
     def insert(self, attendee):
         attendee['attend_id'] = getTimeStamp()
