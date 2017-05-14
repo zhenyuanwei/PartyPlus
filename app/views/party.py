@@ -11,15 +11,7 @@ from app.controller.partyController import cancelParty
 from app.controller.attendeeController import doAttendParty
 from app.controller.attendeeController import cancelAttendPary
 from app.controller.attendeeController import hiddenAttendPary
-from flask import render_template
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-@app.route('/guild')
-def guild():
-    return render_template('guild.html')
 
 '''
 获取自己创建的活动列表
