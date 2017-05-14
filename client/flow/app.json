@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/ownedflow/ownedflow",
+    "pages/newflow/newflow"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "报单Plus",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "发起的申请"
+      },
+      {
+        "pagePath": "pages/newflow/newflow",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "发起申请"
+      },
+      {
+        "pagePath": "pages/ownedflow/ownedflow",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "参与的申请"
+      }
+    ]
+  }
+}

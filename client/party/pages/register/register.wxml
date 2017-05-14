@@ -1,0 +1,91 @@
+<!-- newevent.wxml -->
+<view>
+  <view>
+    <view class="tips">
+        <label><text style="color : red">*</text>Tips:点击右上角图标，将活动分享给朋友。</label>
+    </view>
+  </view>
+
+  <view class="left">
+    <label>活动编号:</label>
+    <text>{{eventId}}</text>
+  </view>
+  <view class="left">
+    <label>活动名称:</label>
+    <text>{{eventSet.party_name}}</text>
+  </view>
+  <view class="left">
+    <label>活动时间:</label>
+    <text>{{eventSet.party_time}}</text>
+  </view>
+  <view class="left">
+    <label>活动地点:</label>
+    <text>{{eventSet.party_location}}</text>
+  </view>
+  <view class="left">
+    <label>参与人数:</label>
+    <text>{{eventSet.party_attend_num}}/{{eventSet.party_total_num}}</text>
+  </view>
+  <view class="left">
+    <label>备注:</label>
+    <text wx:if="{{eventSet.comment != null && eventSet.comment != ''}}">{{eventSet.comment}}</text>
+    <text wx:else>无</text>
+  </view>
+
+  <view wx:if="{{showButton}}">
+      <view class="left">
+        <image style="width: 300px; height: 30px;" mode="bottom left" src="../../resource/img/breakline.png"></image>
+      </view>
+      <view class="left"><text style="color : red">{{tip}}</text></view>
+      <form bindsubmit="bindButtonTap" id="registerform" report-submit="true">
+      <view class="left">
+        <label><text style="color : red">*</text>姓名:</label>
+        <input name="attendee_name" placeholder="请输入姓名"/>
+      </view>
+      <view class="left">
+        <label><text style="color : red">*</text>联系方式:</label>
+        <input name="tel_no" type="number" placeholder="请输入手机号码" maxlength="11"/>
+      </view>
+      <view class="left">
+        <label>备注:</label>
+        <textarea name="comment" auto-height placeholder="备注内容" maxlength="-1" />
+      </view>
+      <view class="left">
+        <button formType="submit">参加</button>
+      </view>
+      </form>
+  </view>
+
+  <view wx:if="{{showList}}">
+    <text class="left">您已经报名参加活动:</text>
+    <view class="left">
+      <view class="table">
+          <view class="tr">
+            <text class="th">姓名</text>
+            <text class="th">联系方式</text>
+            <text class="th">报名时间</text>
+            <!--<text class="th">取消</text>-->
+          </view>
+          <view wx:for="{{userarray}}">
+              <view class="tr">
+                <view class="td">{{item.attendee_name}}</view>
+                <text class="td">{{item.tel_no}}</text>
+                <view class="td">{{item.create_time}}</view>
+              </view>
+              <view class="tr">
+                <text class="td">备注</text>
+                <text class="td" wx:if="{{item.comment != null && item.comment != ''}}">{{item.comment}}</text>
+                <text class="td" wx:else>无</text>
+                <view class="td">
+                    <form bindsubmit="bindCancelButtonTap" id="cancelregisterform" report-submit="true">
+                        <button formType="submit" size="mini">取消</button>
+                    </form>
+                </view>
+              </view>
+          </view>
+
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/newevent/newevent",
+    "pages/register/register",
+    "pages/attended/attended",
+    "pages/regstatus/regstatus",
+    "pages/logs/logs",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "聚会Plus",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "发起的活动"
+      },
+      {
+        "pagePath": "pages/newevent/newevent",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "发起活动"
+      },
+      {
+        "pagePath": "pages/attended/attended",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "参加的活动"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "关于"
+      }
+    ]
+  }
+}

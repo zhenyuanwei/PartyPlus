@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+<view>
+  <view>
+    <view class="tips">
+        <label><text style="color : red">*</text>点击活动名称进入查看活动报名情况，完成或取消活动；</label>
+    </view>
+    <view class="tips">
+        <label><text style="color : red">*</text>点击分享按钮，将活动分享给朋友。</label>
+    </view>
+  </view>
+  <view class="left">
+    <view class="table" wx:if="{{hasData}}">
+      <view class="tr">
+        <text class="th">活动名称</text>
+        <text class="th">活动时间</text>
+        <text class="th">活动地点</text>
+        <text class="th">分享</text>
+      </view> 
+      <view class="tr" wx:for="{{array}}">
+        <view class="td">
+        <navigator url="../regstatus/regstatus?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
+        </view>
+        <text class="td">{{item.party_time}}</text>
+        <text class="td">{{item.party_location}}</text>
+        <view class="td" style="color:blue">
+        <navigator url="../register/register?id={{item.party_id}}">分享</navigator>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>

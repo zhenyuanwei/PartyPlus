@@ -1,0 +1,125 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  margin: 5rpx;
+  font-size: 30rpx;
+}
+
+.left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "黑体";
+  align-items: left;
+  justify-content: space-between;
+  box-sizing: border-box;
+  white-space: pre-line;
+  margin: 5rpx;
+  padding: 5rpx;
+  font-size: 30rpx;
+}
+
+.tips {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "黑体";
+  align-items: left;
+  justify-content: space-between;
+  box-sizing: border-box;
+  white-space: pre-line;
+  margin: 5rpx;
+  padding: 5rpx;
+  font-size: 30rpx;
+}
+
+.right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "楷体";
+  align-items: rigth;
+  justify-content: space-between;
+  box-sizing: border-box;
+  white-space: pre-line;
+  margin: 5rpx;
+  padding: 10rpx;
+  font-size: 30rpx;
+}
+
+.table {
+  border: 1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+  font-size: 30rpx;
+}
+
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.th,.td {
+  padding: 2px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width:100%
+}
+
+.th {
+  background-color: #dadada;
+}
+
+.tdcomment {
+  padding: 2px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: left;
+  width:100%
+}
+
+.button, .input {
+  width: 100%;
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+.link {
+  width: 100%;
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+.buttontable {
+  border: 0px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+  font-size: 30rpx;
+}
+
+.buttontr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonth,.buttontd {
+  padding: 2px;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  border-right: 0px solid #dadada;
+  text-align: center;
+  width:100%
+}
