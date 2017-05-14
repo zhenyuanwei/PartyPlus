@@ -6,7 +6,11 @@
     <text>在聚会Plus中发起活动并分享到微信群，发起人可以很方便的在聚会Plus中统计参与者报名的状况。</text>
   </view>
   <view>
-      <text class="left" style="color:blue">使用说明：</text>
+    <text class="left">使用反馈请发送如下邮箱：</text>
+    <text class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</text>
+  </view>
+  <view>
+      <text class="left">使用说明：</text>
       <text class="left">进入小程序后首先显示的是我发起的活动画面：</text>
       <view class="left">
         <image style="width: 320px; height: 568px;" mode="aspectFit" src="https://www.yxtechs.cn/static/myowned.png"></image>
@@ -31,8 +35,5 @@
       <view class="left">
         <image style="width: 320px; height: 568px;" mode="aspectFit" src="https://www.yxtechs.cn/static/attended.png"></image>
       </view>
-  </view>
-  <view class="left">
-    <text style="color:blue">联系方式：zhenyuanwei@foxmail.com</text>
   </view>
 </view>
