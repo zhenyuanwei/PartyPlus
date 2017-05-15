@@ -24,10 +24,12 @@ App({
                         }
                     })
                     var code = res.code;
+                    //console.log(code)
                     var appID = that.globalData.appID;
                     var secret = that.globalData.appSecret;
                     var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appID;
                     url = url + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code';
+                    //console.log(url);
                     wx.request({
                         url: url,
                         data: {},
@@ -50,7 +52,23 @@ App({
                         // header: {}, // 设置请求的 header
                         success: function (res) {
                             var access_token = res.data.access_token
+                            //console.log(access_token);
                             wx.setStorageSync('access_token', access_token);
+                        }
+                    });
+
+                    var accessToken = wx.getStorageSync('access_token');
+                    //console.log(accessToken);
+                    var program_id = that.globalData.program_id;
+                    //console.log(program_id);
+                    var url = 'https://www.yxtechs.cn/saveaccesstoken';
+                    wx.request({
+                        url: url,
+                        data: {'program_id' : program_id, 'access_token': accessToken},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            console.log(res.data);
                             //Tobe Updated保存access_token到yxtechs的服务
                             //Tobe Updated保存access_token到yxtechs的服务
 
@@ -64,6 +82,7 @@ App({
     globalData: {
         userInfo: null,
         appID: 'wx8fc44649e3138a91',
-        appSecret: '993e8cd43fc548efa1c3ae5ba975027c',
+        appSecret: 'a14ec392eaf98d6ed6734908268e5b0f',
+        program_id: '1494805256', //需要根据数据库具体的内容进行修改
     }
 })
