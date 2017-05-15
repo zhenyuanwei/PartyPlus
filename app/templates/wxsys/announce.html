@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跟新消息</title>
+</head>
+<body>
+<form action="dowxsysannounce" method="post">
+    <label>小程序名称：</label>
+    <select name="program_id">
+        {% for program in programList %}
+            <option value="{{ program['program_id'] }}">{{ program['program_name'] }}</option>
+        {% endfor %}
+    </select><br>
+    <label>提醒消息：</label>
+    <textarea name="program_message"></textarea><br>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

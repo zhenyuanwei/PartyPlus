@@ -1,11 +1,12 @@
 from flask import make_response
 from flask import request
+from flask import render_template
 import json
 from app import app
 from app.controller.wxsysController import doSaveAccessToken
 
 '''
-获取自己创建的活动列表
+保存小程序的access_token API
 参数：
 program_id
 access_token

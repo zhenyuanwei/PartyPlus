@@ -6,6 +6,7 @@ from app.utils.util import getTime
 微信小程序的数据模型
 program_id           #小程序编号
 program_name         #小程序名字
+program_message      #小程序消息
 access_token         #小程序的access_token
 create_time          #自动设定
 update_time          #自动设定
@@ -16,6 +17,7 @@ class WxSysMondel:
     def insert(self, wxsys):
         wxsys['program_id'] = getTimeStamp()
         wxsys['access_token'] = ''
+        wxsys['program_message'] = ''
         wxsys['create_time'] = getTime()
         wxsys['update_time'] = getTime()
         wxsys_collection = getCollection(collectionName=self.__collectionName)
@@ -35,6 +37,11 @@ class WxSysMondel:
         wxsys_collection = getCollection(collectionName=self.__collectionName)
         wxsys = wxsys_collection.find_one(query_key)
         return wxsys
+
+    def finds(self):
+        wxsys_collection = getCollection(collectionName=self.__collectionName)
+        wxsysList = wxsys_collection.find()
+        return wxsysList
 
 '''wxsys = {'program_name':'报单Plus'}
 wxSysModel = WxSysMondel()
