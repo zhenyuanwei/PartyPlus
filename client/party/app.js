@@ -91,6 +91,7 @@ App({
         //openId: '',
         //code: '',
         encryptedData: '',
-        program_id: '1494670818'
+        //program_id: '1494670818' //本地测试用
+        program_id: '1494894288' //发布用
     }
 })

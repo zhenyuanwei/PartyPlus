@@ -17,6 +17,7 @@
       <view wx:if="{{hasData}}">
           <view class="tr" wx:for="{{array}}">
                 <text wx:if="{{item.party_status == '0'}}" class="td">{{item.party_name}}已取消</text>
+                <text wx:elif="{{item.party_status == '9'}}" class="td">{{item.party_name}}已完成</text>
                 <view class="td" wx:else>
                     <navigator url="../register/register?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
                 </view>

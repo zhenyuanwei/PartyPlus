@@ -22,7 +22,7 @@ Page({
         var url = 'https://www.yxtechs.cn/getpartyinfo'
         wx.request({
             url: url,
-            data: {'party_id' : eventId},
+            data: {'party_id': eventId},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
@@ -34,18 +34,19 @@ Page({
                 //this.setData({ array: array });
                 if (userarray.length == 0) {
                     that.setData({showAttendList: false})
-                };
+                }
+                ;
                 var create_openid = eventSet.create_openid
                 //console.log(create_openid);
                 var openId = wx.getStorageSync('openId')
                 //console.log(openId);
-                if (create_openid != openId){
+                if (create_openid != openId) {
                     that.setData({showTel: false})
                 }
 
                 //wx.setStorageSync('openId', openId);//存储openid
             }
-        });
+        })
 
         //调用应用实例的方法获取全局数据
         app.getUserInfo(function (userInfo) {
@@ -77,12 +78,13 @@ Page({
                             console.log(attendees);
                             var template_id = 'IpkXVvEVlh7sNfOSnQPXUSEN4UnZNzO3CWS_trQp3-M';
                             var completeMessage = "活动成功结束，感谢您的参与。";
-                            attendees.forEach(function(attendee, index, array){
+                            attendees.forEach(function (attendee, index, array) {
                                 var formId = attendee.formId
                                 var message = {
                                     "touser": attendee.attendee_openid,
                                     "template_id": template_id,
                                     "form_id": formId,
+                                    "page": "pages/attended/attended",
                                     "data": {
                                         "keyword1": {
                                             "value": attendee.party_name,
@@ -139,12 +141,13 @@ Page({
                             var template_id = 'a9ZJACpqVB3FDktUhAbqo7S4gtpX6R81SM0rPUOTWk4';
                             var cancelMessage = "活动发起人取消了活动，如有疑问请与发起人联系。";
                             var now = utils.getToday() + " " + utils.getNowTime();
-                            attendees.forEach(function(attendee, index, array){
+                            attendees.forEach(function (attendee, index, array) {
                                 var formId = attendee.formId
                                 var message = {
                                     "touser": attendee.attendee_openid,
                                     "template_id": template_id,
                                     "form_id": formId,
+                                    "page": "pages/attended/attended",
                                     "data": {
                                         "keyword1": {
                                             "value": attendee.party_name,
@@ -178,6 +181,15 @@ Page({
             }
         })
 
+    },
+
+    bidUpdateSubmit: function (e) {
+        var party_id = e.detail.value.party_id;
+        var page = "../updateevent/updateevent?party_id=" + party_id;
+        wx.navigateTo({
+            url: page
+        })
+        //console.log(page)
     }
 
 })

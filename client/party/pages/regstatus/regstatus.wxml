@@ -10,6 +10,13 @@
           </view>
 
           <view class="buttontd">
+            <form bindsubmit="bidUpdateSubmit" id="updateParty" report-submit="true">
+              <input hidden="true" name="party_id" value="{{eventId}}" />
+              <button formType="submit" size="mini">更新</button>
+            </form>
+          </view>
+
+          <view class="buttontd">
             <form bindsubmit="bidCancelSubmit" id="cancelParty" report-submit="true">
               <input hidden="true" name="party_id" value="{{eventId}}" />
               <button formType="submit" size="mini">取消</button>

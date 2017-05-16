@@ -6,7 +6,8 @@
     "pages/attended/attended",
     "pages/regstatus/regstatus",
     "pages/logs/logs",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/updateevent/updateevent"
   ],
   "window": {
     "backgroundTextStyle": "light",

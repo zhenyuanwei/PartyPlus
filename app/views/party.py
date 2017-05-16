@@ -182,3 +182,29 @@ def doCancelParty():
         result = []
 
     return make_response(json.dumps(result))
+
+'''
+更新活动
+参数：
+party_id  报名编号
+party_name
+party_time
+party_location
+party_total_num
+openId
+comment
+'''
+@app.route('/updateparty', methods=['GET'])
+def doUpdateParty():
+    party = {}
+    if request.method == 'GET':
+        party['party_id'] = request.args.get('party_id')
+        party['party_name'] = request.args.get('party_name')
+        party['party_time'] = request.args.get('party_time')
+        party['party_location'] = request.args.get('party_location')
+        party['party_total_num'] = request.args.get('party_total_num')
+        party['openId'] = request.args.get('openId')
+        party['comment'] = request.args.get('comment')
+        #保存数据大Mongo DB
+
+    return make_response(json.dumps(party))

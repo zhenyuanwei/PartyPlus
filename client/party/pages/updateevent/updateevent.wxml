@@ -1,0 +1,34 @@
+<!--updateevent.wxml-->
+<view>
+  <view class="left"><text style="color : red">{{tip}}</text></view>
+
+  <form bindsubmit="bidUpdateSubmit" id="updateparty" report-submit="true">
+  <view class="left">
+    <input hidden="true" name="party_id" value="{{party_id}}" />
+    <text>活动编号:{{ party_id }}</text>
+  </view>
+  <view class="left">
+    <input hidden="true" name="party_name" value="{{party.party_name}}" />
+    <label>活动名称:{{party.party_name}}</label>
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>活动时间:</label>
+    <input name="party_time" value="{{party.party_time}}"/>
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>活动地点:</label>
+    <input name="party_location" value="{{party.party_location}}"/>
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>参与人数上限(>0):</label>
+    <input name="party_total_num" type="number" value="{{party.party_total_num}}"/>
+  </view>
+  <view class="left">
+    <label>备注:</label>
+    <textarea name="comment" auto-height maxlength="-1" value="{{party.comment}}"/>
+  </view>
+  <view class="left">
+    <button formType="submit">更新</button>
+  </view>
+  </form>
+</view>

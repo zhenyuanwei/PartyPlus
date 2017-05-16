@@ -84,6 +84,11 @@ Page({
                 if (eventSet.party_total_num == eventSet.party_attend_num) {
                     that.setData({showButton: false})
                 }
+                //活动被取消或者完成后不允许报名，主要是控制从share进来的。
+                if (eventSet.party_status == '0' || eventSet.party_status == '9') {
+                    that.setData({showButton: false})
+                }
+
                 if (userarray.length != 0) {
                     that.setData({showList: true})
                     that.setData({showButton: false})
@@ -135,6 +140,7 @@ Page({
                                     "touser": party.create_openid,
                                     "template_id": template_id,
                                     "form_id": formId,
+                                    "page": "pages/attended/attended",
                                     "data": {
                                         "keyword1": {
                                             "value": party.party_name,

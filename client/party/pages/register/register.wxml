@@ -6,6 +6,15 @@
     </view>
   </view>
 
+  <view>
+    <view class="left" wx:if="{{ eventSet.party_status == '0' }}">
+        <text style="color : red">活动已取消，不允许继续报名！</text>
+    </view>
+    <view class="left" wx:if="{{ eventSet.party_status == '9' }}">
+        <text style="color : red">活动已结束，不允许继续报名！</text>
+    </view>
+  </view>
+
   <view class="left">
     <label>活动编号:</label>
     <text>{{eventId}}</text>
