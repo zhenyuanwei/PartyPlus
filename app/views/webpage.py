@@ -3,6 +3,7 @@ from flask import render_template
 from app.controller.wxsysController import getProgramList
 from app.controller.wxsysController import updateProgram
 from flask import request
+from app.controller.wxsysController import addProgram
 
 @app.route('/helloworld')
 def hello_world():
@@ -53,3 +54,17 @@ def showProgramList():
     template_name = 'wxsys/programlist.html'
     programList = getProgramList()
     return render_template(template_name, programList=programList)
+
+@app.route('/newprogram')
+def goNewProgram():
+    template_name = 'wxsys/newprogram.html'
+    return render_template(template_name)
+
+@app.route('/donewprogram', methods=['POST'])
+def doNewProgram():
+    if request.method == 'POST':
+        program_name = request.form.get('program_name')
+        if program_name != '':
+            addProgram(program_name=program_name)
+
+    return showProgramList()

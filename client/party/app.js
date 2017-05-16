@@ -3,8 +3,8 @@ App({
     onLaunch: function () {
         //调用API从本地缓存中获取数据
         /*var logs = wx.getStorageSync('logs') || []
-        logs.unshift(Date.now())
-        wx.setStorageSync('logs', logs)*/
+         logs.unshift(Date.now())
+         wx.setStorageSync('logs', logs)*/
     },
     getUserInfo: function (cb) {
         var that = this
@@ -56,6 +56,30 @@ App({
                         }
                     });
 
+                    //显示提醒消息
+                    //console.log(accessToken);
+                    var program_id = that.globalData.program_id;
+                    //console.log(program_id);
+                    var url = 'https://www.yxtechs.cn/getannouncement';
+                    wx.request({
+                        url: url,
+                        data: {'program_id': program_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            //console.log(res.data);
+                            var message = res.data;
+                            if (message != '') {
+                                wx.showToast({
+                                    title: message,
+                                    icon: 'success',
+                                    duration: 2000
+                                })
+                            }
+
+                        }
+                    });
+
                 }
             })
         }
@@ -66,6 +90,7 @@ App({
         appSecret: '407526ac19488297bcaaf643588faa39',
         //openId: '',
         //code: '',
-        encryptedData: ''
+        encryptedData: '',
+        program_id: '1494670818'
     }
 })

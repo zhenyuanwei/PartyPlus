@@ -11,6 +11,12 @@ def doSaveAccessToken(program_id, access_token):
     except:
         return "failure"
 
+def getAnnouncement(program_id):
+    wxSysModel = WxSysMondel()
+    wxsys = wxSysModel.findById(program_id=program_id)
+    message = wxsys['program_message']
+    return message
+
 def getProgramList():
     wxSysModel = WxSysMondel()
     programs = wxSysModel.finds()
@@ -27,3 +33,8 @@ def updateProgram(program):
     for key in program:
         wxsys[key] = program[key]
     wxSysModel.update(wxsys=wxsys)
+
+def addProgram(program_name):
+    wxSysModel = WxSysMondel()
+    wxsys = {'program_name' : program_name}
+    wxSysModel.insert(wxsys=wxsys)
