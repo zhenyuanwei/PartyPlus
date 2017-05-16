@@ -1,17 +1,18 @@
+import json
+
 from flask import make_response
 from flask import request
-import json
-from app import app
-from app.controller.partyController import getOwnPartyList
-from app.controller.partyController import getPartyInfos
-from app.controller.partyController import getAttendedPartyList
-from app.controller.partyController import createPartyEntry
-from app.controller.partyController import completePary
-from app.controller.partyController import cancelParty
-from app.controller.attendeeController import doAttendParty
-from app.controller.attendeeController import cancelAttendPary
-from app.controller.attendeeController import hiddenAttendPary
 
+from app import app
+from app.controller.attendeeController import cancelAttendPary
+from app.controller.attendeeController import doAttendParty
+from app.controller.attendeeController import hiddenAttendPary
+from app.controller.partyController import cancelParty
+from app.controller.partyController import completePary
+from app.controller.partyController import createPartyEntry
+from app.controller.partyController import getAttendedPartyList
+from app.controller.partyController import getOwnPartyList
+from app.controller.partyController import getPartyInfos, updateParty
 
 '''
 获取自己创建的活动列表
@@ -199,12 +200,14 @@ def doUpdateParty():
     party = {}
     if request.method == 'GET':
         party['party_id'] = request.args.get('party_id')
-        party['party_name'] = request.args.get('party_name')
+        #party['party_name'] = request.args.get('party_name')
         party['party_time'] = request.args.get('party_time')
         party['party_location'] = request.args.get('party_location')
         party['party_total_num'] = request.args.get('party_total_num')
-        party['openId'] = request.args.get('openId')
+        openId = request.args.get('openId')
         party['comment'] = request.args.get('comment')
-        #保存数据大Mongo DB
+        #保存数据到Mongo DB
+        updateParty(party=party)
+        newparty = getPartyInfos(party_id=party['party_id'], attendee_openid=openId)
 
-    return make_response(json.dumps(party))
+    return make_response(json.dumps(newparty))

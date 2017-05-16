@@ -43,9 +43,25 @@ Page({
                 tip: '提示：全部输入项目不能为空！',
             })
         } else {
-            console.log(party_id);
-            var url = 'https://www.yxtechs.cn/getpartyinfo';
+            //console.log(party_id);
+            var url = 'https://www.yxtechs.cn/updateparty';
             //利用wx.request更新Party的信息
+            wx.request({
+                url: url,
+                data: params,
+                method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                // header: {}, // 设置请求的 header
+                success: function (res) {
+                    //res存储的是Party
+                    var party_id = res.data.party_id;
+                    //获取attendee list用来发送信息通知参与者party信息已经修改
+                    var attendeeList = res.data.attendeeList
+                    //console.log(attendeeList);
+                    wx.navigateTo({
+                        url: '../register/register?id=' + party_id,
+                    })
+                }
+            });
         }
 
     }

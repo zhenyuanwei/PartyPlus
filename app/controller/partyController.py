@@ -72,7 +72,7 @@ def completePary(party_id):
     return res
 
 def cancelParty(party_id):
-    #跟新活动的状态为取消
+    #更新活动的状态为取消
     res = []
     partyModel = PartyModel()
     party = partyModel.finds(party_id=party_id)
@@ -89,3 +89,9 @@ def cancelParty(party_id):
         attendee['party_name'] = party['party_name']
         res.append(attendee)
     return res
+
+
+def updateParty(party):
+    #更新新活动的内容
+    partyModel = PartyModel()
+    partyModel.update(party=party)
