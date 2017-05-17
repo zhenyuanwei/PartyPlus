@@ -59,15 +59,17 @@
             <text class="th">姓名</text>
             <text wx:if="{{showTel}}" class="th">联系方式</text>
             <text class="th">报名时间</text>
-          </view> 
-          <view class="tr" wx:for="{{userarray}}">
-            <view class="td">{{item.attendee_name}}</view>
-            <text wx:if="{{showTel}}" class="td">{{item.tel_no}}</text>
-            <view class="td">{{item.create_time}}</view>
           </view>
-          <view class="tr" wx:for="{{userarray}}">
-            <text class="tdcomment" wx:if="{{item.comment != null && item.comment != ''}}">备注:{{item.comment}}</text>
-            <text class="tdcomment" wx:else>备注:无</text>
+          <view  wx:for="{{userarray}}">
+              <view class="tr">
+                <view class="td">{{item.attendee_name}}</view>
+                <text wx:if="{{showTel}}" class="td">{{item.tel_no}}</text>
+                <view class="td">{{item.create_time}}</view>
+              </view>
+              <view class="tr">
+                <text class="tdcomment" wx:if="{{item.comment != null && item.comment != ''}}">备注:{{item.comment}}</text>
+                <text class="tdcomment" wx:else>备注:无</text>
+              </view>
           </view>
       </view>
     </view>

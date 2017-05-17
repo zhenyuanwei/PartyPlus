@@ -9,14 +9,20 @@ Page({
         userInfo: {},
         array: [],
         hasData: true,
-        openId: ''
+        openId: '',
+        weatherData: ''
     },
 
     //事件处理函数
     onLoad: function (options) {
         //console.log('onLoad')
 
-        var that = this
+        var that = this;
+        var weatherData = wx.getStorageSync('weatherData');
+        that.setData({
+            weatherData: weatherData
+        })
+
         //调用应用实例的方法获取全局数据
         app.getUserInfo(function (userInfo) {
             //更新数据
@@ -58,7 +64,7 @@ Page({
         that.onLoad();
         //wx.hideNavigationBarLoading();    //完成停止加载
         //console.log('hideNavigationBarLoading');
-                //停止下拉刷新
+        //停止下拉刷新
     }
 })
 

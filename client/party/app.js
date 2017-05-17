@@ -1,10 +1,30 @@
 //app.js
+var bmap = require('utils/bmap-wx.js')
 App({
     onLaunch: function () {
         //调用API从本地缓存中获取数据
         /*var logs = wx.getStorageSync('logs') || []
          logs.unshift(Date.now())
          wx.setStorageSync('logs', logs)*/
+        var BMap = new bmap.BMapWX({
+            ak: 'idVXx3qbeSgpXsc0KDtIBY2MIXm5eg1q'
+        });
+        var fail = function(data) {
+            console.log(data)
+        };
+        var success = function(data) {
+            var weatherData = data.currentWeather[0];
+            weatherData = weatherData.currentCity + '    ' + weatherData.weatherDesc + '    '  + weatherData.temperature + '    '  + weatherData.wind;
+            /*that.setData({
+                weatherData: weatherData
+            });*/
+            wx.setStorageSync('weatherData', weatherData)
+        }
+        // 发起weather请求
+        BMap.weather({
+            fail: fail,
+            success: success
+        });
     },
     getUserInfo: function (cb) {
         var that = this
