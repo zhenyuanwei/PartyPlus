@@ -19,6 +19,7 @@ App({
                 weatherData: weatherData
             });*/
             wx.setStorageSync('weatherData', weatherData)
+            wx.setStorageSync('currentCity', weatherData.currentCity)
         }
         // 发起weather请求
         BMap.weather({

@@ -7,7 +7,8 @@
     "pages/regstatus/regstatus",
     "pages/logs/logs",
     "pages/about/about",
-    "pages/updateevent/updateevent"
+    "pages/updateevent/updateevent",
+    "pages/showmap/showmap"
   ],
   "window": {
     "backgroundTextStyle": "light",
