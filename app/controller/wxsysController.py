@@ -4,7 +4,8 @@ from app.model.wxsys import WxSysMondel
 def doSaveAccessToken(program_id, access_token):
     wxSysModel = WxSysMondel()
     wxsys = wxSysModel.findById(program_id=program_id)
-    wxsys['access_token'] = access_token
+    if None != wxsys:
+        wxsys['access_token'] = access_token
     try:
         wxSysModel.update(wxsys=wxsys)
         return "success"
@@ -14,7 +15,9 @@ def doSaveAccessToken(program_id, access_token):
 def getAnnouncement(program_id):
     wxSysModel = WxSysMondel()
     wxsys = wxSysModel.findById(program_id=program_id)
-    message = wxsys['program_message']
+    message = ''
+    if None != wxsys:
+        message = wxsys['program_message']
     return message
 
 def getProgramList():

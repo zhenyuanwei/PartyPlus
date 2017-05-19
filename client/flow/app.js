@@ -107,6 +107,6 @@ App({
         userInfo: null,
         appID: 'wx8fc44649e3138a91',
         appSecret: 'a14ec392eaf98d6ed6734908268e5b0f',
-        program_id: '1494805256', //需要根据数据库具体的内容进行修改
+        program_id: '1495234523',
     }
 })

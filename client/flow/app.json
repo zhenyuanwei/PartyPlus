@@ -9,7 +9,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "报单Plus",
+    "navigationBarTitleText": "报修Plus",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
