@@ -2,7 +2,10 @@
 <view>
   <view>
     <view class="tips">
-        <label><text style="color : red">*</text>Tips:点击右上角图标，将活动分享给朋友。</label>
+        <label><text style="color : red">*</text>Tips:点击右侧分享按钮，将活动分享给朋友。
+        <button style="background:url(../../resource/img/forward.png);float:right;background-repeat:no-repeat;width:30px; height:30px;background-size:cover;" open-type="share">
+        </button>
+        </label>
     </view>
   </view>
 

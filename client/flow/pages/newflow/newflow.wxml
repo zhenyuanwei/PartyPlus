@@ -3,7 +3,7 @@
   <view class="left"><text style="color : red">{{tip}}</text></view>
   <form bindsubmit="bindButtonTap" id="creatflow" report-submit="true">
   <view class="left">
-    <label><text style="color : red">*</text>申请者:</label>
+    <label><text style="color : red">*</text>申请单位:</label>
     <input name="flow_name" placeholder="请输入申请人或者申请部门的名字"/>
   </view>
   <view class="left">
@@ -11,8 +11,8 @@
     <input name="flow_time" placeholder="{{today}} 下午3：00"/>
   </view>
   <view class="left">
-    <label><text style="color : red">*</text>申请实体:</label>
-    <input name="flow_location" placeholder="发起申请的实体"/>
+    <label><text style="color : red">*</text>联系方式:</label>
+    <input name="flow_location" placeholder="申请单位的联系方式"/>
   </view>
   <view class="left">
     <label>备注:</label>
