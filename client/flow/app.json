@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/ownedflow/ownedflow",
-    "pages/newflow/newflow"
+    "pages/newflow/newflow",
+    "pages/shareflow/shareflow"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,19 +23,19 @@
         "pagePath": "pages/index/index",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "发起的申请"
+        "text": "发起的报修"
       },
       {
         "pagePath": "pages/newflow/newflow",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "发起申请"
+        "text": "发起报修"
       },
       {
         "pagePath": "pages/ownedflow/ownedflow",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "参与的申请"
+        "text": "处理的报修"
       }
     ]
   }

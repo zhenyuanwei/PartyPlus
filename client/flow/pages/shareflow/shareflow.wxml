@@ -1,0 +1,30 @@
+<view>
+  <view class="tips">Tips:请输入*项目内容。</view>
+  <view class="left"><text style="color : red">{{tip}}</text></view>
+  <form bindsubmit="bindButtonTap" id="processflow" report-submit="true">
+  <view class="left">
+    <label>报修主题:</label>
+    <input name="flow_name" placeholder="报修的概述"/>
+  </view>
+  <view class="left">
+    <label>期待完工时间:</label>
+    <input name="flow_time" placeholder="{{today}} 下午3：00"/>
+  </view>
+  <view class="left">
+    <label>联系方式:</label>
+    <input name="flow_location" maxlength="11" type="number" placeholder="申请人的联系方式"/>
+  </view>
+  <view class="left">
+    <label>问题描述:</label>
+    <textarea name="flow_issue" style="height: 5.3em" placeholder="问题的具体描述" maxlength="-1" />
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>处理意见:</label>
+    <textarea name="process_comment" style="height: 5.3em" placeholder="处理意见说明" maxlength="-1" />
+  </view>
+  <view class="container">
+    <!-- <button bindtap="bindButtonTap" >提交</button> -->
+    <button formType="submit">提交</button>
+  </view>
+  </form>
+</view>

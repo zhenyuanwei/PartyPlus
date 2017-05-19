@@ -1,4 +1,4 @@
-// newflow.js
+// shareflow.js
 Page({
 
     /**
@@ -12,11 +12,17 @@ Page({
     onLoad: function (options) {
 
     },
-    bindButtonTap: function (e) {
+    //增加到分享按钮
+    onShareAppMessage: function () {
         var that = this;
         var url = "../shareflow/shareflow?flow_id="
-        wx.navigateTo({
-            url: url
-        })
+        /*wx.navigateTo({
+         url: url
+         })*/
+        return {
+            title: '请您参加活动',
+            path: url
+        }
     }
+
 })

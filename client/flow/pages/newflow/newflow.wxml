@@ -1,10 +1,11 @@
 <!--newflow.wxml-->
 <view>
+  <view class="tips">Tips:请输入*项目内容。</view>
   <view class="left"><text style="color : red">{{tip}}</text></view>
   <form bindsubmit="bindButtonTap" id="creatflow" report-submit="true">
   <view class="left">
-    <label><text style="color : red">*</text>申请单位:</label>
-    <input name="flow_name" placeholder="请输入申请人或者申请部门的名字"/>
+    <label><text style="color : red">*</text>报修主题:</label>
+    <input name="flow_name" placeholder="报修的概述"/>
   </view>
   <view class="left">
     <label><text style="color : red">*</text>期待完工时间:</label>
@@ -12,15 +13,15 @@
   </view>
   <view class="left">
     <label><text style="color : red">*</text>联系方式:</label>
-    <input name="flow_location" placeholder="申请单位的联系方式"/>
+    <input name="flow_location" placeholder="申请人的联系方式"/>
   </view>
   <view class="left">
-    <label>备注:</label>
-    <textarea name="comment" auto-height placeholder="申请问题的具体描述" maxlength="-1" />
+    <label><text style="color : red">*</text>问题描述:</label>
+    <textarea name="flow_issue" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1" />
   </view>
   <view class="container">
-    <!-- <button bindtap="bindButtonTap" >提交</button> -->
-    <button formType="submit">提交</button>
+    <button bindtap="bindButtonTap" formType="submit">提交</button>
+    <!-- <button open-type="share">提交</button> -->
   </view>
   </form>
 </view>
