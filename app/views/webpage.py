@@ -89,6 +89,8 @@ def doWxsysNewLicense():
     license = {}
     if request.method == 'POST':
         license['program_id'] = request.form.get('program_id')
+        license['company_name'] = request.form.get('company_name')
+        license['tel_no'] = request.form.get('tel_no')
         license['license_start_date'] = request.form.get('license_start_date')
         license['license_period'] = request.form.get('license_period')
         addLicense(license=license)

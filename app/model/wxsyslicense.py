@@ -5,11 +5,13 @@ from app.utils.util import getToday, addDays
 
 '''
 微信小程序版权的数据模型
-program_id           #小程序编号
 license_num          #版权编号
+program_id           #小程序编号
+company_name         #公司名称
+tel_no               #联系方式
 license_period       #版权期间
 license_start_date   #版权开始日期
-license_end_date    #版权结束日期
+license_end_date     #版权结束日期
 create_time          #自动设定
 update_time          #自动设定
 '''
