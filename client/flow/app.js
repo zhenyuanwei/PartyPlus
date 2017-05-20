@@ -69,9 +69,6 @@ App({
                         // header: {}, // 设置请求的 header
                         success: function (res) {
                             console.log(res.data);
-                            //Tobe Updated保存access_token到yxtechs的服务
-                            //Tobe Updated保存access_token到yxtechs的服务
-
                         }
                     });
 
