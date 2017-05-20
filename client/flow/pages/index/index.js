@@ -24,7 +24,7 @@ Page({
 
         //获取当前user的活动列表 tobe update使用数据库
         //var url = 'https://www.yxtechs.cn/getownedpartylist?open_id=' + openId;
-        var url = 'https://www.yxtechs.cn/goissuelist';
+        var url = 'https://www.yxtechs.cn/flow/goissuelist';
         //console.log(url);
         wx.request({
             url: url,
@@ -40,7 +40,7 @@ Page({
                     that.setData({hasData: false})
                 }
             }
-        });
+        })
 
     },
 

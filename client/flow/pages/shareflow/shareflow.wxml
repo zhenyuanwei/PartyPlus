@@ -1,39 +1,72 @@
-<view>
-  <view class="tips" wx:if="{{license==false}}"><text style="color : red">您没有使用权限，或者使用权限已到期，请联系提供商。</text></view>
-  <view wx:if="{{license}}">
+  <view>
     <view class="tips">
-        <label><text style="color : red">*</text>Tips:点击右侧按钮，将报修申请发给服务供应商。
+        <label><text style="color : red">*</text>Tips:点击右侧按钮，将报修申请发给工程师。
         <button style="background:url(../../resource/img/forward.png);float:right;background-repeat:no-repeat;width:30px; height:30px;background-size:cover;" open-type="share">
         </button>
         </label>
     </view>
   </view>
-  <view class="tips">Tips:请输入*项目内容。</view>
-  <view class="left"><text style="color : red">{{tip}}</text></view>
-  <form bindsubmit="bindButtonTap" id="processflow" report-submit="true">
+
+  <view class="left">
+  <form bindsubmit="bindButtonSubmit" id="assignengineer" report-submit="true">
+
+  <view class="left">
+    <label>报修编号:</label>
+    <input name="issue_id" hidden="true"/>
+    <label>{{ issue.issue_id }}</label>
+  </view>
+
   <view class="left">
     <label>报修主题:</label>
-    <input name="flow_name" placeholder="报修的概述"/>
+    <label>{{ issue.issue_name }}</label>
   </view>
+
+  <view class="left">
+    <label>报修单位:</label>
+    <label>{{ issue.issue_company }}</label>
+  </view>
+
   <view class="left">
     <label>期待完工时间:</label>
-    <input name="flow_time" placeholder="{{today}} 下午3：00"/>
+    <label>{{ issue.issue_expect_time }}</label>
   </view>
+
   <view class="left">
     <label>联系方式:</label>
-    <input name="flow_location" maxlength="11" type="number" placeholder="申请人的联系方式"/>
+    <label>{{ issue.tel_no }}</label>
   </view>
+
   <view class="left">
     <label>问题描述:</label>
-    <textarea name="flow_issue" style="height: 5.3em" placeholder="问题的具体描述" maxlength="-1" />
+    <label>{{ issue.issue_description }}</label>
   </view>
+
   <view class="left">
-    <label><text style="color : red">*</text>处理意见:</label>
-    <textarea name="process_comment" style="height: 5.3em" placeholder="处理意见说明" maxlength="-1" />
+    <label>处理记录:</label>
+    <view class="table">
+      <view class="tr">
+        <text class="th">微信昵称</text>
+        <text class="th">处理详细</text>
+        <text class="th">处理时间</text>
+      </view>
+      <view class="tr" wx:for="{{issue.logs}}">
+        <text class="td">{{item.nickname}}</text>
+        <text class="td">{{item.description}}</text>
+        <text class="td">{{item.create_time}}</text>
+      </view>
+    </view>
   </view>
-  <view class="container" wx:if="{{showbutton}}">
-    <!-- <button bindtap="bindButtonTap" >提交</button> -->
-    <button formType="submit">提交</button>
+
+  <view wx:if="{{showbutton}}">
+      <view class="left">
+        <label><text style="color : red">*</text>处理意见:</label>
+        <textarea name="process_comment" style="height: 5.3em" placeholder="处理意见说明" maxlength="-1" />
+      </view>
+
+      <view class="left">
+        <button formType="submit">提交</button>
+      </view>
   </view>
+
   </form>
 </view>

@@ -1,4 +1,6 @@
 // newflow.js
+var utils = require('../../utils/util.js');
+var app = getApp()
 Page({
 
     /**
@@ -6,7 +8,8 @@ Page({
      */
     data: {
         license_num: '',
-        license: true
+        license: true,
+        today: ''
     },
 
     /**
@@ -14,22 +17,26 @@ Page({
      */
     onLoad: function (options) {
         var license_num = options.license_num;
+        license_num = '1495282779'; //测试用数据
         var that = this;
+        var today = utils.getToday()
         if (license_num == null) {
             license_num = 'nolicense';
             that.setData(
                 {license: false}
             )
-
+        } else {
+            //check使用权限的期限
         }
         that.setData(
-            {license_num: license_num}
+            {license_num: license_num,
+            today: today}
         )
-        //console.log(license_num)
+        console.log(wx.getStorageSync('userInfo').nickName);
 
 
     },
-    bindButtonTap: function (e) {
+    bindButtonSubmit: function (e) {
         var that = this;
         var url = "../shareflow/shareflow?showbutton=false";
         if (that.license_num == 'nolicense') {
@@ -37,10 +44,29 @@ Page({
                 url: url
             })
         } else {
-            //ToBe add save data to DB
-            //ToBe add save data to DB
-            var flow_id = '';
-            url = url + '&flow_id=' + flow_id;
+            //保存数据
+            var issue_id = '';
+            var url2 = 'https://www.yxtechs.cn/flow/dosaveissue';
+            var params = e.detail.value;
+            var openId = wx.getStorageSync('openId');
+            var nickname = wx.getStorageSync('userInfo').nickName;
+            params['openId'] = openId;
+            params['nickname'] = nickname;
+            params['license_num'] = that.license_num;
+            //console.log(nickname);
+            wx.request({
+                url: url2,
+                data: params,
+                method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                // header: {}, // 设置请求的 header
+                success: function (res) {
+                    issue_id = res.data;
+                    //console.log(array);
+
+                }
+            })
+
+            url = url + '&issue_id=' + issue_id;
             wx.navigateTo({
                 url: url
             })

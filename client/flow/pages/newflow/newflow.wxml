@@ -3,26 +3,29 @@
   <view class="tips" wx:if="{{license==false}}"><text style="color : red">您没有使用权限，或者使用权限已到期，请联系提供商。</text></view>
   <view class="tips">Tips:请输入*项目内容。</view>
   <view class="left"><text style="color : red">{{tip}}</text></view>
-  <form bindsubmit="bindButtonTap" id="creatflow" report-submit="true">
+  <form bindsubmit="bindButtonSubmit" id="creatflow" report-submit="true">
   <view class="left">
     <label><text style="color : red">*</text>报修主题:</label>
-    <input name="flow_name" placeholder="报修的概述"/>
+    <input name="issue_name" />
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>报修单位:</label>
+    <input name="issue_company" />
   </view>
   <view class="left">
     <label><text style="color : red">*</text>期待完工时间:</label>
-    <input name="flow_time" placeholder="{{today}} 下午3：00"/>
+    <input name="issue_expect_time" placeholder="{{today}} 下午3：00"/>
   </view>
   <view class="left">
     <label><text style="color : red">*</text>联系方式:</label>
-    <input name="flow_location" placeholder="申请人的联系方式"/>
+    <input name="tel_no" type="number"/>
   </view>
   <view class="left">
     <label><text style="color : red">*</text>问题描述:</label>
-    <textarea name="flow_issue" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1" />
+    <textarea name="issue_description" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1" />
   </view>
   <view class="container">
-    <button bindtap="bindButtonTap" formType="submit">提交</button>
-    <!-- <button open-type="share">提交</button> -->
+    <button formType="submit">提交</button>
   </view>
   </form>
 </view>

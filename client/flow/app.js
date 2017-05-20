@@ -15,16 +15,17 @@ App({
             wx.login({
                 success: function (res) {
                     wx.getUserInfo({
-                        withCredentials: true,
+                        //withCredentials: true,
                         success: function (res) {
-                            that.globalData.userInfo = res.userInfo
+                            that.globalData.userInfo = res.userInfo;
+                            //console.log(res.userInfo)
                             wx.setStorageSync('userInfo', res.userInfo);//存储userInfo
                             //that.globalData.encryptedData = res.encryptedData
                             typeof cb == "function" && cb(that.globalData.userInfo)
                         }
                     })
                     var code = res.code;
-                    //console.log(code)
+                    //console.log(that.globalData.userInfo)
                     var appID = that.globalData.appID;
                     var secret = that.globalData.appSecret;
                     var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appID;
