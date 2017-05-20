@@ -13,15 +13,15 @@
       <view class="tr">
         <text class="th">报修主题</text>
         <text class="th">期待时间</text>
-        <text class="th">提交报修</text>
+        <text class="th">报修</text>
       </view>
-      <view class="tr" wx:for="{{array}}">
+      <view class="tr" wx:for="{{issueList}}">
         <view class="td">
-        <navigator url="../regstatus/regstatus?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
+        <navigator url="../regstatus/regstatus?id={{item.issue_id}}" style="color:blue">{{item.issue_name}}</navigator>
         </view>
-        <text class="td">{{item.party_time}}</text>
+        <text class="td">{{item.issue_request_time}}</text>
         <view class="td" style="color:blue">
-        <navigator url="../register/register?id={{item.party_id}}">提交</navigator>
+        <navigator url="../shareflow/shareflow?id={{item.issue_id}}">报修</navigator>
         </view>
       </view>
     </view>

@@ -48,7 +48,7 @@ Page({
                 that.setData({array: array});
                 //this.setData({ array: array });
                 if (array.length == 0) {
-                    this.setData({hasData: false})
+                    that.setData({hasData: false})
                 }
                 ;
                 //wx.setStorageSync('openId', openId);//存储openid

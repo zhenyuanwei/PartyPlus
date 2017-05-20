@@ -9,6 +9,7 @@ license_num          #版权编号
 program_id           #小程序编号
 company_name         #公司名称
 tel_no               #联系方式
+focal_openId         #调度员openId
 license_period       #版权期间
 license_start_date   #版权开始日期
 license_end_date     #版权结束日期
@@ -48,6 +49,7 @@ class WxSysLicenseMondel:
             wxsyslicense['license_start_date'] = getToday()
         wxsyslicense['license_end_date'] = addDays(wxsyslicense['license_start_date'],
                                                    int(wxsyslicense['license_period']) + 1)
+        wxsyslicense['focal_openId'] = ''
         wxsyslicense['create_time'] = getTime()
         wxsyslicense['update_time'] = getTime()
         wxsyslicense_collection = getCollection(collectionName=self.__collectionName)
