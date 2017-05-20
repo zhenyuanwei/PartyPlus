@@ -1,4 +1,5 @@
 from app.model.wxsys import WxSysMondel
+from app.model.wxsyslicense import WxSysLicenseMondel
 
 
 def doSaveAccessToken(program_id, access_token):
@@ -41,3 +42,20 @@ def addProgram(program_name):
     wxSysModel = WxSysMondel()
     wxsys = {'program_name' : program_name}
     wxSysModel.insert(wxsys=wxsys)
+
+def getLicenseList():
+    licenseList = []
+    wxSysLicenseMondel = WxSysLicenseMondel()
+    wxSysModel = WxSysMondel()
+    licenses = wxSysLicenseMondel.finds()
+    for license in licenses:
+        license.pop('_id')
+        program_id = license['program_id']
+        wxSys = wxSysModel.findById(program_id=program_id)
+        license['program_name'] = wxSys['program_name']
+        licenseList.append(license)
+    return licenseList
+
+def addLicense(license):
+    wxSysLicenseMondel = WxSysLicenseMondel()
+    wxSysLicenseMondel.updateLicense(wxsyslicense=license)

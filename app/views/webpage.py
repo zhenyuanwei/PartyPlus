@@ -1,9 +1,10 @@
 from app import app
 from flask import render_template
-from app.controller.wxsysController import getProgramList
+from app.controller.wxsysController import getProgramList, getLicenseList
 from app.controller.wxsysController import updateProgram
 from flask import request
-from app.controller.wxsysController import addProgram
+from app.controller.wxsysController import addProgram, addLicense
+from app.utils.util import getToday
 
 @app.route('/helloworld')
 def hello_world():
@@ -68,3 +69,27 @@ def doNewProgram():
             addProgram(program_name=program_name)
 
     return showProgramList()
+
+@app.route('/wxsyslicenselist')
+def wxsysLicenseList():
+    template_name = 'wxsys/licenselist.html'
+    licenseList = getLicenseList()
+    today = getToday()
+    return render_template(template_name, licenseList=licenseList)
+
+@app.route('/wxsysnewlicense')
+def wxsysNewLicense():
+    template_name = 'wxsys/newlicense.html'
+    programList = getProgramList()
+    today = getToday()
+    return render_template(template_name, programList=programList, today=today)
+
+@app.route('/dowxsysnewlicense', methods=['POST'])
+def doWxsysNewLicense():
+    license = {}
+    if request.method == 'POST':
+        license['program_id'] = request.form.get('program_id')
+        license['license_start_date'] = request.form.get('license_start_date')
+        license['license_period'] = request.form.get('license_period')
+        addLicense(license=license)
+    return wxsysLicenseList()
