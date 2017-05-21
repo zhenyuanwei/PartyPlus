@@ -29,8 +29,10 @@ Page({
             //check使用权限的期限
         }
         that.setData(
-            {license_num: license_num,
-            today: today}
+            {
+                license_num: license_num,
+                today: today
+            }
         )
         console.log(wx.getStorageSync('userInfo').nickName);
 
@@ -45,7 +47,6 @@ Page({
             })
         } else {
             //保存数据
-            var issue_id = '';
             var url2 = 'https://www.yxtechs.cn/flow/dosaveissue';
             var params = e.detail.value;
             var openId = wx.getStorageSync('openId');
@@ -60,16 +61,18 @@ Page({
                 method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                 // header: {}, // 设置请求的 header
                 success: function (res) {
-                    issue_id = res.data;
-                    //console.log(array);
-
+                    var issue_id = res.data;
+                    //console.log(issue_id);
+                    url = url + '&issue_id=' + issue_id;
+                    console.log(url);
+                    wx.navigateTo({
+                        url: url
+                    })
                 }
             })
 
-            url = url + '&issue_id=' + issue_id;
-            wx.navigateTo({
-                url: url
-            })
+            console.log(that.issue_id);
+
         }
 
     }

@@ -29,7 +29,8 @@ class IssueModel:
     __default_key = {'issue_status': {'$in': ['1']}}
 
     def insert(self, issue):
-        issue['issue_id'] = getTimeStamp()
+        issue_id = getTimeStamp()
+        issue['issue_id'] = issue_id
         issue['create_time'] = getTime()
         issue['update_time'] = getTime()
         issue['issue_status'] = '1'
@@ -39,7 +40,7 @@ class IssueModel:
                           'create_time': getTime()}]
         issue_collection = getCollection(collectionName=self.__collectionName)
         issue_collection.insert(issue)
-        return issue['issue_id']
+        return issue_id
 
     def finds(self):
         issue_collection = getCollection(collectionName=self.__collectionName)

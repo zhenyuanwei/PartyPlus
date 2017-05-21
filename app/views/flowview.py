@@ -45,7 +45,6 @@ def doSaveIssue():
         issue['issue_description'] = request.args.get('issue_description')
         issue['nickname'] = request.args.get('nickname')
         issue_id = saveIssue(issue=issue)
-
     return make_response(json.dumps(issue_id))
 
 '''
