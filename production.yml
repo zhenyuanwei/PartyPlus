@@ -6,15 +6,19 @@ web:
   links:
     - mongodb:mongodb
   volumes:
-    - /home/partyplus/static
+    - .:/app
   env_file: .env
-  command: /usr/local/bin/gunicorn app:application -w 2 -b :5000
+  environment:
+    DEBUG: 'false'
+  command: /usr/local/bin/gunicorn app:app -w 2 -b :5000
 
 nginx:
   restart: always
   build: ./nginx/
   ports:
     - "443:443"
+  expose:
+    - "443"
   volumes_from:
     - web
   links:
@@ -25,5 +29,14 @@ mongodb:
   image: mongo:latest
   ports:
     - "27017:27017"
+  volumes_from:
+    - data
+
+data:
+  restart: always
+  image: mongo:latest
   volumes:
-    - mongodb_data:/home/partyplus/data/db
+    - /home/partyplus/data/db:/data/db
+
+
+
