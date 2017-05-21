@@ -79,8 +79,8 @@ class PartyModel:
 
     def delete(self, party_id):
         party_collection = getCollection(collectionName=self.__collectionName)
-        party = self.find(party_id=party_id)
-        party_collection.delete_one(party)
+        delete_key = {'party_id': party_id}
+        party_collection.delete_one(delete_key)
 
 '''watsonParty = {'party_id' : '1494296353',
                'party_name' : 'Watson Session',

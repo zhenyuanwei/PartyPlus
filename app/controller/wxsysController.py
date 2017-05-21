@@ -38,10 +38,14 @@ def updateProgram(program):
         wxsys[key] = program[key]
     wxSysModel.update(wxsys=wxsys)
 
-def addProgram(program_name):
+def addProgram(wxsys):
     wxSysModel = WxSysMondel()
-    wxsys = {'program_name' : program_name}
     wxSysModel.insert(wxsys=wxsys)
+
+def doDeleteProgram(program_id):
+    wxSysModel = WxSysMondel()
+    wxSysModel.delete(program_id=program_id)
+    return
 
 def getLicenseList():
     licenseList = []

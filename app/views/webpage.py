@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template
 from app.controller.wxsysController import getProgramList, getLicenseList
-from app.controller.wxsysController import updateProgram
+from app.controller.wxsysController import updateProgram, doDeleteProgram
 from flask import request
 from app.controller.wxsysController import addProgram, addLicense
 from app.utils.util import getToday
@@ -65,8 +65,18 @@ def goNewProgram():
 def doNewProgram():
     if request.method == 'POST':
         program_name = request.form.get('program_name')
-        if program_name != '':
-            addProgram(program_name=program_name)
+        program_id = request.form.get('program_id')
+        wxsys = {'program_id': program_id, 'program_name':program_name}
+        if program_name != '' and program_id!= '':
+            addProgram(wxsys=wxsys)
+
+    return showProgramList()
+
+@app.route('/deleteprogram', methods=['GET'])
+def deleteProgram():
+    if request.method == 'GET':
+        program_id = request.args.get('program_id')
+        doDeleteProgram(program_id=program_id)
 
     return showProgramList()
 

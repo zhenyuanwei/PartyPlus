@@ -15,7 +15,7 @@ class WxSysMondel:
     __collectionName = 'wxsys_collection'
 
     def insert(self, wxsys):
-        wxsys['program_id'] = getTimeStamp()
+        #wxsys['program_id'] = getTimeStamp()
         wxsys['access_token'] = ''
         wxsys['program_message'] = ''
         wxsys['create_time'] = getTime()
@@ -42,6 +42,11 @@ class WxSysMondel:
         wxsys_collection = getCollection(collectionName=self.__collectionName)
         wxsysList = wxsys_collection.find()
         return wxsysList
+
+    def delete(self, program_id):
+        wxsys_collection = getCollection(collectionName=self.__collectionName)
+        delete_key = {'program_id': program_id}
+        result = wxsys_collection.delete_one(delete_key)
 
 '''wxsys = {'program_name':'报单Plus'}
 wxSysModel = WxSysMondel()

@@ -105,6 +105,6 @@ App({
         userInfo: null,
         appID: 'wx8fc44649e3138a91',
         appSecret: 'a14ec392eaf98d6ed6734908268e5b0f',
-        program_id: '1495234523',
+        program_id: 'flowplus',
     }
 })

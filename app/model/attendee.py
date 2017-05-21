@@ -72,8 +72,8 @@ class AttendeeModel:
 
     def delete(self, attend_id):
         attendee_collection = getCollection(collectionName=self.__collectionName)
-        attend = self.find(attend_id=attend_id)
-        attendee_collection.delete_one(attend)
+        delete_key = {'attend_id': attend_id}
+        attendee_collection.delete_one(delete_key)
 
 #attend = AttendeeModel()
 '''wzy = {'party_id' : '1494296353',
