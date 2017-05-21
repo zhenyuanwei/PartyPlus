@@ -27,7 +27,7 @@ Page({
             success: function (res) {
                 var hasLicense = res.data;
                 if (hasLicense) {
-                    var url2 = "../employee/employee?license_num=" + license_num;
+                    var url2 = "../emplist/emplist?license_num=" + license_num;
                     //console.log(url);
                     wx.navigateTo({
                         url: url2

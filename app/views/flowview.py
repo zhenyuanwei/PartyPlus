@@ -2,7 +2,7 @@ from flask import make_response
 from flask import request
 import json
 from app import app
-from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer
+from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer, getEngineerList
 
 '''
 获取自己报修的问题列表
@@ -47,6 +47,7 @@ def doSaveIssue():
         issue_id = saveIssue(issue=issue)
     return make_response(json.dumps(issue_id))
 
+
 '''
 获取自己报修的问题列表
 参数：
@@ -60,6 +61,7 @@ def goIssueInfo():
         result = getIssue(issue_id=issue_id)
 
     return make_response(json.dumps(result))
+
 
 '''
 增加工程师
@@ -82,6 +84,7 @@ def goAddEngineer():
 
     return make_response(json.dumps(engineer_id))
 
+
 '''
 获取工程师信息
 参数：
@@ -96,3 +99,35 @@ def goGetEngineerInfo():
 
     return make_response(json.dumps(engineer))
 
+
+'''
+获取工程师List
+参数：
+license_num
+'''
+@app.route('/flow/getengineerlist', methods=['GET'])
+def goGetEngineerList():
+    engineerList = []
+    if request.method == 'GET':
+        license_num = request.args.get('license_num')
+        engineerList = getEngineerList(license_num)
+
+    return make_response(json.dumps(engineerList))
+
+'''
+增加工程师
+参数：
+engineer_id
+openId
+nickname
+'''
+@app.route('/flow/updateengineerinfo', methods=['GET'])
+def goUpdateEngineer():
+    engineer = {}
+    license_num = '1495367951'
+    if request.method == 'GET':
+        engineer['engineer_id'] = request.args.get('engineer_id')
+        engineer['openId'] = request.args.get('openId')
+        engineer['nickname'] = request.args.get('nickname')
+
+    return make_response(json.dumps(license_num))

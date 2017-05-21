@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        engineer: ''
+        engineer: '',
+        engineer_id: ''
     },
 
     /**
@@ -33,8 +34,39 @@ Page({
      * 表单提交
      */
     bindButtonSubmit: function (e) {
-        var engineer_id = e.detail.value.engineer_id
-        console.log(engineer_id)
+        var engineer_id = e.detail.value.engineer_id;
+        var openId = wx.getStorageSync('openId');
+        var nickname = wx.getStorageSync('userInfo').nickName;
+        var params = {'engineer_id': engineer_id, 'openId': openId, 'nickname': nickname}
+        //console.log(params);
+        var url = "https://www.yxtechs.cn/flow/updateengineerinfo";
+        wx.request({
+            url: url,
+            data: params,
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            // header: {}, // 设置请求的 header
+            success: function (res) {
+                var license_num = res.data;
+                var url2 = "../emplist/emplist?license_num=" + license_num;
+                //console.log(url);
+                wx.navigateTo({
+                    url: url2
+                })
+            }
+        })
+    },
+
+    //增加到分享按钮
+    onShareAppMessage: function () {
+        var that = this;
+        var url = "../empconfirm/empconfirm?engineer_id=" + that.engineer_id;
+        /*wx.navigateTo({
+         url: url
+         })*/
+        return {
+            title: '请您参加活动',
+            path: url
+        }
     }
 
 })

@@ -36,3 +36,12 @@ def getEngineer(engineer_id):
     else:
         engineer = {}
     return engineer
+
+def getEngineerList(license_num):
+    engineerList = []
+    engineerModel = EngineerModel()
+    engineers = engineerModel.finds(license_num)
+    for engineer in engineers:
+        engineer.pop('_id')
+        engineerList.append(engineer)
+    return engineerList

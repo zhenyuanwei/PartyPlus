@@ -106,3 +106,9 @@ class EngineerModel:
         query_key = {'openId': openId}
         engineer = engineer_collection.find_one(query_key)
         return engineer
+
+    def finds(self, license_num):
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        query_key = {'license_num': license_num}
+        engineers = engineer_collection.find(query_key)
+        return engineers
