@@ -36,7 +36,7 @@ data:
   restart: always
   image: mongo:latest
   volumes:
-    - /Users/weizhenyun/data/db:/data/db
+    - /Users/weizhenyuan/mongo/data/db:/data/db
 
 
 
