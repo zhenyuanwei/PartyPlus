@@ -70,13 +70,39 @@ class IssueModel:
 '''
 报修Plus工程师数据模型
 openId               #工程师的openId
+engineer_id          #工程师的Id
 license_num          #版权编号  标记这个属于哪个公司
 engineer_name        #工程师姓名
 tel_no               #联系方式
 type                 # 01 调度员， 02工程师
-nickname             #报修发起者微信昵称
+nickname             #工程师的微信昵称
+flag                 # 1 有效，0 无效
 create_time          #自动设定
 update_time          #自动设定
 '''
-class IssueEngineer:
-    __collectionName = 'issueengineer_collection'
+class EngineerModel:
+    __collectionName = 'engineer_collection'
+
+    def insert(self, engineer):
+        engineer_id = getTimeStamp()
+        engineer['engineer_id'] = engineer_id
+        engineer['create_time'] = getTime()
+        engineer['update_time'] = getTime()
+        engineer['flag'] = '1'
+        engineer['openId'] = ''
+        engineer['nickname'] = ''
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        engineer_collection.insert(engineer)
+        return engineer_id
+
+    def findByEngineerId(self, engineer_id):
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        query_key = {'engineer_id': engineer_id}
+        engineer = engineer_collection.find_one(query_key)
+        return engineer
+
+    def findByOpenId(self, openId):
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        query_key = {'openId': openId}
+        engineer = engineer_collection.find_one(query_key)
+        return engineer

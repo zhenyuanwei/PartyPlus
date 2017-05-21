@@ -33,3 +33,16 @@ def doGetAnnouncement():
 
     message = getAnnouncement(program_id=program_id)
     return make_response(json.dumps(message))
+
+'''
+Check授权是否有效
+参数：
+license_num
+'''
+@app.route('/checklicense', methods=['GET'])
+def doCheckLicense():
+    result = True
+    if request.method == 'GET':
+        license_num = request.args.get('license_num')
+
+    return make_response(json.dumps(result))

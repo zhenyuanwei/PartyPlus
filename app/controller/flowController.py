@@ -1,4 +1,4 @@
-from app.model.issue import IssueModel
+from app.model.issue import IssueModel, EngineerModel
 
 def getIssueList(request_openId):
     issueModel = IssueModel()
@@ -22,3 +22,17 @@ def getIssue(issue_id):
     else:
         issue = {}
     return issue
+
+def addEngineer(engineer):
+    engineerModel = EngineerModel()
+    engineer_id = engineerModel.insert(engineer)
+    return engineer_id
+
+def getEngineer(engineer_id):
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findByEngineerId(engineer_id)
+    if None != engineer:
+        engineer.pop('_id')
+    else:
+        engineer = {}
+    return engineer

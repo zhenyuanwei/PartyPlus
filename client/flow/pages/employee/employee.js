@@ -15,7 +15,7 @@ Page({
         var license_num = options.license_num;
         var that = this;
         that.setData({license_num: license_num})
-        console.log(license_num)
+        //console.log(license_num)
     },
 
     /**
@@ -23,11 +23,20 @@ Page({
      */
     bindButtonSubmit: function (e) {
         var params = e.detail.value;
-        console.log(params);
-        var url = "../emplist/emplist?license_num=" + params.license_num;
-        //console.log(url);
-        wx.navigateTo({
-            url: url
+        var url = "https://www.yxtechs.cn/flow/addengineer"
+        wx.request({
+            url: url,
+            data: params,
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            // header: {}, // 设置请求的 header
+            success: function (res) {
+                var engineer_id = res.data;
+                var url2 = "../empconfirm/empconfirm?engineer_id=" + engineer_id;
+                //console.log(engineer_id);
+                wx.navigateTo({
+                    url: url2
+                })
+            }
         })
     }
 })

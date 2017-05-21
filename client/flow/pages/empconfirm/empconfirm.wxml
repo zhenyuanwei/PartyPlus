@@ -1,0 +1,21 @@
+
+<view>
+    <label class="left">姓名:</label>
+    <text class="left">{{ engineer.engineer_name }}</text>
+</view>
+<view>
+    <label class="left">联系方式:</label>
+    <text class="left">{{ engineer.tel_no }}</text>
+</view>
+<view>
+    <label class="left">角色:</label>
+    <text class="left"  wx:if="{{engineer.type == 01}}">调度员</text>
+    <text class="left"  wx:if="{{engineer.type == 02}}">工程师</text>
+</view>
+
+<form bindsubmit="bindButtonSubmit" id="employeeconfirmflow" report-submit="true">
+    <view class="container">
+        <input name="engineer_id" value="{{ engineer.engineer_id }}" hidden="true"/>
+        <button formType="submit" size="mini">确认</button>
+    </view>
+</form>

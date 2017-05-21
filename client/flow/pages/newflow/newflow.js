@@ -8,7 +8,7 @@ Page({
      */
     data: {
         license_num: '',
-        license: true,
+        hasLicense: true,
         today: ''
     },
 
@@ -17,15 +17,30 @@ Page({
      */
     onLoad: function (options) {
         var license_num = options.license_num;
-        license_num = '1495282779'; //测试用数据
+        license_num = '1495367951'; //测试用数据
         var that = this;
         var today = utils.getToday()
         if (license_num == null) {
             license_num = 'nolicense';
             that.setData(
-                {license: false}
+                {hasLicense: false}
             )
         } else {
+            //check使用权限的期限
+            var url = "https://www.yxtechs.cn/checklicense"
+            wx.request({
+                url: url,
+                data: {'license_num': license_num},
+                method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                // header: {}, // 设置请求的 header
+                success: function (res) {
+                    var hasLicense = res.data;
+                    console.log(hasLicense);
+                    that.setData(
+                        {hasLicense: hasLicense}
+                    )
+                }
+            })
             //check使用权限的期限
         }
         that.setData(

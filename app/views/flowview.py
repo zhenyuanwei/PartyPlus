@@ -2,7 +2,7 @@ from flask import make_response
 from flask import request
 import json
 from app import app
-from app.controller.flowController import getIssueList, saveIssue, getIssue
+from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer
 
 '''
 获取自己报修的问题列表
@@ -60,3 +60,39 @@ def goIssueInfo():
         result = getIssue(issue_id=issue_id)
 
     return make_response(json.dumps(result))
+
+'''
+增加工程师
+参数：
+license_num
+engineer_name
+tel_no
+type
+'''
+@app.route('/flow/addengineer', methods=['GET'])
+def goAddEngineer():
+    engineer = {}
+    engineer_id = ''
+    if request.method == 'GET':
+        engineer['license_num'] = request.args.get('license_num')
+        engineer['engineer_name'] = request.args.get('engineer_name')
+        engineer['tel_no'] = request.args.get('tel_no')
+        engineer['type'] = request.args.get('type')
+        engineer_id = addEngineer(engineer)
+
+    return make_response(json.dumps(engineer_id))
+
+'''
+获取工程师信息
+参数：
+engineer_id
+'''
+@app.route('/flow/getengineerinfo', methods=['GET'])
+def goGetEngineerInfo():
+    engineer = {}
+    if request.method == 'GET':
+        engineer_id = request.args.get('engineer_id')
+        engineer = getEngineer(engineer_id)
+
+    return make_response(json.dumps(engineer))
+
