@@ -27,12 +27,6 @@ mongodb:
   image: mongo:latest
   ports:
     - "27017:27017"
-  volumes_from:
-    - data
-
-data:
-  restart: always
-  image: mongo:latest
   volumes:
     - /home/partyplus/data/db:/data/db
 
