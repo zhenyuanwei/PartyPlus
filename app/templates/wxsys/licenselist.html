@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>小程序列表</title>
+    <title>授权列表</title>
 </head>
 <body>
 <a href="wxsysnewlicense">新建License</a>
@@ -15,6 +15,7 @@
         <td>联系方式</td>
         <td>license开始日</td>
         <td>license结束日</td>
+        <td>删除</td>
     </tr>
     {% for license in licenseList %}
         <tr>
@@ -25,7 +26,7 @@
             <td>{{ license['tel_no'] }}</td>
             <td>{{ license['license_start_date'] }}</td>
             <td>{{ license['license_end_date'] }}</td>
-
+            <td><a href="deletelicense?license_num={{ license['license_num'] }}">删除</a></td>
         </tr>
     {% endfor %}
 </table>

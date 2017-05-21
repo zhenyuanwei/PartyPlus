@@ -3,7 +3,7 @@ from flask import render_template
 from app.controller.wxsysController import getProgramList, getLicenseList
 from app.controller.wxsysController import updateProgram, doDeleteProgram
 from flask import request
-from app.controller.wxsysController import addProgram, addLicense
+from app.controller.wxsysController import addProgram, addLicense, deleteLicense
 from app.utils.util import getToday
 
 @app.route('/helloworld')
@@ -104,4 +104,12 @@ def doWxsysNewLicense():
         license['license_start_date'] = request.form.get('license_start_date')
         license['license_period'] = request.form.get('license_period')
         addLicense(license=license)
+    return wxsysLicenseList()
+
+@app.route('/deletelicense', methods=['GET'])
+def doDeleteLicense():
+    license = {}
+    if request.method == 'GET':
+        license_num = request.args.get('license_num')
+        deleteLicense(license_num=license_num)
     return wxsysLicenseList()

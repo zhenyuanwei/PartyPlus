@@ -68,3 +68,8 @@ class WxSysLicenseMondel:
         else:
             license_num = self.insert(wxsyslicense)
         return license_num
+
+    def delete(self, license_num):
+        wxsys_collection = getCollection(collectionName=self.__collectionName)
+        delete_key = {'license_num': license_num}
+        result = wxsys_collection.delete_one(delete_key)

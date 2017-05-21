@@ -55,11 +55,17 @@ def getLicenseList():
     for license in licenses:
         license.pop('_id')
         program_id = license['program_id']
+        #print(program_id)
         wxSys = wxSysModel.findById(program_id=program_id)
-        license['program_name'] = wxSys['program_name']
+        if None != wxSys:
+            license['program_name'] = wxSys['program_name']
         licenseList.append(license)
     return licenseList
 
 def addLicense(license):
     wxSysLicenseMondel = WxSysLicenseMondel()
     wxSysLicenseMondel.updateLicense(wxsyslicense=license)
+
+def deleteLicense(license_num):
+    wxSysLicenseMondel = WxSysLicenseMondel()
+    wxSysLicenseMondel.delete(license_num=license_num)
