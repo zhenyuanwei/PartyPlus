@@ -21,23 +21,25 @@
     </view>
   </view>
   <view class="left">
-    <view class="table" wx:if="{{hasData}}">
+    <view class="table">
       <view class="tr">
         <text class="th">活动名称</text>
         <text class="th">活动时间</text>
         <text class="th">活动地点</text>
         <text class="th">分享</text>
-      </view> 
-      <view class="tr" wx:for="{{array}}">
-        <view class="td">
-        <navigator url="../regstatus/regstatus?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
-        </view>
-        <text class="td">{{item.party_time}}</text>
-        <text class="td">{{item.party_location}}</text>
-        <view class="td" style="color:blue">
-        <navigator url="../register/register?id={{item.party_id}}">分享</navigator>
-        </view>
-      </view> 
+      </view>
+      <view  wx:if="{{hasData}}">
+          <view class="tr" wx:for="{{array}}">
+            <view class="td">
+              <navigator url="../regstatus/regstatus?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
+            </view>
+            <text class="td">{{item.party_time}}</text>
+            <text class="td">{{item.party_location}}</text>
+            <view class="td" style="color:blue">
+              <navigator url="../register/register?id={{item.party_id}}">分享</navigator>
+            </view>
+          </view>
+      </view>
     </view>
   </view>
 </view>
