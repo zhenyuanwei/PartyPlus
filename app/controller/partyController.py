@@ -95,3 +95,13 @@ def updateParty(party):
     #更新新活动的内容
     partyModel = PartyModel()
     partyModel.update(party=party)
+
+#获得所有的活动列表，展示在网页上
+def getAllPary():
+    partyModel = PartyModel()
+    partys = partyModel.finds()
+    partyList = []
+    for party in partys:
+        party.pop('_id')
+        partyList.append(party)
+    return partyList

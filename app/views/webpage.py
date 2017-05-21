@@ -5,14 +5,20 @@ from app.controller.wxsysController import updateProgram, doDeleteProgram
 from flask import request
 from app.controller.wxsysController import addProgram, addLicense, deleteLicense
 from app.utils.util import getToday
+from app.controller.partyController import getAllPary
 
 @app.route('/helloworld')
 def hello_world():
     return 'Hello World!'
 
-@app.route('/partyguild')
+@app.route('/party/partyguild')
 def guild():
-    return render_template('partyguild.html')
+    return render_template('partyplus/partyguild.html')
+
+@app.route('/party/partylist')
+def partyList():
+    partyList = getAllPary()
+    return render_template('partyplus/partylist.html', partyList=partyList)
 
 '''
 web page for 小程序管理

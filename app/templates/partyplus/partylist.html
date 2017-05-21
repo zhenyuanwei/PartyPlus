@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>活动列表</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>活动名称</td>
+        <td>活动时间</td>
+        <td>活动地点</td>
+        <td>活动状态</td>
+    </tr>
+    {% for party in partyList %}
+        <tr>
+            <td>{{ party['party_name'] }}</td>
+            <td>{{ party['party_time'] }}</td>
+            <td>{{ party['party_location'] }}</td>
+            <td>{{ party['party_status'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
