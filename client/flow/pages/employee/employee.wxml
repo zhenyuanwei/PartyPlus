@@ -1,0 +1,21 @@
+<form bindsubmit="bindButtonSubmit" id="employeeflow" report-submit="true">
+  <view class="left">
+    <label><text style="color : red">*</text>姓名:</label>
+    <input name="engineer_name" />
+    <input name="license_num" value="{{ license_num }}" hidden="true"/>
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>联系方式:</label>
+    <input name="tel_no" />
+  </view>
+  <view class="left">
+    <label><text style="color : red">*</text>角色:</label>
+    <radio-group class="left" name="type">
+      <label class="left"><radio value="01" checked="flase"/>调度员</label>
+      <label class="left"><radio value="02" checked="true"/>工程师</label>
+    </radio-group>
+  </view>
+  <view class="container">
+    <button formType="submit" size="mini">提交</button>
+  </view>
+</form>

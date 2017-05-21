@@ -25,7 +25,7 @@
     <textarea name="issue_description" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1" />
   </view>
   <view class="container">
-    <button formType="submit">提交</button>
+    <button formType="submit" size="mini">提交</button>
   </view>
   </form>
 </view>

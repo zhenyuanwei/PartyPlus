@@ -22,8 +22,6 @@ logs                 #处理log，List对象，每个元素都是字典类型
 create_time          #自动设定
 update_time          #自动设定
 '''
-
-
 class IssueModel:
     __collectionName = 'issue_collection'
     __default_key = {'issue_status': {'$in': ['1']}}
@@ -68,3 +66,17 @@ class IssueModel:
         query_key = {'issue_id': issue_id}
         issue = issue_collection.find_one(query_key)
         return issue
+
+'''
+报修Plus工程师数据模型
+openId               #工程师的openId
+license_num          #版权编号  标记这个属于哪个公司
+engineer_name        #工程师姓名
+tel_no               #联系方式
+type                 # 01 调度员， 02工程师
+nickname             #报修发起者微信昵称
+create_time          #自动设定
+update_time          #自动设定
+'''
+class IssueEngineer:
+    __collectionName = 'issueengineer_collection'

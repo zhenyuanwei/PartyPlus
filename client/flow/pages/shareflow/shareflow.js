@@ -45,7 +45,7 @@ Page({
     //增加到分享按钮
     onShareAppMessage: function () {
         var that = this;
-        var url = "../shareflow/shareflow?flow_id="
+        var url = "../shareflow/shareflow?issue_id=" + that.issue_id
         /*wx.navigateTo({
          url: url
          })*/

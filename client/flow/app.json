@@ -4,7 +4,10 @@
     "pages/logs/logs",
     "pages/ownedflow/ownedflow",
     "pages/newflow/newflow",
-    "pages/shareflow/shareflow"
+    "pages/shareflow/shareflow",
+    "pages/setup/setup",
+    "pages/employee/employee",
+    "pages/emplist/emplist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,6 +39,12 @@
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
         "text": "处理的报修"
+      },
+      {
+        "pagePath": "pages/setup/setup",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "设置"
       }
     ]
   }

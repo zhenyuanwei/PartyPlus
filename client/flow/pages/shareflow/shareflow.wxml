@@ -64,7 +64,7 @@
       </view>
 
       <view class="left">
-        <button formType="submit">提交</button>
+        <button formType="submit" size="mini">提交</button>
       </view>
   </view>
 
