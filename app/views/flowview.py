@@ -115,7 +115,7 @@ def goGetEngineerList():
     return make_response(json.dumps(engineerList))
 
 '''
-增加工程师
+注册工程师的openId和nickname
 参数：
 engineer_id
 openId

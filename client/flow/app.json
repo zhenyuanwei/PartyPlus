@@ -8,7 +8,8 @@
     "pages/setup/setup",
     "pages/employee/employee",
     "pages/emplist/emplist",
-    "pages/empconfirm/empconfirm"
+    "pages/empconfirm/empconfirm",
+    "pages/showqrcode/showqrcode"
   ],
   "window": {
     "backgroundTextStyle": "light",

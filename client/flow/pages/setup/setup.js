@@ -10,7 +10,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        //utils.getWxCode('pages/employee/employee?license_num=1495367951');
     },
 
     /**

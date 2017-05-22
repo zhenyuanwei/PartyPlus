@@ -1,6 +1,11 @@
 <view class="left" style="color:blue">
     <navigator url="../employee/employee?license_num={{license_num}}">增加工程师</navigator>
 </view>
+
+<view class="left" style="color:blue">
+    <navigator url="../showqrcode/showqrcode?license_num={{license_num}}">获取二维码</navigator>
+</view>
+
 <view class="left">
     <view class="table">
         <view class="tr">

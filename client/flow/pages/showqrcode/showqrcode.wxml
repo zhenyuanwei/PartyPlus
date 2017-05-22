@@ -1,0 +1,3 @@
+<view class="left">
+    <canvas canvas-id="qrcode" />
+</view>
