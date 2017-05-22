@@ -14,7 +14,6 @@
             <text class="th">角色</text>
             <text class="th">更新</text>
         </view>
-        <text>{{engineerList.length}}</text>
         <view class="tr" wx:for="{{engineerList}}">
             <text class="td">{{item.engineer_name}}</text>
             <text class="td">{{item.tel_no}}</text>

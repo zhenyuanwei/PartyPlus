@@ -115,4 +115,4 @@ class EngineerModel:
 
     def removeAll(self):
         engineer_collection = getCollection(collectionName=self.__collectionName)
-        engineer_collection.delete_many()
+        engineer_collection.remove()

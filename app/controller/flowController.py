@@ -40,9 +40,9 @@ def getEngineer(engineer_id):
 def getEngineerList(license_num):
     engineerList = []
     engineerModel = EngineerModel()
-    engineerModel.removeAll()
     engineers = engineerModel.finds(license_num)
-    for engineer in engineers:
-        engineer.pop('_id')
-        engineerList.append(engineer)
+    if None != engineers:
+        for engineer in engineers:
+            engineer.pop('_id')
+            engineerList.append(engineer)
     return engineerList
