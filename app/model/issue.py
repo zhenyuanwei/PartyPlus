@@ -112,3 +112,7 @@ class EngineerModel:
         query_key = {'license_num': license_num}
         engineers = engineer_collection.find(query_key)
         return engineers
+
+    def removeAll(self):
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        engineer_collection.delete_many()
