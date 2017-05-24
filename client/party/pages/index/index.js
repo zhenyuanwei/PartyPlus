@@ -13,6 +13,15 @@ Page({
         weatherData: ''
     },
 
+    //增加到分享按钮
+    onShareAppMessage: function () {
+        var path = 'pages/index/index'
+        return {
+            title: '聚会Plus',
+            path: path
+        }
+    },
+
     //事件处理函数
     onLoad: function (options) {
         //console.log('onLoad')
