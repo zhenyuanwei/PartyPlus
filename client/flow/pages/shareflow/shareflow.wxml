@@ -1,7 +1,8 @@
   <view>
     <view class="tips">
         <label><text style="color : red">*</text>Tips:点击右侧按钮，将报修申请发给工程师。
-        <button style="background:url(../../resource/img/forward.png);float:right;background-repeat:no-repeat;width:30px; height:30px;background-size:cover;" open-type="share">
+        <button size="mini" open-type="share">
+            <image style="width:25px; height:25px;" src="../../resource/img/forward.png"></image>
         </button>
         </label>
     </view>
