@@ -48,7 +48,48 @@ Page({
                 // header: {}, // 设置请求的 header
                 success: function (res) {
                     var party_id = res.data;
+
+                    /**
+                    //报名成功后，通知发起人
+                    var template_id = 'fz4zMi04H2S9TRKktb0kC2T1lfovWbTv85yMdtw9k-s';
+                    //console.log(formId);
+                    var party = wx.getStorageSync('eventSet');
+                    var now = utils.getToday() + " " + utils.getNowTime();
+                    var message = {
+                        "touser": party.create_openid,
+                        "template_id": template_id,
+                        "form_id": formId,
+                        "page": "pages/regstatus/regstatus?id=" + party_id,
+                        "data": {
+                            "keyword1": {
+                                "value": party.party_name,
+                            },
+                            "keyword2": {
+                                "value": params.attendee_name,
+                            },
+                            "keyword3": {
+                                "value": party.party_location,
+
+                            },
+                            "keyword4": {
+                                "value": party.party_time,
+
+                            },
+                            "keyword5": {
+                                "value": params.tel_no,
+
+                            },
+                            "keyword6": {
+                                "value": now,
+
+                            }
+                        }
+                    }
+                    //console.log(message)
+                    utils.sendMessage(message) */
+
                     //console.log(party_id);
+                    //报名成功后，画面跳转
                     wx.switchTab({
                         url: "../attended/attended"
                     })
