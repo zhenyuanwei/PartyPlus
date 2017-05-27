@@ -1,0 +1,61 @@
+<!--newflow.wxml-->
+<view>
+    <view class="tips" wx:if="{{ hasLicense==false }}">
+        <text style="color : red">您没有使用权限，或者使用权限已到期，请联系提供商。</text>
+    </view>
+    <view class="tips">Tips:请输入*项目内容。</view>
+    <view class="left">
+        <text style="color : red">{{ tip }}</text>
+    </view>
+    <form bindsubmit="bindButtonSubmit" id="booking" report-submit="true">
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>姓名:
+            </label>
+            <input name="booking_name"/>
+            <input name="license_num" value="{{ license_num }}" hidden="true"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>电话:
+            </label>
+            <input name="booking_telno" type="number"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>预约医生:
+            </label>
+            <input name="booking_doctor"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>预约项目:
+            </label>
+            <input name="booking_service"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>预约日期:
+            </label>
+            <picker bindchange="bindDayPickerChange" name="booking_day" value="{{ dayindex }}" range="{{ dayarray }}">
+                <view class="picker">
+                    {{ dayarray[dayindex] }}
+                </view>
+            </picker>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>预约时间:
+            </label>
+            <picker bindchange="bindTimePickerChange" name="booking_time" value="{{ timeindex }}" range="{{ timearray }}">
+                <view class="picker">
+                    {{ timearray[timeindex] }}
+                </view>
+            </picker>
+        </view>
+
+        <view class="container">
+            <button formType="submit" size="mini">提交</button>
+        </view>
+    </form>
+</view>

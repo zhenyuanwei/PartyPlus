@@ -1,0 +1,13 @@
+<view class="left">
+    <label>
+        授权码:{{ license_num }}
+    </label>
+</view>
+<view class="left">
+    <label>
+        管理员类型:{{ admin_type }}
+    </label>
+</view>
+<view class="container">
+    <button formType="share" size="mini">提交</button>
+</view>

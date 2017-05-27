@@ -88,8 +88,7 @@ function qrc(id, page, width, height) {
     })
 }
 
-//微信二维码
-
+//判断授权信息
 function checklicense(license_num) {
     var url = "";
     return true;

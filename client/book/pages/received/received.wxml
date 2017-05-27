@@ -1,0 +1,20 @@
+<view>
+    <view class="left">
+        <view class="table">
+            <view class="tr">
+                <text class="th">预约医生</text>
+                <text class="th">预约项目</text>
+                <text class="th">预约时间</text>
+                <text class="th">完成</text>
+            </view>
+            <view class="tr" wx:for="{{ issueList }}">
+                <text class="td">{{ item.issue_name }}</text>
+                <text class="td">{{ item.issue_expect_time }}</text>
+                <text class="td">{{ item.issue_expect_time }}</text>
+                <view class="td" style="color:blue">
+                    <navigator url="../shareflow/shareflow?showbutton=false&issue_id={{ item.issue_id }}">查看</navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/booking/booking",
+    "pages/received/received",
+    "pages/setup/setup",
+    "pages/service/service",
+    "pages/servicelist/servicelist",
+    "pages/adminuser/adminuser"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "预约Plus",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "我的预约"
+      },
+      {
+        "pagePath": "pages/booking/booking",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/received/received",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "收到的预约"
+      },
+      {
+        "pagePath": "pages/setup/setup",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "设置"
+      }
+    ]
+  }
+}
