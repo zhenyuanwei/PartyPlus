@@ -3,6 +3,7 @@ from flask import request
 import json
 from app import app
 from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer, getEngineerList
+from app.controller.flowController import setEngineerWX, getCompanyIssueList
 
 '''
 获取自己报修的问题列表
@@ -122,12 +123,27 @@ openId
 nickname
 '''
 @app.route('/flow/updateengineerinfo', methods=['GET'])
-def goUpdateEngineer():
+def doUpdateEngineer():
     engineer = {}
-    license_num = '1495367951'
+    #license_num = '1495367951'
     if request.method == 'GET':
         engineer['engineer_id'] = request.args.get('engineer_id')
         engineer['openId'] = request.args.get('openId')
         engineer['nickname'] = request.args.get('nickname')
+        license_num = setEngineerWX(engineer)
 
     return make_response(json.dumps(license_num))
+
+'''
+获取自己报修的问题列表
+参数：
+openId
+'''
+@app.route('/flow/gocompanyissuelist', methods=['GET'])
+def goCompanyIssueList():
+    result = ''
+    if request.method == 'GET':
+        openId = request.args.get('openId')
+        result = getCompanyIssueList(openId=openId)
+
+    return make_response(json.dumps(result))

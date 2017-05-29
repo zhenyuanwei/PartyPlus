@@ -116,3 +116,12 @@ class EngineerModel:
     def removeAll(self):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         engineer_collection.remove()
+
+    def update(self, engineer):
+        engineer_collection = getCollection(collectionName=self.__collectionName)
+        engineer_id = engineer['engineer_id']
+        engineer['update_time'] = getTime()
+        for key in engineer:
+            if key != 'attend_id' and key != '_id' :
+                engineer_collection.update({'engineer_id': engineer_id}, {'$set': {key: engineer[key]}})
+        return self.findByEngineerId(engineer_id=engineer_id)

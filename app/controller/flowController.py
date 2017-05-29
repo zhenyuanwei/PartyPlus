@@ -46,3 +46,21 @@ def getEngineerList(license_num):
             engineer.pop('_id')
             engineerList.append(engineer)
     return engineerList
+
+def setEngineerWX(engineer):
+    engineerModel = EngineerModel()
+    engineer = engineerModel.update(engineer)
+    return engineer['license_num']
+
+def getCompanyIssueList(openId):
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findByOpenId(openId=openId)
+    license_num = engineer['license_num']
+    issueModel = IssueModel()
+    issueList = []
+    issues = issueModel.findByLicense(license_num=license_num)
+    for issue in issues:
+        issue.pop('_id')
+        issueList.append(issue)
+
+    return issueList

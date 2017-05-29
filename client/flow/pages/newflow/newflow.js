@@ -17,7 +17,7 @@ Page({
      */
     onLoad: function (options) {
         var license_num = options.license_num;
-        license_num = '1495367951'; //测试用数据
+        //license_num = '1495367951'; //测试用数据
         var that = this;
         var today = utils.getToday()
         if (license_num == null) {

@@ -52,3 +52,5 @@ lsof -i tcp:port  （port替换成端口号，比如6379）可以查看该端口
 
 #Linux安装docker-compose
 sudo pip install docker-compose
+
+cd /Users/weizhenyuan/Documents/PycharmProjects/PartyPlus
