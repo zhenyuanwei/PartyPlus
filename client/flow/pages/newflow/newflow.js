@@ -1,6 +1,6 @@
 // newflow.js
 var utils = require('../../utils/util.js');
-var app = getApp()
+var app = getApp();
 Page({
 
     /**
@@ -19,7 +19,7 @@ Page({
         var license_num = options.license_num;
         //license_num = '1495367951'; //测试用数据
         var that = this;
-        var today = utils.getToday()
+        var today = utils.getToday();
         if (license_num == null) {
             license_num = 'nolicense';
             that.setData(
@@ -27,7 +27,7 @@ Page({
             )
         } else {
             //check使用权限的期限
-            var url = "https://www.yxtechs.cn/checklicense"
+            var url = "https://www.yxtechs.cn/checklicense";
             wx.request({
                 url: url,
                 data: {'license_num': license_num},
@@ -67,7 +67,7 @@ Page({
             var params = e.detail.value;
             var openId = wx.getStorageSync('openId');
             var nickname = wx.getStorageSync('userInfo').nickName;
-            var license_num = wx.getStorageSync('license_num')
+            var license_num = wx.getStorageSync('license_num');
             params['openId'] = openId;
             params['nickname'] = nickname;
             params['license_num'] = license_num;
