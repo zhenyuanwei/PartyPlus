@@ -56,15 +56,19 @@ Page({
     },
     bindButtonSubmit: function (e) {
         var that = this;
-        var url = "../shareflow/shareflow?showbutton=false";
-        if (that.license_num == 'nolicense') {
-            wx.navigateTo({
-                url: url
+
+        if (e.detail.value.issue_name.length == 0 || e.detail.value.issue_company.length == 0 ||
+            e.detail.value.issue_expect_time.length == 0 || e.detail.value.tel_no.length == 0 ||
+            e.detail.value.issue_description.length == 0) {
+            this.setData({
+                tip: '提示：输入项目不能为空！',
             })
         } else {
             //保存数据
+            var url = "../shareflow/shareflow?showbutton=false";
             var url2 = 'https://www.yxtechs.cn/flow/dosaveissue';
             var params = e.detail.value;
+            var formId = e.detail.formId;
             var openId = wx.getStorageSync('openId');
             var nickname = wx.getStorageSync('userInfo').nickName;
             var license_num = wx.getStorageSync('license_num');
@@ -78,19 +82,44 @@ Page({
                 method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                 // header: {}, // 设置请求的 header
                 success: function (res) {
-                    var issue_id = res.data;
-                    //console.log(issue_id);
+                    var issue_id = res.data.issue_id;
+                    console.log(res.data);
                     url = url + '&issue_id=' + issue_id;
                     console.log(url);
                     wx.navigateTo({
                         url: url
                     })
+                    var res_openId = res.data.openId;
+                    var template_id = "jpU7GAQLjwTMkpS2m-9Wkx3Y-9GwaCuJ8bssFePCbXU";
+                    var message = {
+                        "touser": res_openId,
+                        "template_id": template_id,
+                        "form_id": formId,
+                        "data": {
+                            "keyword1": {
+                                "value": utils.getToday() + ' ' + utils.getNowTime(),
+                            },
+                            "keyword2": {
+                                "value": nickname,
+                            },
+                            "keyword3": {
+                                "value": params.issue_company,
+                            },
+                            "keyword4": {
+                                "value": params.tel_no,
+                            },
+                            "keyword5": {
+                                "value": params.issue_description,
+                            }
+                        }
+                    }
+                    //console.log(message)
+                    utils.sendMessage(message);
+                    //console.log(openId)
                 }
             })
-
-            //console.log(that.issue_id);
-
         }
-
+        //console.log(that.issue_id);
     }
+
 })

@@ -38,7 +38,7 @@
             </label>
             <textarea name="issue_description" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1"/>
         </view>
-        <view class="container">
+        <view class="container" wx:if="{{ hasLicense }}">
             <button formType="submit" size="mini">提交</button>
         </view>
     </form>

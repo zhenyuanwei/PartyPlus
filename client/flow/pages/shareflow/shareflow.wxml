@@ -61,6 +61,7 @@
     </view>
 
     <view wx:if="{{ showbutton }}">
+        <view class="left"><text style="color : red">{{tip}}</text></view>
         <view class="left">
             <label>
                 <text style="color : red">*</text>处理意见:

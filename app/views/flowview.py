@@ -36,7 +36,7 @@ nickname
 @app.route('/flow/dosaveissue', methods=['GET'])
 def doSaveIssue():
     issue = {}
-    issue_id = ''
+    res = {}
     if request.method == 'GET':
         issue['request_openId'] = request.args.get('openId')
         issue['license_num'] = request.args.get('license_num')
@@ -46,8 +46,8 @@ def doSaveIssue():
         issue['tel_no'] = request.args.get('tel_no')
         issue['issue_description'] = request.args.get('issue_description')
         issue['nickname'] = request.args.get('nickname')
-        issue_id = saveIssue(issue=issue)
-    return make_response(json.dumps(issue_id))
+        res = saveIssue(issue=issue)
+    return make_response(json.dumps(res))
 
 
 '''

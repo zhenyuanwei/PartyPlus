@@ -10,9 +10,18 @@ def getIssueList(request_openId):
     return issueList
 
 def saveIssue(issue):
+    res = {}
     issueModel = IssueModel()
     issue_id = issueModel.insert(issue)
-    return issue_id
+    res['issue_id'] = issue_id
+    license_num = issue['license_num']
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findFocalByLicense(license_num=license_num)
+    if None == engineer:
+        res['openId'] = ''
+    else:
+        res['openId'] = engineer['openId']
+    return res
 
 def getIssue(issue_id):
     issueModel = IssueModel()
@@ -90,8 +99,14 @@ def updateIssueLogs(issue):
         #查找调度员的openId
         license_num = issueTo['license_num']
         engineer = engineerModel.findFocalByLicense(license_num=license_num)
-        message['openId'] = engineer['openId']
+        if None == engineer:
+            message['openId'] = ''
+        else:
+            message['openId'] = engineer['openId']
         message['template_id'] = 'RF297PVp7x-7akn5YkX-jdOFY4bFVvMU_eXDx9tp0CI'
         message['message'] = '报修已经处理，处理方式：' + issue['logs']['description']
+
+    message['issue_id'] = issueTo['issue_id']
+    message['issue_company'] = issueTo['issue_company']
 
     return message

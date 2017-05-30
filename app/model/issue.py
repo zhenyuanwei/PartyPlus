@@ -119,7 +119,7 @@ class EngineerModel:
     def findFocalByLicense(self, license_num):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         license_key = {'license_num': license_num}
-        type_key = {'type_key': '01'}
+        type_key = {'type': '01'}
         query_condition = {'$and': [type_key, license_key]}
         engineer = engineer_collection.find_one(query_condition)
         return engineer

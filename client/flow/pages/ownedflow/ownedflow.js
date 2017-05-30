@@ -28,7 +28,7 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var issueList = res.data;
-                console.log(issueList);
+                //console.log(issueList);
                 that.setData({issueList: issueList});
                 //this.setData({ array: array });
                 if (issueList.length == 0) {
