@@ -2,7 +2,8 @@
 <view>
   <view>
     <view class="tips">
-        <label><text style="color : red">*</text>点击填写结果按钮，填写处理结果，并发送消息给报修人。</label>
+        <label><text style="color : red">*</text>点击填写结果按钮，工程师填写处理结果，并发送消息给调度员。</label>
+        <label><text style="color : red">*</text>调度员确认后，填写处理结果，反馈给用户。</label>
     </view>
   </view>
   <view class="left">

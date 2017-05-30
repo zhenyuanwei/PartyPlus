@@ -66,10 +66,32 @@ def getCompanyIssueList(openId):
     return issueList
 
 def updateIssueLogs(issue):
+    openId = issue['logs']['openId']
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findByOpenId(openId=openId)
+    type = engineer['type']
+
     message = {}
     issueModel = IssueModel()
     issueTo = issueModel.findByIssueId(issue_id=issue['issue_id'])
+    logsCount = len(issueTo['logs'])
     issueTo['logs'].append(issue['logs'])
     issueModel.update(issueTo)
+
+    if type == '01':
+        #调度员的处理，这里返回发起报修人的openId
+        message['openId'] = issueTo['request_openId']
+        message['template_id'] = 'RF297PVp7x-7akn5YkX-jdOFY4bFVvMU_eXDx9tp0CI'
+        if logsCount == 1 :
+            message['message'] = '您的报修已经收到，并安排工程师进行问题排查。'
+        else :
+            message['message'] = '您的报修已经处理完成，请确认处理结果。'
+    else :
+        #查找调度员的openId
+        license_num = issueTo['license_num']
+        engineer = engineerModel.findFocalByLicense(license_num=license_num)
+        message['openId'] = engineer['openId']
+        message['template_id'] = 'RF297PVp7x-7akn5YkX-jdOFY4bFVvMU_eXDx9tp0CI'
+        message['message'] = '报修已经处理，处理方式：' + issue['logs']['description']
 
     return message
