@@ -67,6 +67,15 @@ class IssueModel:
         issue = issue_collection.find_one(query_key)
         return issue
 
+    def update(self, issue):
+        issue_collection = getCollection(collectionName=self.__collectionName)
+        issue_id = issue['issue_id']
+        issue['update_time'] = getTime()
+        for key in issue:
+            if key != 'issue_id' and key != '_id':
+                issue_collection.update({'issue_id': issue_id}, {'$set': {key: issue[key]}})
+        return issue
+
 '''
 报修Plus工程师数据模型
 openId               #工程师的openId

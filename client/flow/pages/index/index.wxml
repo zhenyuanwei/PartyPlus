@@ -2,10 +2,10 @@
 <view>
   <view>
     <view class="tips">
-        <label><text style="color : red">*</text>点击报修主题进入查看报修情况，完成或取消报修；</label>
+        <label><text style="color : red">*</text>报修发起请在微信公众号中发起。</label>
     </view>
     <view class="tips">
-        <label><text style="color : red">*</text>点击提交按钮，将报修申请发送给相关售后人员。</label>
+        <label><text style="color : red">*</text>点击查看按钮，可以查看报修处理的状况。</label>
     </view>
   </view>
   <view class="left">

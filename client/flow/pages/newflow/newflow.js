@@ -35,7 +35,7 @@ Page({
                 // header: {}, // 设置请求的 header
                 success: function (res) {
                     var hasLicense = res.data;
-                    console.log(hasLicense);
+                    //console.log(hasLicense);
                     that.setData(
                         {hasLicense: hasLicense}
                     )
@@ -49,7 +49,8 @@ Page({
                 today: today
             }
         )
-        console.log(wx.getStorageSync('userInfo').nickName);
+        wx.setStorageSync('license_num', license_num);
+        //console.log(wx.getStorageSync('userInfo').nickName);
 
 
     },
@@ -66,10 +67,11 @@ Page({
             var params = e.detail.value;
             var openId = wx.getStorageSync('openId');
             var nickname = wx.getStorageSync('userInfo').nickName;
+            var license_num = wx.getStorageSync('license_num')
             params['openId'] = openId;
             params['nickname'] = nickname;
-            params['license_num'] = that.license_num;
-            //console.log(nickname);
+            params['license_num'] = license_num;
+            //console.log(params['license_num']);
             wx.request({
                 url: url2,
                 data: params,
@@ -86,7 +88,7 @@ Page({
                 }
             })
 
-            console.log(that.issue_id);
+            //console.log(that.issue_id);
 
         }
 

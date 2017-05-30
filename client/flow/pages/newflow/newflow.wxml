@@ -10,32 +10,32 @@
     <form bindsubmit="bindButtonSubmit" id="creatflow" report-submit="true">
         <view class="left">
             <label>
-                <text style="color : red">*</text>
-                报修主题:</label>
+                <text style="color : red">*</text>报修主题:
+            </label>
             <input name="issue_name"/>
         </view>
         <view class="left">
             <label>
-                <text style="color : red">*</text>
-                报修单位:</label>
+                <text style="color : red">*</text>报修单位:
+            </label>
             <input name="issue_company"/>
         </view>
         <view class="left">
             <label>
-                <text style="color : red">*</text>
-                期待完工时间:</label>
+                <text style="color : red">*</text>期待完工时间:
+            </label>
             <input name="issue_expect_time" placeholder="{{ today }} 下午3：00"/>
         </view>
         <view class="left">
             <label>
-                <text style="color : red">*</text>
-                联系方式:</label>
+                <text style="color : red">*</text>联系方式:
+            </label>
             <input name="tel_no" type="number"/>
         </view>
         <view class="left">
             <label>
-                <text style="color : red">*</text>
-                问题描述:</label>
+                <text style="color : red">*</text>问题描述:
+            </label>
             <textarea name="issue_description" style="height: 5.3em" placeholder="申请问题的具体描述" maxlength="-1"/>
         </view>
         <view class="container">

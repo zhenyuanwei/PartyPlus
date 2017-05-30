@@ -53,6 +53,37 @@ Page({
             title: '请您参加活动',
             path: url
         }
+    },
+
+    bindButtonSubmit: function (e) {
+        var that = this;
+        var params = e.detail.value;
+        var openId = wx.getStorageSync('openId');
+        var nickname = wx.getStorageSync('userInfo').nickName;
+        var license_num = wx.getStorageSync('license_num')
+        params['openId'] = openId;
+        params['nickname'] = nickname;
+        params['license_num'] = license_num;
+        //console.log(params);
+        var url = 'https://www.yxtechs.cn/flow/dosavelogs';
+        wx.request({
+            url: url,
+            data: params,
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            // header: {}, // 设置请求的 header
+            success: function (res) {
+                var message = res.data;
+                console.log(message);
+                //发送消息到调度员
+                //发送消息到调度员
+
+                var page = "../ownedflow/ownedflow";
+                wx.switchTab({
+                    url: page
+                })
+            }
+        })
+
     }
 
 })

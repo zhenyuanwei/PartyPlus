@@ -25,6 +25,7 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var engineerList = res.data;
+                console.log(engineerList)
                 that.setData({engineerList: engineerList})
             }
         })

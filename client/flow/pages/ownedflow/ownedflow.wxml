@@ -2,9 +2,6 @@
 <view>
   <view>
     <view class="tips">
-        <label><text style="color : red">*</text>点击报修主题进入查看报修情况，完成或取消报修；</label>
-    </view>
-    <view class="tips">
         <label><text style="color : red">*</text>点击填写结果按钮，填写处理结果，并发送消息给报修人。</label>
     </view>
   </view>
@@ -15,13 +12,11 @@
         <text class="th">期待时间</text>
         <text class="th">填写结果</text>
       </view>
-      <view class="tr" wx:for="{{array}}">
-        <view class="td">
-        <navigator url="../regstatus/regstatus?id={{item.party_id}}" style="color:blue">{{item.party_name}}</navigator>
-        </view>
-        <text class="td">{{item.party_time}}</text>
+      <view class="tr" wx:for="{{issueList}}">
+        <text class="td">{{item.issue_name}}</text>
+        <text class="td">{{item.issue_expect_time}}</text>
         <view class="td" style="color:blue">
-        <navigator url="../register/register?id={{item.party_id}}">填写结果</navigator>
+        <navigator url="../shareflow/shareflow?issue_id={{item.issue_id}}">填写结果</navigator>
         </view>
       </view>
     </view>

@@ -64,3 +64,12 @@ def getCompanyIssueList(openId):
         issueList.append(issue)
 
     return issueList
+
+def updateIssueLogs(issue):
+    message = {}
+    issueModel = IssueModel()
+    issueTo = issueModel.findByIssueId(issue_id=issue['issue_id'])
+    issueTo['logs'].append(issue['logs'])
+    issueModel.update(issueTo)
+
+    return message

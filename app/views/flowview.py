@@ -1,9 +1,10 @@
 from flask import make_response
 from flask import request
 import json
+from app.utils.util import getTime
 from app import app
 from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer, getEngineerList
-from app.controller.flowController import setEngineerWX, getCompanyIssueList
+from app.controller.flowController import setEngineerWX, getCompanyIssueList, updateIssueLogs
 
 '''
 获取自己报修的问题列表
@@ -147,3 +148,29 @@ def goCompanyIssueList():
         result = getCompanyIssueList(openId=openId)
 
     return make_response(json.dumps(result))
+
+'''
+保存报修的处理结果
+参数：
+openId
+issue_id
+license_num
+process_comment
+nickname
+'''
+@app.route('/flow/dosavelogs', methods=['GET'])
+def doSaveLogs():
+    issue = {}
+    message = ''
+    if request.method == 'GET':
+        #issue['license_num'] = request.args.get('license_num')
+        issue['issue_id'] = request.args.get('issue_id')
+        logs = {}
+        logs['openId'] = request.args.get('openId')
+        logs['description'] = request.args.get('process_comment')
+        logs['nickname'] = request.args.get('nickname')
+        logs['create_time'] = getTime()
+        issue['logs'] = logs
+        message = updateIssueLogs(issue)
+
+    return make_response(json.dumps(message))
