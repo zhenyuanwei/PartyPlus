@@ -1,4 +1,5 @@
 // ownedflow.js
+var app = getApp();
 Page({
 
     /**
@@ -19,7 +20,7 @@ Page({
         this.setData({openId: openId});
 
         //获取当前user的活动列表 tobe update使用数据库
-        var url = 'https://www.yxtechs.cn/flow/gocompanyissuelist';
+        var url = app.globalData.baseURL + '/flow/gocompanyissuelist';
         //console.log(url);
         wx.request({
             url: url,

@@ -1,4 +1,5 @@
 // setup.js
+var app = getApp();
 Page({
 
     /**
@@ -18,7 +19,7 @@ Page({
      */
     bindButtonSubmit: function (e) {
         var license_num = e.detail.value.license_num;
-        var url = "https://www.yxtechs.cn/checklicense"
+        var url = app.globalData.baseURL + "/checklicense"
         wx.request({
             url: url,
             data: {'license_num': license_num},

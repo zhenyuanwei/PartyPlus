@@ -1,4 +1,5 @@
 // emplist.js
+var app = getApp();
 Page({
 
     /**
@@ -26,7 +27,7 @@ Page({
         that.setData({license_num: license_num});
         wx.setStorageSync('license_num', license_num);
 
-        var url = "https://www.yxtechs.cn/flow/getengineerlist";
+        var url = app.globalData.baseURL + "/flow/getengineerlist";
         wx.request({
             url: url,
             data: {'license_num': license_num},
@@ -57,7 +58,7 @@ Page({
     bindDeleteSubmit: function(e) {
         var params = e.detail.value;
         //console.log(params);
-        var url = "https://www.yxtechs.cn/flow/deleteengineer";
+        var url = app.globalData.baseURL + "/flow/deleteengineer";
         wx.request({
             url: url,
             data: params,

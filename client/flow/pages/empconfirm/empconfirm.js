@@ -1,4 +1,5 @@
 // empconfirm.js
+var app = getApp();
 Page({
 
     /**
@@ -16,7 +17,7 @@ Page({
         var engineer_id = options.engineer_id
         var that = this
 
-        var url = "https://www.yxtechs.cn/flow/getengineerinfo"
+        var url = app.globalData.baseURL + "/flow/getengineerinfo"
         wx.request({
             url: url,
             data: {'engineer_id': engineer_id},
@@ -39,7 +40,7 @@ Page({
         var nickname = wx.getStorageSync('userInfo').nickName;
         var params = {'engineer_id': engineer_id, 'openId': openId, 'nickname': nickname}
         //console.log(params);
-        var url = "https://www.yxtechs.cn/flow/updateengineerinfo";
+        var url = app.globalData.baseURL + "/flow/updateengineerinfo";
         wx.request({
             url: url,
             data: params,

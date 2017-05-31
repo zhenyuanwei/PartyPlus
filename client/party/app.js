@@ -81,7 +81,7 @@ App({
                     //console.log(accessToken);
                     var program_id = that.globalData.program_id;
                     //console.log(program_id);
-                    var url = 'https://www.yxtechs.cn/getannouncement';
+                    var url = that.globalData.baseURL + '/getannouncement';
                     wx.request({
                         url: url,
                         data: {'program_id': program_id},
@@ -112,6 +112,7 @@ App({
         //openId: '',
         //code: '',
         encryptedData: '',
+        baseURL: 'https://www.yxtechs.cn',
         program_id: '1494894288' //发布用
     }
 })

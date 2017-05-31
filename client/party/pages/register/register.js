@@ -1,5 +1,5 @@
-var app = getApp()
-var utils = require('../../utils/util.js')
+var app = getApp();
+var utils = require('../../utils/util.js');
 Page({
     data: {
         motto: 'Hello World',
@@ -34,7 +34,7 @@ Page({
             var openId = wx.getStorageSync('openId');
             var formId = e.detail.formId
 
-            var url = 'https://www.yxtechs.cn/attendparty';
+            var url = app.globalData.baseURL + '/attendparty';
             var params = e.detail.value
             params['openId'] = openId;
             params['wechat_name'] = wechat_name;
@@ -108,8 +108,8 @@ Page({
         that.setData({eventId: eventId})
         var openId = wx.getStorageSync('openId');
 
-        //var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
-        var url = 'https://www.yxtechs.cn/getpartyinfo';
+        //var url = '/getpartyinfo?party_id=' + eventId;
+        var url = app.globalData.baseURL + '/getpartyinfo';
         wx.request({
             url: url,
             data: {'party_id': eventId, 'openId': openId},
@@ -161,7 +161,7 @@ Page({
                     var attend_id = party.attendeeList[0].attend_id;
                     var openId = wx.getStorageSync('openId');
                     //console.log(attend_id);
-                    var url = 'https://www.yxtechs.cn/cancelattend';
+                    var url = app.globalData.baseURL + '/cancelattend';
                     wx.request({
                         url: url,
                         data: {'attend_id': attend_id},

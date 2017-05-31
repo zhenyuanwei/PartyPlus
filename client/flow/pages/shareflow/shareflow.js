@@ -1,5 +1,6 @@
 // shareflow.js
 var utils = require('../../utils/util.js');
+var app = getApp();
 Page({
 
     /**
@@ -27,7 +28,7 @@ Page({
         that.setData(
             {issue_id: issue_id}
         )
-        var url = "https://www.yxtechs.cn/flow/getissueinfo";
+        var url = app.globalData.baseURL + "/flow/getissueinfo";
         wx.request({
             url: url,
             data: {'issue_id': issue_id},
@@ -71,7 +72,7 @@ Page({
                 tip: '提示：输入项目不能为空！',
             })
         } else {
-            var url = 'https://www.yxtechs.cn/flow/dosavelogs';
+            var url = app.globalData.baseURL + '/flow/dosavelogs';
             wx.request({
                 url: url,
                 data: params,

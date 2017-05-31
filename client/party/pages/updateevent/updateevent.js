@@ -1,4 +1,5 @@
 // updateevent.js
+var app = getApp();
 Page({
 
     /**
@@ -17,7 +18,7 @@ Page({
         //console.log(party_id)
         var that = this;
         that.setData({party_id: party_id})
-        var url = 'https://www.yxtechs.cn/getpartyinfo'
+        var url = app.globalData.baseURL + '/getpartyinfo'
         wx.request({
             url: url,
             data: {'party_id': party_id},
@@ -44,7 +45,7 @@ Page({
             })
         } else {
             //console.log(party_id);
-            var url = 'https://www.yxtechs.cn/updateparty';
+            var url = app.globalData.baseURL + '/updateparty';
             //利用wx.request更新Party的信息
             wx.request({
                 url: url,

@@ -27,7 +27,7 @@ Page({
             )
         } else {
             //check使用权限的期限
-            var url = "https://www.yxtechs.cn/checklicense";
+            var url = app.globalData.baseURL + "/checklicense";
             wx.request({
                 url: url,
                 data: {'license_num': license_num},
@@ -66,7 +66,7 @@ Page({
         } else {
             //保存数据
             var url = "../shareflow/shareflow?showbutton=false";
-            var url2 = 'https://www.yxtechs.cn/flow/dosaveissue';
+            var url2 = app.globalData.baseURL + '/flow/dosaveissue';
             var params = e.detail.value;
             var formId = e.detail.formId;
             var openId = wx.getStorageSync('openId');

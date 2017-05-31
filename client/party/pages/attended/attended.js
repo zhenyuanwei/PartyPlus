@@ -1,5 +1,5 @@
-var app = getApp()
-var utils = require('../../utils/util.js')
+var app = getApp();
+var utils = require('../../utils/util.js');
 Page({
     data: {
         motto: 'Hello World',
@@ -17,8 +17,8 @@ Page({
         that.setData({openId: openId});
 
         //获取当前user的活动列表 tobe update使用数据库
-        //var url = 'https://www.yxtechs.cn/getattendpartylist?openId=' + openId;
-        var url = 'https://www.yxtechs.cn/getattendpartylist';
+        //var url = app.globalData.baseURL + '/getattendpartylist?openId=' + openId;
+        var url = app.globalData.baseURL + '/getattendpartylist';
         //console.log(url);
         var parms = {'openId': openId}
         wx.request({
@@ -74,7 +74,7 @@ Page({
             success: function (res) {
                 if (res.confirm) {
                     //console.log(attend_id);
-                    var url = 'https://www.yxtechs.cn/hiddenattend';
+                    var url = app.globalData.baseURL + '/hiddenattend';
                     wx.request({
                         url: url,
                         data: {'attend_id': attend_id},

@@ -1,5 +1,5 @@
-var app = getApp()
-var utils = require('../../utils/util.js')
+var app = getApp();
+var utils = require('../../utils/util.js');
 Page({
     data: {
         motto: 'Hello World',
@@ -18,8 +18,8 @@ Page({
         var eventId = options.id;
         //console.log(eventId);
         that.setData({eventId: eventId});
-        //var url = 'https://www.yxtechs.cn/getpartyinfo?party_id=' + eventId;
-        var url = 'https://www.yxtechs.cn/getpartyinfo'
+        //var url = app.globalData.baseURL + '/getpartyinfo?party_id=' + eventId;
+        var url = app.globalData.baseURL + '/getpartyinfo'
         wx.request({
             url: url,
             data: {'party_id': eventId},
@@ -66,7 +66,7 @@ Page({
             success: function (res) {
                 if (res.confirm) {
                     //console.log(party_id);
-                    var url = 'https://www.yxtechs.cn/completeparty';
+                    var url = app.globalData.baseURL + '/completeparty';
                     wx.request({
                         url: url,
                         data: {'party_id': party_id},
@@ -129,7 +129,7 @@ Page({
             success: function (res) {
                 if (res.confirm) {
                     //console.log(party_id);
-                    var url = 'https://www.yxtechs.cn/cancelparty';
+                    var url = app.globalData.baseURL + '/cancelparty';
                     wx.request({
                         url: url,
                         data: {'party_id': party_id},

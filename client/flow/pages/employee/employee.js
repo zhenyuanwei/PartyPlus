@@ -1,4 +1,5 @@
 // employee.js
+var app = getApp();
 Page({
 
     /**
@@ -44,7 +45,7 @@ Page({
     },
 
     saveEngineer: function (params) {
-        var url = "https://www.yxtechs.cn/flow/addengineer";
+        var url = app.globalData.baseURL + "/flow/addengineer";
         wx.request({
             url: url,
             data: params,

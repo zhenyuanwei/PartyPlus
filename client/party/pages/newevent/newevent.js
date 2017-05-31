@@ -1,5 +1,5 @@
-var utils = require('../../utils/util.js')
-var app = getApp()
+var utils = require('../../utils/util.js');
+var app = getApp();
 Page({
     data: {
         party_name: '',
@@ -24,7 +24,7 @@ Page({
                 tip: '提示：全部输入项目不能为空！',
             })
         } else {
-            var url = 'https://www.yxtechs.cn/createparty'
+            var url = app.globalData.baseURL + '/createparty'
             wx.request({
                 url: url,
                 data: params,

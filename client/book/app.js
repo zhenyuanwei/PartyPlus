@@ -62,7 +62,7 @@ App({
                     //console.log(accessToken);
                     var program_id = that.globalData.program_id;
                     //console.log(program_id);
-                    var url = 'https://www.yxtechs.cn/saveaccesstoken';
+                    var url = that.globalData.baseURL + '/saveaccesstoken';
                     wx.request({
                         url: url,
                         data: {'program_id': program_id, 'access_token': accessToken},
@@ -77,7 +77,7 @@ App({
                     //console.log(accessToken);
                     var program_id = that.globalData.program_id;
                     //console.log(program_id);
-                    var url = 'https://www.yxtechs.cn/getannouncement';
+                    var url = that.globalData.baseURL + '/getannouncement';
                     wx.request({
                         url: url,
                         data: {'program_id': program_id},
@@ -106,5 +106,6 @@ App({
         appID: 'wx0096cd4905bf06ec',
         appSecret: '1301708a6b602c669d72f3c52f2c91c3',
         program_id: 'bookplus',
+        baseURL: 'https://www.yxtechs.cn',
     }
 })
