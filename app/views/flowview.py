@@ -4,7 +4,7 @@ import json
 from app.utils.util import getTime
 from app import app
 from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer, getEngineerList
-from app.controller.flowController import setEngineerWX, getCompanyIssueList, updateIssueLogs
+from app.controller.flowController import setEngineerWX, getCompanyIssueList, updateIssueLogs, deleteEngineer
 
 '''
 获取自己报修的问题列表
@@ -174,3 +174,17 @@ def doSaveLogs():
         message = updateIssueLogs(issue)
 
     return make_response(json.dumps(message))
+
+'''
+删除工程师
+参数：
+engineer_id
+'''
+@app.route('/flow/deleteengineer', methods=['GET'])
+def goDeleteEngineer():
+    result = {}
+    if request.method == 'GET':
+        engineer_id = request.args.get('engineer_id')
+        deleteEngineer(engineer_id=engineer_id)
+
+    return make_response(json.dumps(result))

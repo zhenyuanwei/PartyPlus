@@ -91,6 +91,7 @@ update_time          #自动设定
 '''
 class EngineerModel:
     __collectionName = 'engineer_collection'
+    default_key = {'flag': {'$in': ['1']}}
 
     def insert(self, engineer):
         engineer_id = getTimeStamp()
@@ -107,27 +108,30 @@ class EngineerModel:
     def findByEngineerId(self, engineer_id):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         query_key = {'engineer_id': engineer_id}
-        engineer = engineer_collection.find_one(query_key)
+        query_condition = {'$and': [self.default_key, query_key]}
+        engineer = engineer_collection.find_one(query_condition)
         return engineer
 
     def findByOpenId(self, openId):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         query_key = {'openId': openId}
-        engineer = engineer_collection.find_one(query_key)
+        query_condition = {'$and': [self.default_key, query_key]}
+        engineer = engineer_collection.find_one(query_condition)
         return engineer
 
     def findFocalByLicense(self, license_num):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         license_key = {'license_num': license_num}
         type_key = {'type': '01'}
-        query_condition = {'$and': [type_key, license_key]}
+        query_condition = {'$and': [type_key, license_key, self.default_key]}
         engineer = engineer_collection.find_one(query_condition)
         return engineer
 
     def finds(self, license_num):
         engineer_collection = getCollection(collectionName=self.__collectionName)
         query_key = {'license_num': license_num}
-        engineers = engineer_collection.find(query_key)
+        query_condition = {'$and': [self.default_key, query_key]}
+        engineers = engineer_collection.find(query_condition)
         return engineers
 
     def removeAll(self):
@@ -139,6 +143,6 @@ class EngineerModel:
         engineer_id = engineer['engineer_id']
         engineer['update_time'] = getTime()
         for key in engineer:
-            if key != 'attend_id' and key != '_id' :
+            if key != 'engineer_id' and key != '_id' :
                 engineer_collection.update({'engineer_id': engineer_id}, {'$set': {key: engineer[key]}})
         return self.findByEngineerId(engineer_id=engineer_id)

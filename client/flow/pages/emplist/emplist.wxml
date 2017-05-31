@@ -4,22 +4,50 @@
     <navigator url="../showqrcode/showqrcode?license_num={{license_num}}">获取二维码</navigator>
 </view>
 -->
-
+<!--
+<view class="buttontable">
+    <view class="buttontr">
+        <view class="buttontd">
+            <form bindsubmit="bindAddSubmit" id="add" report-submit="true">
+                <input name="license_num" value="{{ license_num }}" hidden="true"/>
+                <view class="left">
+                    <button formType="submit" size="mini">增加</button>
+                </view>
+            </form>
+        </view>
+        <view class="buttontd">
+            <form bindsubmit="bindCancelSubmit" id="cancel" report-submit="true">
+                <input name="issue_id" value="{{ issue.issue_id }}" hidden="true"/>
+                <view class="left">
+                    <button formType="submit" size="mini">删除</button>
+                </view>
+            </form>
+        </view>
+    </view>
+</view>
+-->
 <view class="left">
     <view class="table">
         <view class="tr">
             <text class="th">姓名</text>
-            <text class="th">联系方式</text>
+            <!-- <text class="th">联系方式</text> -->
             <text class="th">角色</text>
-            <text class="th">更新</text>
+            <text class="th">关联微信</text>
+            <text class="th">删除</text>
         </view>
         <view class="tr" wx:for="{{engineerList}}">
             <text class="td">{{item.engineer_name}}</text>
-            <text class="td">{{item.tel_no}}</text>
+            <!-- <text class="td">{{item.tel_no}}</text> -->
             <text class="td"  wx:if="{{item.type == 01}}">调度员</text>
             <text class="td"  wx:if="{{item.type == 02}}">工程师</text>
             <view class="td" style="color:blue">
-                <navigator url="../empconfirm/empconfirm?engineer_id={{item.engineer_id}}">更新</navigator>
+                <navigator url="../empconfirm/empconfirm?engineer_id={{item.engineer_id}}">绑定</navigator>
+            </view>
+            <view class="td" style="color:blue">
+                <form bindsubmit="bindDeleteSubmit" id="cancel" report-submit="true">
+                    <input name="engineer_id" value="{{ item.engineer_id }}" hidden="true"/>
+                    <button formType="submit" size="mini">删</button>
+                </form>
             </view>
         </view>
     </view>

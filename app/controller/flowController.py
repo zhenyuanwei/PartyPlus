@@ -33,7 +33,15 @@ def getIssue(issue_id):
     return issue
 
 def addEngineer(engineer):
+    type = engineer['type']
     engineerModel = EngineerModel()
+    if type == '01':
+        license_num = engineer['license_num']
+        engineers = engineerModel.finds(license_num=license_num)
+        for temEngineer in engineers:
+            temEngineer['type'] = '02'
+            engineerModel.update(temEngineer)
+
     engineer_id = engineerModel.insert(engineer)
     return engineer_id
 
@@ -110,3 +118,9 @@ def updateIssueLogs(issue):
     message['issue_company'] = issueTo['issue_company']
 
     return message
+
+def deleteEngineer(engineer_id):
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findByEngineerId(engineer_id=engineer_id)
+    engineer['flag'] = '0'
+    return engineerModel.update(engineer)
