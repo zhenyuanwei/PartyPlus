@@ -188,3 +188,18 @@ def goDeleteEngineer():
         deleteEngineer(engineer_id=engineer_id)
 
     return make_response(json.dumps(result))
+
+'''
+根据状态，完成或者取消报修
+参数：
+issue_id
+issue_status
+'''
+@app.route('/flow/setstatus', methods=['GET'])
+def doSetstatus():
+    result = {}
+    if request.method == 'GET':
+        issue_id = request.args.get('issue_id')
+        issue_status = request.args.get('issue_status')
+
+    return make_response(json.dumps(result))
