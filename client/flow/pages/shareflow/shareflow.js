@@ -109,8 +109,30 @@ Page({
             })
         }
         //console.log(params);
+    },
 
+    bindCompleteSubmit: function (e) {
+        wx.showModal({
+            title: '提示',
+            content: '报修处理结果已经确认清晰，确认完成报修？',
+            success: function (res) {
+                if (res.confirm){
+                    console.log('complete')
+                }
+            }
+        })
+    },
 
+    bindCancelSubmit: function (e){
+        wx.showModal({
+            title: '提示',
+            content: '确认取消报修申请？',
+            success: function (res) {
+                if (res.confirm){
+                    console.log('cancel')
+                }
+            }
+        })
     }
 
 })

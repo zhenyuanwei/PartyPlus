@@ -11,11 +11,10 @@
 </view>
 
 <view class="left">
-<form bindsubmit="bindButtonSubmit" id="assignengineer" report-submit="true">
+
 
     <view class="left">
         <label>报修编号:</label>
-        <input name="issue_id" value="{{ issue.issue_id }}" hidden="true"/>
         <label>{{ issue.issue_id }}</label>
     </view>
 
@@ -61,18 +60,43 @@
     </view>
 
     <view wx:if="{{ showbutton }}">
-        <view class="left"><text style="color : red">{{tip}}</text></view>
-        <view class="left">
-            <label>
-                <text style="color : red">*</text>处理意见:
-            </label>
-            <textarea name="process_comment" style="height: 5.3em" placeholder="处理意见说明" maxlength="-1"/>
-        </view>
+        <form bindsubmit="bindButtonSubmit" id="assignengineer" report-submit="true">
+            <input name="issue_id" value="{{ issue.issue_id }}" hidden="true"/>
+            <view class="left"><text style="color : red">{{tip}}</text></view>
+            <view class="left">
+                <label>
+                    <text style="color : red">*</text>处理意见:
+                </label>
+                <textarea name="process_comment" style="height: 5.3em" placeholder="处理意见说明" maxlength="-1"/>
+            </view>
 
-        <view class="left">
-            <button formType="submit" size="mini">提交</button>
+            <view class="left">
+                <button formType="submit" size="mini">提交</button>
+            </view>
+        </form>
+    </view>
+
+    <view wx:else>
+        <view class="buttontable">
+            <view class="buttontr">
+                <view class="buttontd">
+                    <form bindsubmit="bindCompleteSubmit" id="complete" report-submit="true">
+                        <input name="issue_id" value="{{ issue.issue_id }}" hidden="true"/>
+                        <view class="left">
+                            <button formType="submit" size="mini">完成</button>
+                        </view>
+                    </form>
+                </view>
+                <view class="buttontd">
+                    <form bindsubmit="bindCancelSubmit" id="cancel" report-submit="true">
+                        <input name="issue_id" value="{{ issue.issue_id }}" hidden="true"/>
+                        <view class="left">
+                            <button formType="submit" size="mini">取消</button>
+                        </view>
+                    </form>
+                </view>
+            </view>
         </view>
     </view>
 
-</form>
 </view>
