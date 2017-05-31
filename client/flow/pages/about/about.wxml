@@ -6,10 +6,11 @@
         <text>报修Plus是一个在微信中进行报修的小工具。</text>
     </view>
     <view>
-        <text class="left">试用请关注微信公众号：yxjsjgzs("语熙计算机工作室"的汉语拼音首字母)，点击"报修申请"按钮，进入小程序报修画面。其他功能请在小程序中使用。</text>
+        <text class="left">试用请关注微信公众号：yxjsjgzs("语熙工作室")，点击"报修申请"按钮，进入小程序报修画面。其他功能请在小程序中使用。</text>
         <text class="left">联系方式：</text>
         <text class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</text>
-        <text class="left" style="color:blue">电话：18641194930</text>
+        <text class="left" style="color:blue">电话：15642530070</text>
+        <text class="left" style="color:blue">语熙工作室出品</text>
     </view>
 
 </view>
