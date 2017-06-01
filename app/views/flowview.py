@@ -5,6 +5,7 @@ from app.utils.util import getTime
 from app import app
 from app.controller.flowController import getIssueList, saveIssue, getIssue, addEngineer, getEngineer, getEngineerList
 from app.controller.flowController import setEngineerWX, getCompanyIssueList, updateIssueLogs, deleteEngineer
+from app.controller.flowController import updateIssueStatus
 
 '''
 获取自己报修的问题列表
@@ -199,7 +200,22 @@ issue_status
 def doSetstatus():
     result = {}
     if request.method == 'GET':
+        issue = {}
         issue_id = request.args.get('issue_id')
         issue_status = request.args.get('issue_status')
+        issue['issue_id'] = issue_id
+        issue['issue_status'] = issue_status
+        description = ''
+        if issue_status == '9':
+            description = '确认处理情况，没有问题。'
+        elif issue_status == '0':
+            description = '报修取消。'
+        logs = {}
+        logs['openId'] = request.args.get('openId')
+        logs['description'] = description
+        logs['nickname'] = request.args.get('nickname')
+        logs['create_time'] = getTime()
+        issue['logs'] = logs
+        result = updateIssueStatus(issue)
 
     return make_response(json.dumps(result))

@@ -124,3 +124,24 @@ def deleteEngineer(engineer_id):
     engineer = engineerModel.findByEngineerId(engineer_id=engineer_id)
     engineer['flag'] = '0'
     return engineerModel.update(engineer)
+
+def updateIssueStatus(issue):
+    message = {}
+    issueModel = IssueModel()
+    issueTo = issueModel.findByIssueId(issue_id=issue['issue_id'])
+    issueTo['logs'].append(issue['logs'])
+    issueTo['issue_status'] = issue['issue_status']
+    issueModel.update(issueTo)
+    # 查找调度员的openId
+    license_num = issueTo['license_num']
+    engineerModel = EngineerModel()
+    engineer = engineerModel.findFocalByLicense(license_num=license_num)
+    if None == engineer:
+        message['openId'] = ''
+    else:
+        message['openId'] = engineer['openId']
+    message['template_id'] = 'RF297PVp7x-7akn5YkX-jdOFY4bFVvMU_eXDx9tp0CI'
+    message['message'] = issue['logs']['description']
+    message['issue_id'] = issueTo['issue_id']
+    message['issue_company'] = issueTo['issue_company']
+    return message
