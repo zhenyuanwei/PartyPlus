@@ -10,9 +10,7 @@
     </view>
 </view>
 
-<view class="left">
-
-
+<view>
     <view class="left">
         <label>报修编号:</label>
         <label>{{ issue.issue_id }}</label>
