@@ -70,15 +70,16 @@ def setEngineerWX(engineer):
     return engineer['license_num']
 
 def getCompanyIssueList(openId):
+    issueList = []
     engineerModel = EngineerModel()
     engineer = engineerModel.findByOpenId(openId=openId)
-    license_num = engineer['license_num']
-    issueModel = IssueModel()
-    issueList = []
-    issues = issueModel.findByLicense(license_num=license_num)
-    for issue in issues:
-        issue.pop('_id')
-        issueList.append(issue)
+    if None != engineer:
+        license_num = engineer['license_num']
+        issueModel = IssueModel()
+        issues = issueModel.findByLicense(license_num=license_num)
+        for issue in issues:
+            issue.pop('_id')
+            issueList.append(issue)
 
     return issueList
 

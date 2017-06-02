@@ -143,7 +143,7 @@ openId
 '''
 @app.route('/flow/gocompanyissuelist', methods=['GET'])
 def goCompanyIssueList():
-    result = ''
+    result = []
     if request.method == 'GET':
         openId = request.args.get('openId')
         result = getCompanyIssueList(openId=openId)
