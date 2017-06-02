@@ -126,7 +126,7 @@ Page({
                     that.setData({showButton: false})
                 }
                 //活动被取消或者完成后不允许报名，主要是控制从share进来的。
-                if (eventSet.party_status == '0' || eventSet.party_status == '9') {
+                if (eventSet.party_status != '1') {
                     that.setData({showButton: false})
                 }
 

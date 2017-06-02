@@ -12,7 +12,7 @@ from app.controller.partyController import completePary
 from app.controller.partyController import createPartyEntry
 from app.controller.partyController import getAttendedPartyList
 from app.controller.partyController import getOwnPartyList
-from app.controller.partyController import getPartyInfos, updateParty
+from app.controller.partyController import getPartyInfos, updateParty, pauseParty
 
 '''
 获取自己创建的活动列表
@@ -211,3 +211,23 @@ def doUpdateParty():
         newparty = getPartyInfos(party_id=party['party_id'], attendee_openid=openId)
 
     return make_response(json.dumps(newparty))
+
+'''
+活动报名截止
+参数：
+party_id  报名编号
+'''
+@app.route('/pauseparty', methods=['GET'])
+def doPauseParty():
+    party_id = None
+    result = []
+    if request.method == 'GET':
+        party_id = request.args.get('party_id')
+
+    try:
+        result = pauseParty(party_id=party_id)
+        print()
+    except :
+        result = []
+
+    return make_response(json.dumps(result))

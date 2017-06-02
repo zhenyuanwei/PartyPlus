@@ -105,3 +105,12 @@ def getAllPary():
         party.pop('_id')
         partyList.append(party)
     return partyList
+
+def pauseParty(party_id):
+    #更新活动的状态为暂定
+    res = []
+    partyModel = PartyModel()
+    party = partyModel.finds(party_id=party_id)
+    party['party_status'] = '8'
+    partyModel.update(party=party)
+    return res

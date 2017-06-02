@@ -190,6 +190,32 @@ Page({
             url: page
         })
         //console.log(page)
+    },
+
+    bindRegStopSubmit: function (e) {
+        var party_id = e.detail.value.party_id;
+        wx.showModal({
+            title: '提示',
+            content: '暂停后，参与者不能继续报名，确定暂停报名？',
+            success: function (res) {
+                if (res.confirm) {
+                    var url = app.globalData.baseURL + '/pauseparty';
+                    wx.request({
+                        url: url,
+                        data: {'party_id': party_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            wx.switchTab({
+                                url: "../index/index"
+                            })
+                        }
+                    })
+                } else if (res.cancel) {
+                    //console.log('用户点击取消')
+                }
+            }
+        })
     }
 
 })

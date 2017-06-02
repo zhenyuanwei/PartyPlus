@@ -8,6 +8,7 @@
     <view>
         <text class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</text>
         <text class="left" style="color:blue">电话：15642530070</text>
+        <text class="left" style="color:blue">微信公众号：语熙工作室</text>
         <text class="left" style="color:blue">语熙工作室出品</text>
     </view>
     <view>
@@ -32,7 +33,7 @@
             <image style="width: 320px; height: 568px;" mode="aspectFit"
                    src="https://www.yxtechs.cn/static/share.png"></image>
         </view>
-        <text class="left">点击画面下方的发起活动，创建自己的活动，在画面中输入说有的必填项目，点击提交，进入参与者报名画面，方便分享新创建的活动给朋友：</text>
+        <text class="left">点击画面下方的发起活动，创建自己的活动，在画面中输入所有的必填项目，点击提交，进入参与者报名画面，方便分享新创建的活动给朋友：</text>
         <view class="left">
             <image style="width: 320px; height: 568px;" mode="aspectFit"
                    src="https://www.yxtechs.cn/static/create.png"></image>

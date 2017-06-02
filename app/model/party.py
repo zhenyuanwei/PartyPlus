@@ -10,7 +10,7 @@ party_name
 party_time
 party_location
 comment           #活动的备注内容
-party_status      #0 取消， 1 进行中， 9 完成
+party_status      #0 取消， 1 进行中， 9 完成， 8 暂定活动，不允许继续报名
 party_total_num   #最大参与人数
 party_attend_num  #报名人数
 payment_flag      #0 不需要支付，1 需要支付
@@ -21,7 +21,7 @@ update_time       #自动设定
 '''
 class PartyModel:
     __collectionName = 'party_collection'
-    default_key = {'party_status': {'$in': ['1']}}
+    default_key = {'party_status': {'$in': ['1', '8']}}
 
     def insert(self, party):
         party['party_id'] = getTimeStamp()
