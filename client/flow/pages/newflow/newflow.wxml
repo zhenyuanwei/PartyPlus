@@ -18,7 +18,13 @@
             <label>
                 <text style="color : red">*</text>报修单位:
             </label>
-            <input name="issue_company"/>
+            <input name="issue_company" bindfocus="bindCompanySelect" value="{{ issue_company }}" placeholder="请选择一个地址"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>地址:
+            </label>
+            <input name="issue_address" value="{{ issue_address }}" disabled="true"/>
         </view>
         <view class="left">
             <label>

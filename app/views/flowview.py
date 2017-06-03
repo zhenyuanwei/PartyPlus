@@ -29,6 +29,7 @@ openId
 license_num
 issue_name
 issue_company
+issue_address
 issue_expect_time
 tel_no
 issue_description
@@ -43,6 +44,7 @@ def doSaveIssue():
         issue['license_num'] = request.args.get('license_num')
         issue['issue_name'] = request.args.get('issue_name')
         issue['issue_company'] = request.args.get('issue_company')
+        issue['issue_address'] = request.args.get('issue_address')
         issue['issue_expect_time'] = request.args.get('issue_expect_time')
         issue['tel_no'] = request.args.get('tel_no')
         issue['issue_description'] = request.args.get('issue_description')

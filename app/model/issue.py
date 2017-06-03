@@ -9,6 +9,7 @@ license_num          #版权编号  标记这个属于哪个公司
 issue_name           #报修问题标题
 issue_expect_time    #期待完成时间
 issue_company        #报修单位
+issue_address        #地址
 tel_no               #联系方式
 request_openId       #报修发起者openId
 nickname             #报修发起者微信昵称

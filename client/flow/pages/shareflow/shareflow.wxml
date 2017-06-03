@@ -27,6 +27,12 @@
     </view>
 
     <view class="left">
+        <label>地址:</label>
+        <label wx:if="{{issue.issue_address != null}}">{{ issue.issue_address }}</label>
+        <label wx:else>未填写</label>
+    </view>
+
+    <view class="left">
         <label>期待完工时间:</label>
         <label>{{ issue.issue_expect_time }}</label>
     </view>
