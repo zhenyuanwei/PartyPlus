@@ -6,6 +6,8 @@ Page({
         party_time: '',
         party_location: '',
         party_total_num: 0,
+        latitude: '',
+        longitude: '',
         openId: '',
         today: ''
     },
@@ -72,6 +74,20 @@ Page({
         var today = utils.getToday()
         var that = this
         that.setData({today : today})
+    },
+    bindCompanySelect: function(e){
+        var that = this;
+        wx.chooseLocation({
+            type: 'wgs84',
+            success: function (res) {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                //console.log(res);
+                var party_location = res.name
+
+                that.setData({party_location: party_location, latitude:latitude, longitude: longitude})
+            }
+        })
     }
 
 })

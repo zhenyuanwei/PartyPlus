@@ -9,6 +9,8 @@ party_id  TimeStamp
 party_name
 party_time
 party_location
+latitude
+longitude
 comment           #活动的备注内容
 party_status      #0 取消， 1 进行中， 9 完成， 8 暂定活动，不允许继续报名
 party_total_num   #最大参与人数

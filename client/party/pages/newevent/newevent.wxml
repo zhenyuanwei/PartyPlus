@@ -1,31 +1,44 @@
 <!-- newevent.wxml -->
 
 <view>
-  <view class="left"><text style="color : red">{{tip}}</text></view>
-  <form bindsubmit="bindButtonTap" id="creatparty" report-submit="true">
-  <view class="left">
-    <label><text style="color : red">*</text>活动名称:</label>
-    <input name="party_name" placeholder="请输入活动名称"/>
-  </view>
-  <view class="left">
-    <label><text style="color : red">*</text>活动时间:</label>
-    <input name="party_time" placeholder="{{today}} 下午3：00-5：00"/>
-  </view>
-  <view class="left">
-    <label><text style="color : red">*</text>活动地点:</label>
-    <input name="party_location" placeholder="请输入活动地点"/>
-  </view>
-  <view class="left">
-    <label><text style="color : red">*</text>参与人数上限(>0):</label>
-    <input name="party_total_num" type="number" placeholder="15"/>
-  </view>
-  <view class="left">
-    <label>备注:</label>
-    <textarea name="comment" auto-height placeholder="备注内容" maxlength="-1" />
-  </view>
-  <view class="left">
-    <!-- <button bindtap="bindButtonTap" >提交</button> -->
-    <button formType="submit">提交</button>
-  </view>
-  </form>
+    <view class="left">
+        <text style="color : red">{{ tip }}</text>
+    </view>
+    <form bindsubmit="bindButtonTap" id="creatparty" report-submit="true">
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>活动名称:
+            </label>
+            <input name="party_name" placeholder="请输入活动名称"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>活动时间:
+            </label>
+            <input name="party_time" placeholder="{{ today }} 下午3：00-5：00"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>活动地点:
+            </label>
+            <input name="party_location" bindfocus="bindCompanySelect" placeholder="请选择一个活动地点"
+                   value="{{ party_location }}"/>
+            <input name="latitude" value="{{ latitude }}" hidden="true"/>
+            <input name="longitude" value="{{ longitude }}" hidden="true"/>
+        </view>
+        <view class="left">
+            <label>
+                <text style="color : red">*</text>参与人数上限(>0):
+            </label>
+            <input name="party_total_num" type="number" placeholder="15"/>
+        </view>
+        <view class="left">
+            <label>备注:</label>
+            <textarea name="comment" auto-height placeholder="备注内容" maxlength="-1"/>
+        </view>
+        <view class="left">
+            <!-- <button bindtap="bindButtonTap" >提交</button> -->
+            <button formType="submit">提交</button>
+        </view>
+    </form>
 </view>
