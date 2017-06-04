@@ -7,7 +7,10 @@ Page({
      */
     data: {
         party_id: '',
-        party: {}
+        party: {},
+        latitude: '',
+        longitude: '',
+        party_location: ''
     },
 
     /**
@@ -26,7 +29,10 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
                 var party = res.data;
-                that.setData({party: party});
+                var party_location = party.party_location;
+                var latitude = party.latitude;
+                var longitude = party.longitude;
+                that.setData({party: party, party_location: party_location, latitude: latitude, longitude: longitude});
                 //wx.setStorageSync('openId', openId);//存储openid
             }
         })
@@ -65,5 +71,20 @@ Page({
             });
         }
 
+    },
+
+    bindCompanySelect: function(e){
+        var that = this;
+        wx.chooseLocation({
+            type: 'wgs84',
+            success: function (res) {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                //console.log(res);
+                var party_location = res.name
+
+                that.setData({party_location: party_location, latitude: latitude, longitude: longitude})
+            }
+        })
     }
 })

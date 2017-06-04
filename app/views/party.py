@@ -207,6 +207,8 @@ def doUpdateParty():
         #party['party_name'] = request.args.get('party_name')
         party['party_time'] = request.args.get('party_time')
         party['party_location'] = request.args.get('party_location')
+        party['latitude'] = request.args.get('latitude')
+        party['longitude'] = request.args.get('longitude')
         party['party_total_num'] = int(request.args.get('party_total_num'))
         openId = request.args.get('openId')
         party['comment'] = request.args.get('comment')
