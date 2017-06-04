@@ -25,20 +25,28 @@
             <label>
                 <text style="color : red">*</text>预约医生:
             </label>
-            <input name="booking_doctor"/>
+            <picker bindchange="bindDoctorPickerChange" name="booking_doctor" value="{{ doctorindex }}" range="{{ doctorname_list }}">
+                <view class="left">
+                    {{ doctorname_list[doctorindex] }}
+                </view>
+            </picker>
         </view>
         <view class="left">
             <label>
                 <text style="color : red">*</text>预约项目:
             </label>
-            <input name="booking_service"/>
+            <picker bindchange="bindServicePickerChange" name="booking_service" value="{{ serviceindex }}" range="{{ servicename_list }}">
+                <view class="left">
+                    {{ servicename_list[serviceindex] }}
+                </view>
+            </picker>
         </view>
         <view class="left">
             <label>
                 <text style="color : red">*</text>预约日期:
             </label>
             <picker bindchange="bindDayPickerChange" name="booking_day" value="{{ dayindex }}" range="{{ dayarray }}">
-                <view class="picker">
+                <view class="left">
                     {{ dayarray[dayindex] }}
                 </view>
             </picker>
@@ -48,7 +56,7 @@
                 <text style="color : red">*</text>预约时间:
             </label>
             <picker bindchange="bindTimePickerChange" name="booking_time" value="{{ timeindex }}" range="{{ timearray }}">
-                <view class="picker">
+                <view class="left">
                     {{ timearray[timeindex] }}
                 </view>
             </picker>

@@ -40,7 +40,7 @@ Page({
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
-                console.log(res.data)
+                //console.log(res.data)
                 var url2 = "../doctorlist/doctorlist?license_num=" + license_num;
                 //console.log(engineer_id);
                 wx.navigateTo({
