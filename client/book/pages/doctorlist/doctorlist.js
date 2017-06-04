@@ -3,7 +3,7 @@ var app = getApp()
 Page({
     data: {
         license_num: '',
-        service_list: []
+        doctor_list: []
     },
     //事件处理函数
     onLoad: function (options) {
@@ -14,17 +14,17 @@ Page({
         that.setData(
             {license_num: license_num}
         )
-        var url = app.globalData.baseURL + "/book/getservicelist";
+        var url = app.globalData.baseURL + "/book/getdoctorlist";
         wx.request({
             url: url,
             data: {'license_num': license_num},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
             success: function (res) {
-                //console.log(res.data)
-                var service_list = res.data;
+                console.log(res.data)
+                var doctor_list = res.data;
                 that.setData(
-                    {service_list: service_list}
+                    {doctor_list: doctor_list}
                 )
             }
         })

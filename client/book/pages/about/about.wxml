@@ -1,0 +1,17 @@
+<view>
+    <view class="container">
+        <text>关于</text>
+    </view>
+    <view class="left">
+        <text>预约Plus是一个在微信中进行服务预约的小工具。</text>
+    </view>
+    <view>
+        <text class="left">试用请关注微信公众号：yxjsjgzs("语熙工作室")，点击"预约Demo"按钮，进入小程序预约画面。其他功能请在小程序中试用使用。</text>
+        <text class="left">联系方式：</text>
+        <text class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</text>
+        <text class="left" style="color:blue">电话：15642530070</text>
+        <text class="left" style="color:blue">微信公众号：语熙工作室</text>
+        <text class="left" style="color:blue">语熙工作室出品</text>
+    </view>
+
+</view>

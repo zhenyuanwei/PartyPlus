@@ -1,0 +1,27 @@
+<view>
+    <view class="left" style="color:blue">
+        <navigator url="../doctor/doctor?license_num={{ license_num }}">增加医生</navigator>
+    </view>
+
+    <view class="left">
+        <view class="table">
+            <view class="tr">
+                <text class="th">医生姓名</text>
+                <text class="th">联系方式</text>
+                <text class="th">服务项目</text>
+                <text class="th">删除</text>
+            </view>
+            <view class="tr" wx:for="{{ doctor_list }}">
+                <text class="td">{{ item.doctor_name }}</text>
+                <text class="td">{{ item.doctor_tel }}</text>
+                <text class="td">{{ item.doctor_services_name }}</text>
+                <view class="td" style="color:blue">
+                <form bindsubmit="bindDeleteSubmit" id="cancel" report-submit="true">
+                    <input name="doctor_id" value="{{ item.doctor_id }}" hidden="true"/>
+                    <button formType="submit" size="mini">删</button>
+                </form>
+            </view>
+            </view>
+        </view>
+    </view>
+</view>

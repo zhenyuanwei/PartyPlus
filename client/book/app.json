@@ -6,7 +6,10 @@
     "pages/setup/setup",
     "pages/service/service",
     "pages/servicelist/servicelist",
-    "pages/adminuser/adminuser"
+    "pages/doctor/doctor",
+    "pages/doctorlist/doctorlist",
+    "pages/adminuser/adminuser",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -44,6 +47,12 @@
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
         "text": "设置"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "resource/img/tabbar.png",
+        "selectedIconPath": "resource/img/tabbarsel.png",
+        "text": "关于"
       }
     ]
   }

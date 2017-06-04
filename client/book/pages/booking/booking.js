@@ -3,7 +3,7 @@ var app = getApp()
 Page({
     data: {
         license_num: '',
-        timearray: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
+        timearray: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
         timeindex: 0,
         dayarray: ['2017/06/01', '2017/06/02'],
         dayindex: 0
@@ -12,9 +12,10 @@ Page({
     onLoad: function (options) {
         //console.log('onLoad')
         var license_num = options.license_num;
-        var that = this
+        license_num = '1496577521';
+        var that = this;
         //调用应用实例的方法获取全局数据
-        that.setData({license_num: license_num})
+        that.setData({license_num: license_num});
 
     },
     bindTimePickerChange: function (e) {

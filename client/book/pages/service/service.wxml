@@ -10,7 +10,7 @@
         <label>
             <text style="color : red">*</text>项目价格:
         </label>
-        <input name="service_price"/>
+        <input name="service_price" type="number"/>
     </view>
     <view class="container">
         <button formType="submit" size="mini">提交</button>

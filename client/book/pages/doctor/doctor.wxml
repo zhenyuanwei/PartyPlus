@@ -1,0 +1,30 @@
+<form bindsubmit="bindButtonSubmit" id="newservice" report-submit="true">
+    <view class="left">
+        <label>
+            <text style="color : red">*</text>医生姓名:
+        </label>
+        <input name="doctor_name"/>
+        <input name="license_num" hidden="true" value="{{ license_num }}"/>
+    </view>
+    <view class="left">
+        <label>
+            <text style="color : red">*</text>联系方式:
+        </label>
+        <input name="doctor_tel" type="number"/>
+    </view>
+    <view class="left">
+        <label>
+            <text style="color : red">*</text>服务项目:
+        </label>
+        <checkbox-group name="services">
+            <label class="left" wx:for="{{ service_list }}">
+                <checkbox value="{{ item.service_id }}"/>
+                {{ item.service_name }}
+            </label>
+        </checkbox-group>
+    </view>
+
+    <view class="container">
+        <button formType="submit" size="mini">提交</button>
+    </view>
+</form>
