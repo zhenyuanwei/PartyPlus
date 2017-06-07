@@ -3,7 +3,7 @@ from flask import request
 import json
 from app import app
 from app.controller.wxsysController import doSaveAccessToken
-from app.controller.wxsysController import getAnnouncement
+from app.controller.wxsysController import getAnnouncement, checkLicense
 
 '''
 保存小程序的access_token API
@@ -44,5 +44,6 @@ def doCheckLicense():
     result = True
     if request.method == 'GET':
         license_num = request.args.get('license_num')
+        result = checkLicense(license_num=license_num)
 
     return make_response(json.dumps(result))

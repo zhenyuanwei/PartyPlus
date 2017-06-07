@@ -3,6 +3,9 @@
         <text style="color : red">*</text>请填入您的授权码，进行系统设置。
     </label>
 </view>
+<view class="left">
+    <text style="color : red">{{ tip }}</text>
+</view>
 <form bindsubmit="bindButtonSubmit" id="certifyflow" report-submit="true">
 <view class="left">
     <label>
