@@ -32,12 +32,6 @@
         "text": "发起的报修"
       },
       {
-        "pagePath": "pages/newflow/newflow",
-        "iconPath": "resource/img/tabbar.png",
-        "selectedIconPath": "resource/img/tabbarsel.png",
-        "text": "报修"
-      },
-      {
         "pagePath": "pages/ownedflow/ownedflow",
         "iconPath": "resource/img/tabbar.png",
         "selectedIconPath": "resource/img/tabbarsel.png",
