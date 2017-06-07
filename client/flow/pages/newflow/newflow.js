@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userInfo: {},
         license_num: '',
         hasLicense: true,
         today: '',
@@ -22,6 +23,12 @@ Page({
         //license_num = '1495367951'; //测试用数据
         var that = this;
         var today = utils.getToday();
+        app.getUserInfo(function (userInfo) {
+            //更新数据
+            that.setData({
+                userInfo: userInfo
+            })
+        })
         if (license_num == null) {
             license_num = 'nolicense';
             that.setData(

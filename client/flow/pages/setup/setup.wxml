@@ -11,7 +11,7 @@
     <label>
         <text style="color : red">*</text>授权码:（测试请输入：1496842025）
     </label>
-    <input name="license_num" placeholder="输入您的授权码"/>
+    <input name="license_num" placeholder="输入您的授权码" type="number"/>
 </view>
 <view class="container">
     <button formType="submit" size="mini">提交</button>

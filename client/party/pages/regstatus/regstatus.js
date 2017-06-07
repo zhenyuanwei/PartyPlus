@@ -16,6 +16,7 @@ Page({
         //console.log('onLoad')
         var that = this
         var eventId = options.id;
+        wx.setStorageSync('eventId', eventId);
         //console.log(eventId);
         that.setData({eventId: eventId});
         //var url = app.globalData.baseURL + '/getpartyinfo?party_id=' + eventId;
@@ -55,6 +56,16 @@ Page({
                 userInfo: userInfo
             })
         })
+    },
+    //增加到分享按钮
+    onShareAppMessage: function () {
+        var eventId = wx.getStorageSync('eventId');
+        var path = 'pages/regstatus/regstatus?id='
+        path = path + eventId
+        return {
+            title: '查看报名状况',
+            path: path
+        }
     },
 
     bidComplateSubmit: function (e) {
