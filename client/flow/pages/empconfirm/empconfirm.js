@@ -14,10 +14,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var engineer_id = options.engineer_id
-        var that = this
+        var engineer_id = options.engineer_id;
+        var that = this;
+        wx.setStorageSync('engineer_id', engineer_id);
 
-        var url = app.globalData.baseURL + "/flow/getengineerinfo"
+        var url = app.globalData.baseURL + "/flow/getengineerinfo";
         wx.request({
             url: url,
             data: {'engineer_id': engineer_id},
@@ -59,13 +60,13 @@ Page({
 
     //增加到分享按钮
     onShareAppMessage: function () {
-        var that = this;
-        var url = "../empconfirm/empconfirm?engineer_id=" + that.engineer_id;
+        var engineer_id = wx.getStorageSync('engineer_id')
+        var url = "pages/empconfirm/empconfirm?engineer_id=" + engineer_id;
         /*wx.navigateTo({
          url: url
          })*/
         return {
-            title: '请您参加活动',
+            title: '请您确认绑定',
             path: url
         }
     }

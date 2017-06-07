@@ -25,6 +25,7 @@ Page({
                 {showbutton: false}
             )
         }
+        wx.setStorageSync('issue_id', issue_id);
         that.setData(
             {issue_id: issue_id}
         )
@@ -46,13 +47,13 @@ Page({
     },
     //增加到分享按钮
     onShareAppMessage: function () {
-        var that = this;
-        var url = "../shareflow/shareflow?issue_id=" + that.issue_id
+        var issue_id = wx.getStorageSync('issue_id');
+        var url = "pages/shareflow/shareflow?issue_id=" + issue_id;
         /*wx.navigateTo({
          url: url
          })*/
         return {
-            title: '请您参加活动',
+            title: '您收到的报修申请',
             path: url
         }
     },

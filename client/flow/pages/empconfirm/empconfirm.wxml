@@ -1,6 +1,10 @@
 <view class="tips">
     <label><text style="color : red">*</text>由工程师本人在自己的微信中操作，以便完成设置。</label>
-    <label><text style="color : red">*</text>点击右上角按钮，转发给工程师。</label>
+    <label style="display: flex;"><text style="color : red">*</text>点击右上角按钮，转发给工程师。
+        <button size="mini" open-type="share">
+            <image style="width:25px; height:25px;" src="../../resource/img/forward.png"></image>
+        </button>
+    </label>
 </view>
 <view>
     <label class="left">姓名:</label>
