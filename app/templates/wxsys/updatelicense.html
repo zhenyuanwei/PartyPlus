@@ -5,20 +5,21 @@
     <title>跟新消息</title>
 </head>
 <body>
-<form action="dowxsysnewlicense" method="post">
-    <label>小程序名称：</label>
-    <select name="program_id">
-        {% for program in programList %}
-            <option value="{{ program['program_id'] }}">{{ program['program_name'] }}</option>
-        {% endfor %}
-    </select><br>
+<form action="doupdatelicense" method="post">
+    <label>License编号：</label>
+    {{ license.license_num}}
+    <input name="license_num" hidden="true" value="{{ license.license_num}}"/><br>
+    <label>小程序：</label>
+    {{ license.program_name}}<br>
     <label>公司名称：</label>
-    <input name="company_name"/><br>
+    {{ license.company_name}}<br>
     <label>联系方式：</label>
-    <input name="tel_no" /><br>
+    {{ license.tel_no}}<br>
     <label>使用开始日：</label>
-    <input name="license_start_date" value="{{ today }}"/><br>
-    <label>使用周期：</label>
+    {{ license.license_start_date}}<br>
+     <label>使用结束日：</label>
+    {{ license.license_end_date}}<br>
+    <label>续约周期：</label>
     <select name="license_period">
         <option value="30">30天</option>
         <option value="90">90天</option>

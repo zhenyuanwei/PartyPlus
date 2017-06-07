@@ -4,7 +4,7 @@ from flask import session
 from app.controller.wxsysController import getProgramList, getLicenseList
 from app.controller.wxsysController import updateProgram, doDeleteProgram
 from flask import request
-from app.controller.wxsysController import addProgram, addLicense, deleteLicense
+from app.controller.wxsysController import addProgram, addLicense, deleteLicense, updateLicense, getLicense
 from app.utils.util import getToday
 from app.controller.partyController import getAllPary
 
@@ -176,6 +176,36 @@ def doDeleteLicense():
         if request.method == 'GET':
             license_num = request.args.get('license_num')
             deleteLicense(license_num=license_num)
+        return wxsysLicenseList()
+    else:
+        return goLogin()
+
+
+@app.route('/goupdatelicense', methods=['GET'])
+def goUpdateLicense():
+    isLogined = session.get('isLogined')
+
+    if isLogined:
+        license = {}
+        if request.method == 'GET':
+            license_num = request.args.get('license_num')
+            template_name = 'wxsys/updatelicense.html'
+            today = getToday()
+            license = getLicense(license_num=license_num)
+            return render_template(template_name, license=license, today=today)
+    else:
+        return goLogin()
+
+@app.route('/doupdatelicense', methods=['POST'])
+def doUpdateLicense():
+    isLogined = session.get('isLogined')
+
+    if isLogined:
+        if request.method == 'POST':
+            license = {}
+            license['license_num'] = request.form.get('license_num')
+            license['license_period'] = request.form.get('license_period')
+            updateLicense(license=license)
         return wxsysLicenseList()
     else:
         return goLogin()
