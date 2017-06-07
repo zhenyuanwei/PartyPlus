@@ -9,7 +9,7 @@
 <form bindsubmit="bindButtonSubmit" id="certifyflow" report-submit="true">
 <view class="left">
     <label>
-        <text style="color : red">*</text>授权码:（测试请输入：1495367951）
+        <text style="color : red">*</text>授权码:（测试请输入：1496842025）
     </label>
     <input name="license_num" placeholder="输入您的授权码"/>
 </view>
