@@ -3,7 +3,7 @@
         <label style="display: flex;">
             <text style="color : red">*</text>
             <text>Tips:点击右侧按钮，将报修申请发给工程师。</text>
-            <button size="mini" open-type="share">
+            <button style="border:0px" plain="true" size="mini" open-type="share">
                 <image style="width:25px; height:25px;" src="../../resource/img/forward.png"></image>
             </button>
         </label>
