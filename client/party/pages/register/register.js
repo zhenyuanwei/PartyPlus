@@ -29,13 +29,14 @@ Page({
         //console.log(eventSet);
         var latitude = Number(eventSet.latitude);
         var longitude = Number(eventSet.longitude);
-        console.log(latitude);
-        console.log(longitude);
-        //var party_location = eventSet.party_location
+        //console.log(latitude);
+        //console.log(longitude);
+        var party_location = eventSet.party_location
         wx.openLocation({
             latitude: latitude,
             longitude: longitude,
-            scale: 18
+            scale: 18,
+            name: party_location
         })
     },
 
