@@ -4,7 +4,7 @@
     <view class="tips">
         <label style="display: flex;"><text style="color : red">*</text>
         <text >Tips:点击右侧分享按钮，将活动分享给朋友。</text>
-        <button size="mini" open-type="share">
+        <button style="border:0px" plain="true" size="mini" open-type="share">
             <image style="width:25px; height:25px;" src="../../resource/img/forward.png"></image>
         </button>
         </label>
@@ -33,8 +33,13 @@
     <text>{{eventSet.party_time}}</text>
   </view>
   <view class="left">
-    <label>活动地点:</label>
-    <text>{{eventSet.party_location}}</text>
+      <label>活动地点:</label>
+      <label>
+          <button wx:if="{{ showMapBut }}" style="border:0px" plain="true" size="mini" bindtap="openMap">
+              <image style="width:20px; height:25px;" src="../../resource/img/marker_red.png"></image>
+          </button>
+          {{eventSet.party_location}}
+      </label>
   </view>
   <view class="left">
     <label>参与人数:</label>

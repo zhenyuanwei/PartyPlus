@@ -8,6 +8,7 @@ Page({
         eventSet: {},
         eventId: '',
         showButton: true,
+        showMapBut: false,
         showList: false,
         attendee_name: '',
         tel_no: '',
@@ -21,6 +22,21 @@ Page({
             title: '请您参加活动',
             path: path
         }
+    },
+
+    openMap: function (e) {
+        var eventSet = wx.getStorageSync('eventSet');
+        //console.log(eventSet);
+        var latitude = Number(eventSet.latitude);
+        var longitude = Number(eventSet.longitude);
+        console.log(latitude);
+        console.log(longitude);
+        //var party_location = eventSet.party_location
+        wx.openLocation({
+            latitude: latitude,
+            longitude: longitude,
+            scale: 18
+        })
     },
 
     bindButtonTap: function (e) {
@@ -128,6 +144,10 @@ Page({
                 //活动被取消或者完成后不允许报名，主要是控制从share进来的。
                 if (eventSet.party_status != '1') {
                     that.setData({showButton: false})
+                }
+
+                if (eventSet.latitude != null){
+                    that.setData({showMapBut: true})
                 }
 
                 if (userarray.length != 0) {
