@@ -68,6 +68,14 @@ Page({
         }
     },
 
+    bindMakeCall: function (e) {
+        //console.log(e.target.id);
+        var tel_no = e.target.id;
+        wx.makePhoneCall({
+            phoneNumber: tel_no
+        })
+    },
+
     bidComplateSubmit: function (e) {
         var party_id = e.detail.value.party_id;
 

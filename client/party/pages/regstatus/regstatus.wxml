@@ -69,7 +69,8 @@
                 <view wx:for="{{ userarray }}">
                     <view class="tr">
                         <view class="td">{{ item.attendee_name }}</view>
-                        <text wx:if="{{ showTel }}" class="td">{{ item.tel_no }}</text>
+                        <view wx:if="{{ showTel }}" bindtap="bindMakeCall" class="td" style="color: blue;" id="{{ item.tel_no }}">{{ item.tel_no }}
+                        </view>
                         <view class="td">{{ item.create_time }}</view>
                     </view>
                     <view class="tr">
