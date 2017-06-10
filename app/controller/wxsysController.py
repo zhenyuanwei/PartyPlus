@@ -1,6 +1,7 @@
 from app.model.wxsys import WxSysMondel
 from app.model.wxsyslicense import WxSysLicenseMondel
 from app.utils.util import getToday
+from app.model.issue import IssueModel, EngineerModel
 
 
 def doSaveAccessToken(program_id, access_token):
@@ -100,3 +101,10 @@ def checkLicense(license_num):
             return True
         else:
             return False
+
+def removeData(program_id):
+    if program_id == 'flowplus':
+        issueModel = IssueModel()
+        issueModel.removeAll()
+        engineerModel = EngineerModel()
+        engineerModel.removeAll()

@@ -2,7 +2,7 @@ from app import app
 from flask import render_template
 from flask import session
 from app.controller.wxsysController import getProgramList, getLicenseList
-from app.controller.wxsysController import updateProgram, doDeleteProgram
+from app.controller.wxsysController import updateProgram, doDeleteProgram, removeData
 from flask import request
 from app.controller.wxsysController import addProgram, addLicense, deleteLicense, updateLicense, getLicense
 from app.utils.util import getToday
@@ -207,5 +207,17 @@ def doUpdateLicense():
             license['license_period'] = request.form.get('license_period')
             updateLicense(license=license)
         return wxsysLicenseList()
+    else:
+        return goLogin()
+
+@app.route('/removedata', methods=['GET'])
+def doRemoveData():
+    isLogined = session.get('isLogined')
+
+    if isLogined:
+        if request.method == 'GET':
+            program_id = request.args.get('program_id')
+            removeData(program_id=program_id)
+            return showProgramList()
     else:
         return goLogin()

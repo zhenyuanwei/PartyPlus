@@ -76,6 +76,9 @@ class IssueModel:
             if key != 'issue_id' and key != '_id':
                 issue_collection.update({'issue_id': issue_id}, {'$set': {key: issue[key]}})
         return issue
+    def removeAll(self):
+        issue_collection = getCollection(collectionName=self.__collectionName)
+        issue_collection.remove()
 
 '''
 报修Plus工程师数据模型

@@ -11,6 +11,7 @@
         <td>活动时间</td>
         <td>活动地点</td>
         <td>活动状态</td>
+        <td>人数</td>
     </tr>
     {% for party in partyList %}
         <tr>
@@ -18,6 +19,7 @@
             <td>{{ party['party_time'] }}</td>
             <td>{{ party['party_location'] }}</td>
             <td>{{ party['party_status'] }}</td>
+            <td>{{ party['party_attend_num'] }}／{{ party['party_total_num'] }}</td>
         </tr>
     {% endfor %}
 </table>
