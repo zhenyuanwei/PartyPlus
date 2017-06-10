@@ -8,9 +8,9 @@
     </view>
     <view class="left">
         <label>
-            <text style="color : red" type="number">*</text>联系方式:
+            <text style="color : red">*</text>联系方式:
         </label>
-        <input name="tel_no"/>
+        <input name="tel_no" type="number"/>
     </view>
     <view class="left">
         <label>
