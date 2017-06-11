@@ -6,10 +6,10 @@
         <text>在聚会Plus中发起活动并分享到微信群，发起人可以很方便的在聚会Plus中统计参与者报名的状况。</text>
     </view>
     <view>
-        <text class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</text>
-        <text class="left" style="color:blue">电话：15642530070</text>
-        <text class="left" style="color:blue">微信公众号：语熙工作室</text>
-        <text class="left" style="color:blue">语熙工作室出品</text>
+        <view class="left" style="color:blue">邮箱地址：kevin@yxtechs.com</view>
+        <view class="left" style="color:blue" id="15642530070" bindtap="bindMakeCall">电话：15642530070</view>
+        <view class="left" style="color:blue">微信公众号：语熙工作室</view>
+        <view class="left" style="color:blue">语熙工作室出品</view>
     </view>
     <view>
         <text class="left">使用说明：</text>
