@@ -74,9 +74,16 @@
                         <view class="td">{{ item.create_time }}</view>
                     </view>
                     <view class="tr">
-                        <text class="tdcomment" wx:if="{{ item.comment != null && item.comment != ''}}">
-                            备注:{{ item.comment }}</text>
-                        <text class="tdcomment" wx:else>备注:无</text>
+                        <text class="td">备注:</text>
+                        <text class="td" wx:if="{{ item.comment != null && item.comment != ''}}">
+                            {{ item.comment }}</text>
+                        <text class="td" wx:else>无</text>
+                        <view class="td">
+                            <form bindsubmit="bindCancelButtonTap" id="cancelregisterform" report-submit="true">
+                                <input name="attend_id" value="{{ item.attend_id }}" hidden="true"/>
+                                <button formType="submit" size="mini">取消</button>
+                            </form>
+                        </view>
                     </view>
                 </view>
             </view>

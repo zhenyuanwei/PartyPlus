@@ -235,6 +235,45 @@ Page({
                 }
             }
         })
+    },
+
+    //报名后取消功能
+    bindCancelButtonTap: function (e) {
+        //var formId = e.detail.formId;
+        var attend_id = e.detail.value.attend_id;
+
+        wx.showModal({
+            title: '提示',
+            content: '确认取消报名？',
+            success: function (res) {
+                if (res.confirm) {
+                    //var party = wx.getStorageSync('eventSet');
+
+                    //var openId = wx.getStorageSync('openId');
+                    //console.log(attend_id);
+                    var url = app.globalData.baseURL + '/cancelattend';
+                    wx.request({
+                        url: url,
+                        data: {'attend_id': attend_id},
+                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        // header: {}, // 设置请求的 header
+                        success: function (res) {
+                            //console.log(result);
+                            if (result == "success") {
+                                var eventId = wx.getStorageSync('eventId');
+                                wx.navigateTo({
+                                    url: "../regstatus/regstatus?id=" + eventId
+                                })
+                            }
+
+                            //wx.setStorageSync('openId', openId);//存储openid
+                        }
+                    })
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        })
     }
 
 })
